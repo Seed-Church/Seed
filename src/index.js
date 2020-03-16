@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import AppRouter from './routes/AppRouter';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css'
+import './index.css'
 const store = configureStore();
 
 const jsx = (

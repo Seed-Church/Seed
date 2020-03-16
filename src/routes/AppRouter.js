@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import SideBar from "../components/SideBar";
 import { BrowserRouter as Router } from "react-router-dom";
-import './App.css';
-import SideNavP from '../components/SideNavP'
+import SideBar from "../components/SideBar";
+import { Layout } from "antd";
+import "./App.css"
+
+const { Header, Footer, Sider, Content } = Layout;
 export default () => {
-  const [isOpen, setOpen] = useState(true)
-  const toggle = () => setOpen(!isOpen)
   return (
-    <Router>
-        <SideNavP />
-    </Router>
+    <div>
+      <Layout>
+        <Header>Header</Header>
+        <Layout>
+          <Sider>Sider</Sider>
+          <Content>Content</Content>
+        </Layout>
+        <Footer>Footer</Footer>
+      </Layout>
+    </div>
   );
-}
+};
