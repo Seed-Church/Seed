@@ -1,21 +1,64 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import SideBar from "../components/SideBar";
-import { Layout } from "antd";
-import "./App.css"
+import { Layout, Menu } from "antd";
+import {
+  UserOutlined,
+  UploadOutlined,
+  VideoCameraOutlined
+} from "@ant-design/icons";
+import "./App.css";
+const { Header, Content, Footer, Sider } = Layout;
 
-const { Header, Footer, Sider, Content } = Layout;
 export default () => {
   return (
-    <div>
+    <Layout>
+      <Sider theme ="light"
+        breakpoint="lg"
+        collapsedWidth="0"
+        onBreakpoint={broken => {
+          console.log(broken);
+        }}
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
+        }}
+      >
+        <div className="logo" />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
+          <Menu.Item key="1">
+            <UserOutlined />
+            <span className="nav-text">nav 1</span>
+          </Menu.Item>
+          <Menu.Item key="2">
+            <VideoCameraOutlined />
+            <span className="nav-text">nav 2</span>
+          </Menu.Item>
+          <Menu.Item key="3">
+            <UploadOutlined />
+            <span className="nav-text">nav 3</span>
+          </Menu.Item>
+          <Menu.Item key="4">
+            <UserOutlined />
+            <span className="nav-text">nav 4</span>
+          </Menu.Item>
+        </Menu>
+      </Sider>
       <Layout>
-        <Header>Header</Header>
-        <Layout>
-          <Sider>Sider</Sider>
-          <Content>Content</Content>
-        </Layout>
-        <Footer>Footer</Footer>
+        <Header
+          className="site-layout-sub-header-background"
+          style={{ padding: 0 }}
+        />
+        <Content style={{ margin: "24px 16px 0" }}>
+          <div
+            className="site-layout-background"
+            style={{ padding: 24, minHeight: 360 }}
+          >
+            content
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>
+          Ant Design ©2018 Created by Ant UED
+        </Footer>
       </Layout>
-    </div>
+    </Layout>
   );
 };
