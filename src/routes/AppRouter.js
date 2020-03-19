@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import {
-  UserOutlined,
-  UploadOutlined,
-  VideoCameraOutlined
-} from "@ant-design/icons";
+import FormRegister from "../components/FormRegister";
+import SubMenu from "../components/SubMenu";
 import "./App.css";
 const { Header, Content, Footer, Sider } = Layout;
-
 export default () => {
   return (
     <Layout>
-      <Sider theme ="light"
+      <Sider
+        theme="light"
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={broken => {
@@ -23,36 +20,19 @@ export default () => {
         }}
       >
         <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
-          <Menu.Item key="1">
-            <UserOutlined />
-            <span className="nav-text">nav 1</span>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <VideoCameraOutlined />
-            <span className="nav-text">nav 2</span>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <UploadOutlined />
-            <span className="nav-text">nav 3</span>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <UserOutlined />
-            <span className="nav-text">nav 4</span>
-          </Menu.Item>
-        </Menu>
+        <SubMenu></SubMenu>
       </Sider>
       <Layout>
         <Header
           className="site-layout-sub-header-background"
-          style={{ padding: 0 }}
+          style={{ padding: 0, background: "white" }}
         />
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
           >
-            content
+            <FormRegister></FormRegister>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
