@@ -1,6 +1,7 @@
 import React from "react";
-import { Table, Tag, Button, Input } from "antd";
+import { Table, Tag, Button, Input, Card } from "antd";
 const { Search } = Input;
+const { Meta } = Card;
 
 const DashBoard = () => {
   const columns = [
@@ -26,6 +27,18 @@ const DashBoard = () => {
       key: "address"
     },
     {
+      title: "Action",
+      key: "action",
+      render: (text, record) => (
+        <span>
+          <Button type="primary" style={{ marginRight: 16, marginBottom:16 }}>
+            Edit
+          </Button>
+          <Button type="danger">Delete</Button>
+        </span>
+      )
+    },
+    {
       title: "Tags",
       key: "tags",
       dataIndex: "tags",
@@ -42,18 +55,6 @@ const DashBoard = () => {
               </Tag>
             );
           })}
-        </span>
-      )
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (text, record) => (
-        <span>
-          <Button type="primary" style={{ marginRight: 16 }}>
-            Edit
-          </Button>
-          <Button type="danger">Delete</Button>
         </span>
       )
     }

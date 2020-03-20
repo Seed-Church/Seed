@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Menu, PageHeader,Button } from "antd";
+import { Layout, Menu, PageHeader, Button } from "antd";
 import FormRegister from "../components/FormRegister";
 import SubMenu from "../components/SubMenu";
 import DashBoard from "../components/DashBoard";
@@ -12,7 +12,7 @@ const MainLayout = props => {
     <Layout>
       <Sider
         theme="light"
-        breakpoint="lg"
+        breakpoint="md"
         collapsedWidth="0"
         onBreakpoint={broken => {
           console.log(broken);
@@ -28,19 +28,7 @@ const MainLayout = props => {
         <Header
           className="site-layout-sub-header-background"
           style={{ padding: 0, background: "white" }}
-        >
-          <PageHeader
-            className="site-page-header"
-            // onBack={() => null}
-            title="Your are"
-            subTitle="Admin"
-            extra={[
-              <Button key="1" type="danger">
-                Logout
-              </Button>,
-            ]}
-          />
-        </Header>
+        ></Header>
         <Content style={{ margin: "24px 16px 0" }}>
           {props.children}
           <div
