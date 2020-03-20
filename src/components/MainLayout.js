@@ -3,6 +3,7 @@ import { Layout, Menu } from "antd";
 import FormRegister from "../components/FormRegister";
 import SubMenu from "../components/SubMenu";
 import DashBoard from "../components/DashBoard"
+import FormMemorize from '../components/FormMemorize'
 const { Header, Content, Footer, Sider } = Layout;
 
 const MainLayout = () => {
@@ -29,7 +30,8 @@ const MainLayout = () => {
         />
         <Content style={{ margin: "24px 16px 0" }}>
         {/* <FormRegister></FormRegister> */}
-        <DashBoard></DashBoard>
+        {/* <DashBoard></DashBoard> */}
+        <FormMemorize></FormMemorize>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}

@@ -12,7 +12,7 @@ import {
   Switch
 } from "antd";
 
-const FormRegister = () => {
+const FormMemorize = () => {
   const [componentSize, setComponentSize] = useState("small");
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
@@ -34,20 +34,10 @@ const FormRegister = () => {
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Name">
+        <Form.Item label="Bible">
           <Input />
         </Form.Item>
-        <Form.Item label="LastName">
-          <Input />
-        </Form.Item>
-
-        <Form.Item label="Believe date">
-          <DatePicker />
-        </Form.Item>
-        <Form.Item label="Age">
-          <InputNumber />
-        </Form.Item>
-        <Form.Item label="Address">
+        <Form.Item label="Note">
           <Input.TextArea />
         </Form.Item>
         <Form.Item label="Button">
@@ -58,4 +48,4 @@ const FormRegister = () => {
   );
 };
 
-export default FormRegister;
+export default FormMemorize;
