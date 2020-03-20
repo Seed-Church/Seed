@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+
 import { Router, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import "./App.css";
 
 import FormRegister from "../components/FormRegister";
-import DashBoard from "../components/DashBoard"
-import FormMemorize from '../components/FormMemorize'
+import DashBoard from "../components/DashBoard";
+import FormMemorize from "../components/FormMemorize";
 
-import generateComponentWithMainLayout from '../hoc/generateComponentWithMainLayout';
+import generateComponentWithMainLayout from "../hoc/generateComponentWithMainLayout";
 
 const history = createBrowserHistory();
 
