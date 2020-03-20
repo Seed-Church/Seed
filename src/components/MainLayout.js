@@ -6,7 +6,7 @@ import DashBoard from "../components/DashBoard"
 import FormMemorize from '../components/FormMemorize'
 const { Header, Content, Footer, Sider } = Layout;
 
-const MainLayout = () => {
+const MainLayout = (props) => {
   return (
     <Layout>
       <Sider
@@ -31,7 +31,7 @@ const MainLayout = () => {
         <Content style={{ margin: "24px 16px 0" }}>
         {/* <FormRegister></FormRegister> */}
         {/* <DashBoard></DashBoard> */}
-        <FormMemorize></FormMemorize>
+          {props.children}
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
