@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route , Redirect} from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import "./App.css";
@@ -23,5 +23,6 @@ export default () => (
         <Route exact path="/dashboard"  component={DashBoardWithLayout} />
         <Route exact path="/add" component={FormRegisterWithLayout} />
         <Route exact path="/memorize" component={FormMemorizeWithLayout} />
+        <Redirect from="/" to="/dashboard" />
     </Router>
 );
