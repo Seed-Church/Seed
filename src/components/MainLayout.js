@@ -7,6 +7,7 @@ import FormMemorize from '../components/FormMemorize'
 const { Header, Content, Footer, Sider } = Layout;
 
 const MainLayout = (props) => {
+  const { history } = props;
   return (
     <Layout>
       <Sider
@@ -21,7 +22,7 @@ const MainLayout = (props) => {
         }}
       >
         <div className="logo" />
-        <SubMenu></SubMenu>
+        <SubMenu history={history}></SubMenu>
       </Sider>
       <Layout>
         <Header

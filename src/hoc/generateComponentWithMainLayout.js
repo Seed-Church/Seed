@@ -3,9 +3,9 @@ import MainLayout from "../components/MainLayout";
 
 const generateComponentWithMainLayout = (Component) => {
     const WrappedMainLayout = (props) => {
-
+        const { history } = props;
         return (
-            <MainLayout>
+            <MainLayout history={history}>
              <Component {...props} />
             </MainLayout>
          )  
@@ -15,3 +15,4 @@ const generateComponentWithMainLayout = (Component) => {
 }
 
 export default generateComponentWithMainLayout;
+
