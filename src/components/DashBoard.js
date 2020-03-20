@@ -1,14 +1,19 @@
 import React from "react";
-import { Table, Tag } from 'antd';
+import { Table, Tag, Button, Input } from "antd";
+const { Search } = Input;
 
 const DashBoard = () => {
- 
   const columns = [
     {
       title: "Name",
       dataIndex: "name",
       key: "name",
       render: text => <a>{text}</a>
+    },
+    {
+      title: "NickName",
+      dataIndex: "nickname",
+      key: "nickname"
     },
     {
       title: "Age",
@@ -28,7 +33,7 @@ const DashBoard = () => {
         <span>
           {tags.map(tag => {
             let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
+            if (tag === "miss") {
               color = "volcano";
             }
             return (
@@ -45,8 +50,10 @@ const DashBoard = () => {
       key: "action",
       render: (text, record) => (
         <span>
-          <a style={{ marginRight: 16 }}>Invite {record.name}</a>
-          <a>Delete</a>
+          <Button type="primary" style={{ marginRight: 16 }}>
+            Edit
+          </Button>
+          <Button type="danger">Delete</Button>
         </span>
       )
     }
@@ -55,27 +62,40 @@ const DashBoard = () => {
   const data = [
     {
       key: "1",
-      name: "John Brown",
+      name: "Army Test",
+      nickname: "Noris",
       age: 32,
       address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"]
+      tags: ["new", "service"]
     },
     {
       key: "2",
       name: "Jim Green",
+      nickname: "Jone",
       age: 42,
       address: "London No. 1 Lake Park",
-      tags: ["loser"]
+      tags: ["miss"]
     },
     {
       key: "3",
-      name: "Joe Black",
+      name: "Eoe Black",
+      nickname: "Jone",
       age: 32,
       address: "Sidney No. 1 Lake Park",
-      tags: ["cool", "teacher"]
+      tags: ["new gen", "header"]
     }
   ];
-  return <Table columns={columns} dataSource={data} />;
+  return (
+    <React.Fragment>
+      <Search
+        placeholder="input search text"
+        onSearch={value => console.log(value)}
+        enterButton
+        style={{ paddingBottom: 50 }}
+      />
+      <Table columns={columns} dataSource={data} />
+    </React.Fragment>
+  );
 };
 
 export default DashBoard;
