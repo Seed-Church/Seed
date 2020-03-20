@@ -2,6 +2,7 @@ import React from "react";
 import { Layout, Menu } from "antd";
 import FormRegister from "../components/FormRegister";
 import SubMenu from "../components/SubMenu";
+import DashBoard from "../components/DashBoard"
 const { Header, Content, Footer, Sider } = Layout;
 
 const MainLayout = () => {
@@ -27,7 +28,8 @@ const MainLayout = () => {
           style={{ padding: 0, background: "white" }}
         />
         <Content style={{ margin: "24px 16px 0" }}>
-        <FormRegister></FormRegister>
+        {/* <FormRegister></FormRegister> */}
+        <DashBoard></DashBoard>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
