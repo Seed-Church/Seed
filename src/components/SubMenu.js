@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const SubMenu = () => {
   return (
-    <Router>
       <Menu theme="light" mode="inline" defaultSelectedKeys={["4"]}>
         <Menu.Item key="1">
           <UserOutlined />
@@ -30,7 +29,6 @@ const SubMenu = () => {
           <span className="nav-text">  <Link to="/">Home</Link></span>
         </Menu.Item>
       </Menu>
-    </Router>
   );
 };
 
