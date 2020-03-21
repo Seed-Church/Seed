@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Menu, PageHeader, Button } from "antd";
 import FormRegister from "../components/FormRegister";
 import SubMenu from "../components/SubMenu";
@@ -8,18 +8,15 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const MainLayout = props => {
   const { history } = props;
+  const [collapsed, setCollapsed] = useState(true);
   return (
     <Layout>
       <Sider
         theme="light"
-        breakpoint="md"
+        breakpoint="lg"
         collapsedWidth="0"
-        onBreakpoint={broken => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
+        onCollapse={() => setCollapsed(!collapsed)}
+    
       >
         <div className="logo" />
         <SubMenu history={history}></SubMenu>
