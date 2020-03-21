@@ -6,7 +6,8 @@ import {
   FacebookOutlined,
   CalendarOutlined,
   DeleteOutlined,
-  UserOutlined
+  UserOutlined,
+  FieldTimeOutlined
 } from "@ant-design/icons";
 import { Table, Tag, Button, Input, Card, Row, Col } from "antd";
 const { Search } = Input;
@@ -182,6 +183,7 @@ const DashBoard = () => {
                   {d.facebook}
                 </Tag>
               </p>
+              <p><Tag color="purple"><FieldTimeOutlined />  2  year</Tag></p>
             </Card>
           </Col>
         ))}
