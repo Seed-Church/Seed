@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap");
 body {
-    font-family: 'Baloo Chettan 2', cursive;
+  font-family: "Baloo Chettan 2", cursive;
+}
+
+.ant-layout-sider-zero-width-trigger {
+  top: 7px;
 }

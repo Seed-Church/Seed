@@ -9,49 +9,88 @@ import {
   DatePicker,
   InputNumber,
   TreeSelect,
-  Switch
+  Switch,
+  Row,
+  Col
 } from "antd";
+import FormItem from "antd/lib/form/FormItem";
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 5 }
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 7 }
+  }
+};
+
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0
+    },
+    sm: {
+      span: 14,
+      offset: 6
+    }
+  }
+};
 
 const FormRegister = () => {
-  const [componentSize, setComponentSize] = useState("small");
+  const [componentSize, setComponentSize] = useState("middle");
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
   return (
     <div>
       <Form
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 14 }}
-        layout="horizontal"
         initialValues={{ size: componentSize }}
         onValuesChange={onFormLayoutChange}
         size={componentSize}
       >
-        <Form.Item label="Form Size" name="size">
+        <Form.Item
+          {...formItemLayout}
+          wrapperCol={{ span: 14 }}
+          label="Form Size"
+          name="size"
+        >
           <Radio.Group>
             <Radio.Button value="small">Small</Radio.Button>
             <Radio.Button value="middle">Middle</Radio.Button>
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Name">
+        <Form.Item {...formItemLayout} label="Name">
           <Input />
         </Form.Item>
-        <Form.Item label="LastName">
+        <Form.Item {...formItemLayout} label="NickName">
           <Input />
         </Form.Item>
-
-        <Form.Item label="Believe date">
+        <Form.Item {...formItemLayout} label="LastName">
+          <Input />
+        </Form.Item>
+        <Form.Item {...formItemLayout} label="Believe date">
           <DatePicker />
         </Form.Item>
-        <Form.Item label="Age">
+        <Form.Item {...formItemLayout} label="Age">
           <InputNumber />
         </Form.Item>
-        <Form.Item label="Address">
+        <Form.Item {...formItemLayout} label="Facebook">
+        <Input />
+        </Form.Item>
+        <Form.Item {...formItemLayout} label="Address">
           <Input.TextArea />
         </Form.Item>
-        <Form.Item label="Button">
-          <Button type="primary">Save</Button>
+        <Form.Item {...tailFormItemLayout}>
+          <Button htmlType="submit" type="danger" style={{marginRight:8}}>
+            clear
+          </Button>
+          <Button htmlType="submit" type="primary">
+            Submit
+          </Button>
         </Form.Item>
       </Form>
     </div>
