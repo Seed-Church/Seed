@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Tag, Button, Input, Card } from "antd";
+import { Table, Tag, Button, Input, Card, Row, Col } from "antd";
 const { Search } = Input;
 const { Meta } = Card;
 
@@ -31,7 +31,7 @@ const DashBoard = () => {
       key: "action",
       render: (text, record) => (
         <span>
-          <Button type="primary" style={{ marginRight: 16, marginBottom:16 }}>
+          <Button type="primary" style={{ marginRight: 16, marginBottom: 16 }}>
             Edit
           </Button>
           <Button type="danger">Delete</Button>
@@ -63,27 +63,69 @@ const DashBoard = () => {
   const data = [
     {
       key: "1",
-      name: "Army Test",
+      name: "Army",
       nickname: "Noris",
+      lastname: "god",
+      believedate: "20/20/20",
       age: 32,
       address: "New York No. 1 Lake Park",
+      facebook: "codegeassmasterzeronebreakout",
       tags: ["new", "service"]
     },
     {
       key: "2",
-      name: "Jim Green",
-      nickname: "Jone",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["miss"]
+      name: "Brmy",
+      nickname: "Noris",
+      lastname: "god",
+      believedate: "20/20/20",
+      age: 32,
+      address: "New York No. 1 Lake Park",
+      facebook: "codegeassmasterzeronebreakout",
+      tags: ["new", "service"]
     },
     {
       key: "3",
-      name: "Eoe Black",
-      nickname: "Jone",
+      name: "Crmy",
+      nickname: "Noris",
+      lastname: "god",
+      believedate: "20/20/20",
       age: 32,
-      address: "Sidney No. 1 Lake Park",
-      tags: ["new gen", "header"]
+      address: "New York No. 1 Lake Park",
+      facebook: "codegeassmasterzeronebreakout",
+      tags: ["new", "service"]
+    },
+    {
+      key: "4",
+      name: "Army",
+      nickname: "Noris",
+      lastname: "god",
+      believedate: "20/20/20",
+      age: 32,
+      address: "New York No. 1 Lake Park",
+      facebook: "codegeassmasterzeronebreakout",
+      tags: ["new", "service"]
+    },
+    {
+      key: "5",
+      name: "Brmy",
+      nickname: "Noris",
+      lastname: "god",
+      believedate: "20/20/20",
+      age: 32,
+      address: "New York No. 1 Lake Park",
+      facebook: "codegeassmasterzeronebreakout",
+      tags: ["new", "service"]
+    },
+    {
+      key: "6",
+      name: "Crmy",
+      nickname: "Noris",
+      lastname: "god",
+      believedate: "20/20/20",
+      age: 32,
+      address: "New York No. 1 Lake Park",
+      facebook: "codegeassmasterzeronebreakout",
+      tags: ["new", "service"]
     }
   ];
   return (
@@ -94,7 +136,29 @@ const DashBoard = () => {
         enterButton
         style={{ paddingBottom: 50 }}
       />
-      <Table columns={columns} dataSource={data} />
+      <Row gutter={[16, 16]}>
+        {data.map(d => (
+          <Col xs={24} sm={12} md={12} lg={8}>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  alt=""
+                  width="125"
+                  height="256"
+                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                />
+              }
+            >
+              <Meta
+                title={d.nickname + ` ` + d.name + ` ` + d.lastname}
+                description={d.facebook}
+              />
+            </Card>
+          </Col>
+        ))}
+      </Row>
     </React.Fragment>
   );
 };
