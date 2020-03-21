@@ -9,9 +9,11 @@ import {
   UserOutlined,
   FieldTimeOutlined
 } from "@ant-design/icons";
+import { Chart } from 'react-charts'
 import { Table, Tag, Button, Input, Card, Row, Col } from "antd";
 const { Search } = Input;
 const { Meta } = Card;
+
 
 const DashBoard = () => {
   const columns = [
