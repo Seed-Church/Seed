@@ -78,6 +78,9 @@ const FormRegister = () => {
         <Form.Item {...formItemLayout} label="Age">
           <InputNumber />
         </Form.Item>
+        <Form.Item {...formItemLayout} label="Facebook">
+        <Input />
+        </Form.Item>
         <Form.Item {...formItemLayout} label="Address">
           <Input.TextArea />
         </Form.Item>
