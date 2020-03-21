@@ -1,4 +1,13 @@
 import React from "react";
+import {
+  EditOutlined,
+  EllipsisOutlined,
+  SettingOutlined,
+  FacebookOutlined,
+  CalendarOutlined,
+  DeleteOutlined,
+  UserOutlined
+} from "@ant-design/icons";
 import { Table, Tag, Button, Input, Card, Row, Col } from "antd";
 const { Search } = Input;
 const { Meta } = Card;
@@ -102,7 +111,7 @@ const DashBoard = () => {
       believedate: "20/20/20",
       age: 32,
       address: "New York No. 1 Lake Park",
-      facebook: "codegeassmasterzeronebreakout",
+      facebook: "facebookURL",
       tags: ["new", "service"]
     },
     {
@@ -113,7 +122,7 @@ const DashBoard = () => {
       believedate: "20/20/20",
       age: 32,
       address: "New York No. 1 Lake Park",
-      facebook: "codegeassmasterzeronebreakout",
+      facebook: "facebookURL",
       tags: ["new", "service"]
     },
     {
@@ -141,20 +150,38 @@ const DashBoard = () => {
           <Col xs={24} sm={12} md={12} lg={8}>
             <Card
               hoverable
-              style={{ width: 240 }}
+              style={{ width: 256 }}
+              actions={[
+                <Tag color="red">
+                  <DeleteOutlined color="red" key="del" />
+                </Tag>,
+                <Tag color="gold"> <EditOutlined key="edit" />
+                </Tag>,
+                <EllipsisOutlined key="ellipsis" />
+              ]}
               cover={
                 <img
                   alt=""
                   width="125"
                   height="256"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                  src="https://via.placeholder.com/256"
                 />
               }
             >
-              <Meta
-                title={d.nickname + ` ` + d.name + ` ` + d.lastname}
-                description={d.facebook}
-              />
+              <p>
+            <Tag color="cyan"><UserOutlined /> {d.name + ` ` + d.lastname }</Tag>
+            <Tag color="orange">NickName:{d.nickname}</Tag>
+              </p>
+              <p>
+                <Tag color="green"> <CalendarOutlined /> {d.believedate} </Tag>
+                <Tag color="volcano">Age:{d.age}</Tag>
+              </p>
+              <p>
+                <Tag color="geekblue">
+                  <FacebookOutlined /> {" "}
+                  {d.facebook}
+                </Tag>
+              </p>
             </Card>
           </Col>
         ))}
