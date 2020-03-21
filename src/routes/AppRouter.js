@@ -23,6 +23,6 @@ export default () => (
         <Route exact path="/dashboard"  component={DashBoardWithLayout} />
         <Route exact path="/add" component={FormRegisterWithLayout} />
         <Route exact path="/memorize" component={FormMemorizeWithLayout} />
-        <Redirect from="/" to="/dashboard" />
+        {/* <Redirect from="/" to="/dashboard" /> */}
     </Router>
 );
