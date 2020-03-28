@@ -48,7 +48,7 @@ const SubMenu = props => {
       </Menu.Item>
       <Menu.Item key="3" onClick={handleRedirect("/memorize")}>
         <FormOutlined />
-        <span className="nav-text">เฝ้าเดียว</span>
+        <span className="nav-text">เฝ้าเดี๋ยวเดียว</span>
       </Menu.Item>
     </Menu>
   );
