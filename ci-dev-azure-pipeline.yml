@@ -23,3 +23,5 @@ steps:
   displayName: 'Run npm run build'
 - script: 'pm2 start server.js --name react-server'
   displayName: 'Run pm2 server'
+- script: 'pm2 list'
+  displayName: 'Run pm2 server'
