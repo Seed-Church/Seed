@@ -149,7 +149,7 @@ const DashBoard = () => {
       />
       <Row gutter={[16, 16]}>
         {data.map(d => (
-          <Col xs={24} sm={12} md={12} lg={8}>
+          <Col xs={24} sm={12} md={8} lg={6}>
             <Card
               hoverable
               style={{ width: 256 }}
