@@ -7,3 +7,8 @@ body {
   top: 7px;
   font-size: 40px;
 }
+
+.ant-input {
+  border-radius: 10px;
+  font-weight:bold;
+}

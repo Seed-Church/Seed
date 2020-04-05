@@ -11,58 +11,44 @@ import {
   TreeSelect,
   Switch,
   Row,
-  Col
+  Col,
 } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 
 const formItemLayout = {
   labelCol: {
-    xs: { span: 24 },
-    sm: { span: 5 }
+    xs: { span: 4 },
+    sm: { span: 4 },
+    md: { span: 4 },
+     lg: { span: 4 },
   },
   wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 7 }
-  }
+    xs: { span: 12 },
+    sm: { span: 12 },
+    md: { span: 12 },
+    lg: { span: 12 },
+  },
 };
 
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
       span: 24,
-      offset: 0
+      offset: 0,
     },
     sm: {
       span: 14,
-      offset: 6
-    }
-  }
+      offset: 6,
+    },
+  },
 };
 
 const FormRegister = () => {
-  const [componentSize, setComponentSize] = useState("middle");
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
+  const [componentSize] = useState("large");
+
   return (
     <div>
-      <Form
-        initialValues={{ size: componentSize }}
-        onValuesChange={onFormLayoutChange}
-        size={componentSize}
-      >
-        <Form.Item
-          {...formItemLayout}
-          wrapperCol={{ span: 14 }}
-          label="Form Size"
-          name="size"
-        >
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="middle">Middle</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
+      <Form initialValues={{ size: componentSize }} size={componentSize}>
         <Form.Item {...formItemLayout} label="Name">
           <Input />
         </Form.Item>
@@ -79,13 +65,13 @@ const FormRegister = () => {
           <InputNumber />
         </Form.Item>
         <Form.Item {...formItemLayout} label="Facebook">
-        <Input />
+          <Input />
         </Form.Item>
         <Form.Item {...formItemLayout} label="Address">
           <Input.TextArea />
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button htmlType="submit" type="danger" style={{marginRight:8}}>
+          <Button htmlType="submit" type="danger" style={{ marginRight: 8 }}>
             clear
           </Button>
           <Button htmlType="submit" type="primary">
