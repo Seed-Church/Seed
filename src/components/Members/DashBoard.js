@@ -107,7 +107,7 @@ const DashBoard = (props) => {
               style={{ width: 256 }}
               actions={[
                 <Tag color="red">
-                  <DeleteOutlined color="red" key="del" />
+                  <DeleteOutlined  key="del"  />
                 </Tag>,
                 <Tag color="gold"> 
                 <EditOutlined key="edit" onClick={handleEditClick(d.key)} />
