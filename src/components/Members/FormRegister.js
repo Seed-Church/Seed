@@ -35,7 +35,7 @@ const tailFormItemLayout = {
   },
 };
 
-const FormRegisterMember = () => {
+const FormRegister = () => {
   const [componentSize] = useState("large");
 
   return (
@@ -75,4 +75,4 @@ const FormRegisterMember = () => {
   );
 };
 
-export default FormRegisterMember;
+export default FormRegister;

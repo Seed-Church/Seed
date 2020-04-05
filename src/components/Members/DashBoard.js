@@ -103,8 +103,8 @@ const DashBoard = () => {
                   <DeleteOutlined color="red" key="del" />
                 </Tag>,
                 <Tag color="gold"> 
-                <EditOutlined key="edit" >
-                {/* <FormEditMember key={d.id} data={d} dispatch={this.prop}/> */}
+                <EditOutlined key="edit" onClick={()=> dispatch()}>>
+          
                 </EditOutlined>
                 </Tag>,
                 <EllipsisOutlined key="ellipsis" />

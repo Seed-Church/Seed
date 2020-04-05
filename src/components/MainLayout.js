@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Layout, Menu, PageHeader, Button } from "antd";
-import FormRegisterMember from "./FormRegisterMember";
+import FormRegister from "./Members/FormRegister";
 import SubMenu from "../components/SubMenu";
-import DashBoard from "../components/DashBoard";
+import DashBoard from "./Members/DashBoard";
 import FormMemorize from "../components/FormMemorize";
 const { Header, Content, Footer, Sider } = Layout;
 
