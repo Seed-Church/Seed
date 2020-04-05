@@ -3,17 +3,9 @@ import {
   Form,
   Input,
   Button,
-  Radio,
-  Select,
-  Cascader,
   DatePicker,
   InputNumber,
-  TreeSelect,
-  Switch,
-  Row,
-  Col,
 } from "antd";
-import FormItem from "antd/lib/form/FormItem";
 
 const formItemLayout = {
   labelCol: {
@@ -43,7 +35,7 @@ const tailFormItemLayout = {
   },
 };
 
-const FormRegister = () => {
+const FormRegisterMember = () => {
   const [componentSize] = useState("large");
 
   return (
@@ -83,4 +75,4 @@ const FormRegister = () => {
   );
 };
 
-export default FormRegister;
+export default FormRegisterMember;

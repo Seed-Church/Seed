@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -9,68 +10,12 @@ import {
   UserOutlined,
   FieldTimeOutlined
 } from "@ant-design/icons";
+
 import { Table, Tag, Button, Input, Card, Row, Col } from "antd";
 const { Search } = Input;
 const { Meta } = Card;
 
-
 const DashBoard = () => {
-  const columns = [
-    {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      render: text => <a>{text}</a>
-    },
-    {
-      title: "NickName",
-      dataIndex: "nickname",
-      key: "nickname"
-    },
-    {
-      title: "Age",
-      dataIndex: "age",
-      key: "age"
-    },
-    {
-      title: "Address",
-      dataIndex: "address",
-      key: "address"
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (text, record) => (
-        <span>
-          <Button type="primary" style={{ marginRight: 16, marginBottom: 16 }}>
-            Edit
-          </Button>
-          <Button type="danger">Delete</Button>
-        </span>
-      )
-    },
-    {
-      title: "Tags",
-      key: "tags",
-      dataIndex: "tags",
-      render: tags => (
-        <span>
-          {tags.map(tag => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "miss") {
-              color = "volcano";
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </span>
-      )
-    }
-  ];
-
   const data = [
     {
       key: "1",
@@ -157,7 +102,10 @@ const DashBoard = () => {
                 <Tag color="red">
                   <DeleteOutlined color="red" key="del" />
                 </Tag>,
-                <Tag color="gold"> <EditOutlined key="edit" />
+                <Tag color="gold"> 
+                <EditOutlined key="edit" >
+                {/* <FormEditMember key={d.id} data={d} dispatch={this.prop}/> */}
+                </EditOutlined>
                 </Tag>,
                 <EllipsisOutlined key="ellipsis" />
               ]}
