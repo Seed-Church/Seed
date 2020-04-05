@@ -15,7 +15,14 @@ import { Table, Tag, Button, Input, Card, Row, Col } from "antd";
 const { Search } = Input;
 const { Meta } = Card;
 
-const DashBoard = () => {
+const DashBoard = (props) => {
+
+  const handleEditClick = (paramsId) => () => {
+    const { history } = props;
+    history.push(`/dashboard/user/${paramsId}/edit`)
+
+  }
+
   const data = [
     {
       key: "1",
@@ -103,9 +110,8 @@ const DashBoard = () => {
                   <DeleteOutlined color="red" key="del" />
                 </Tag>,
                 <Tag color="gold"> 
-                <EditOutlined key="edit" onClick={()=> dispatch()}>>
+                <EditOutlined key="edit" onClick={handleEditClick(d.key)} />
           
-                </EditOutlined>
                 </Tag>,
                 <EllipsisOutlined key="ellipsis" />
               ]}
