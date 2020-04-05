@@ -35,7 +35,7 @@ const tailFormItemLayout = {
   },
 };
 
-const FormEditMember = () => {
+const FormEdit = () => {
   const [componentSize] = useState("large");
 
   return (
@@ -75,4 +75,4 @@ const FormEditMember = () => {
   );
 };
 
-export default FormEditMember;
+export default FormEdit;

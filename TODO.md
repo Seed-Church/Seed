@@ -4,16 +4,17 @@ Project Description
 
 ### Todo
 
-- [ ] back-end nest  
-- [ ] หน้า edit สมาชิก  
-- [ ] หน้า dash board เฝ้าเดียว  
-- [ ] print report  
-- [ ] FIX UI  
-- [ ] Login  
+- [ ] design หน้าบันทึกการเฝ้าเดียว  
+- [ ] design หน้าบันทึกประชุมประจำ week  
+- [ ] เพิ่ม input พี่เลีัยงเป็น select box ในหน้าเพิ่มสมาชิกและ edit  
+- [ ] บันทึกการเฝ้าเดียวของทุกคน  
+- [ ] บันทึกการประชุมประจำสัปดาห์  
 
 ### In Progress
 
+- [ ] ทำระบบหลังบ้าน  
 
 ### Done ✓
 
+- [x] สร้างหน้า Edit สมาชิก  
 

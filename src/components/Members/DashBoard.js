@@ -1,5 +1,5 @@
 import React from "react";
-
+import { editMember } from "../../actions/Member";
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -8,7 +8,7 @@ import {
   CalendarOutlined,
   DeleteOutlined,
   UserOutlined,
-  FieldTimeOutlined
+  FieldTimeOutlined,
 } from "@ant-design/icons";
 
 import { Table, Tag, Button, Input, Card, Row, Col } from "antd";
@@ -16,12 +16,11 @@ const { Search } = Input;
 const { Meta } = Card;
 
 const DashBoard = (props) => {
-
   const handleEditClick = (paramsId) => () => {
-    const { history } = props;
-    history.push(`/dashboard/user/${paramsId}/edit`)
-
-  }
+    const { history, dispatch } = props;
+    dispatch(editMember(paramsId));
+    history.push(`/dashboard/user/${paramsId}/edit`);
+  };
 
   const data = [
     {
@@ -33,7 +32,7 @@ const DashBoard = (props) => {
       age: 32,
       address: "New York No. 1 Lake Park",
       facebook: "codegeassmasterzeronebreakout",
-      tags: ["new", "service"]
+      tags: ["new", "service"],
     },
     {
       key: "2",
@@ -44,7 +43,7 @@ const DashBoard = (props) => {
       age: 32,
       address: "New York No. 1 Lake Park",
       facebook: "codegeassmasterzeronebreakout",
-      tags: ["new", "service"]
+      tags: ["new", "service"],
     },
     {
       key: "3",
@@ -55,7 +54,7 @@ const DashBoard = (props) => {
       age: 32,
       address: "New York No. 1 Lake Park",
       facebook: "codegeassmasterzeronebreakout",
-      tags: ["new", "service"]
+      tags: ["new", "service"],
     },
     {
       key: "4",
@@ -66,7 +65,7 @@ const DashBoard = (props) => {
       age: 32,
       address: "New York No. 1 Lake Park",
       facebook: "facebookURL",
-      tags: ["new", "service"]
+      tags: ["new", "service"],
     },
     {
       key: "5",
@@ -77,7 +76,7 @@ const DashBoard = (props) => {
       age: 32,
       address: "New York No. 1 Lake Park",
       facebook: "facebookURL",
-      tags: ["new", "service"]
+      tags: ["new", "service"],
     },
     {
       key: "6",
@@ -88,32 +87,31 @@ const DashBoard = (props) => {
       age: 32,
       address: "New York No. 1 Lake Park",
       facebook: "codegeassmasterzeronebreakout",
-      tags: ["new", "service"]
-    }
+      tags: ["new", "service"],
+    },
   ];
   return (
     <React.Fragment>
       <Search
         placeholder="input search text"
-        onSearch={value => console.log(value)}
+        onSearch={(value) => console.log(value)}
         enterButton
         style={{ paddingBottom: 50 }}
       />
       <Row gutter={[16, 16]}>
-        {data.map(d => (
+        {data.map((d) => (
           <Col xs={24} sm={12} md={8} lg={6}>
             <Card
               hoverable
               style={{ width: 256 }}
               actions={[
                 <Tag color="red">
-                  <DeleteOutlined  key="del"  />
+                  <DeleteOutlined key="del" />
                 </Tag>,
-                <Tag color="gold"> 
-                <EditOutlined key="edit" onClick={handleEditClick(d.key)} />
-          
+                <Tag color="gold">
+                  <EditOutlined key="edit" onClick={handleEditClick(d.key)} />
                 </Tag>,
-                <EllipsisOutlined key="ellipsis" />
+                <EllipsisOutlined key="ellipsis" />,
               ]}
               cover={
                 <img
@@ -125,20 +123,28 @@ const DashBoard = (props) => {
               }
             >
               <p>
-            <Tag color="cyan"><UserOutlined /> {d.name + ` ` + d.lastname }</Tag>
-            <Tag color="orange">NickName:{d.nickname}</Tag>
+                <Tag color="cyan">
+                  <UserOutlined /> {d.name + ` ` + d.lastname}
+                </Tag>
+                <Tag color="orange">NickName:{d.nickname}</Tag>
               </p>
               <p>
-                <Tag color="green"> <CalendarOutlined /> {d.believedate} </Tag>
+                <Tag color="green">
+                  {" "}
+                  <CalendarOutlined /> {d.believedate}{" "}
+                </Tag>
                 <Tag color="volcano">Age:{d.age}</Tag>
               </p>
               <p>
                 <Tag color="geekblue">
-                  <FacebookOutlined /> {" "}
-                  {d.facebook}
+                  <FacebookOutlined /> {d.facebook}
                 </Tag>
               </p>
-              <p><Tag color="purple"><FieldTimeOutlined />  2  year</Tag></p>
+              <p>
+                <Tag color="purple">
+                  <FieldTimeOutlined /> 2 year
+                </Tag>
+              </p>
             </Card>
           </Col>
         ))}
