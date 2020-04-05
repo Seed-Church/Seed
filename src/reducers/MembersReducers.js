@@ -1,8 +1,7 @@
 const MemberReducers = (state = [], action) => {
   switch (action.type) {
     case `EDIT_MEMBER  `:
-        state.map(member => member)
-      break;
+      return state.map((member) => member.id === action.id);
     default:
       break;
   }
