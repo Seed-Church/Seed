@@ -1,14 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap");
-body {
-  font-family: "Baloo Chettan 2", cursive;
-}
 
-.ant-layout-sider-zero-width-trigger {
-  top: 7px;
-  font-size: 40px;
-}
 
-.ant-input {
-  border-radius: 10px;
-  font-weight:bold;
+@import url('https://fonts.googleapis.com/css2?family=Niramit:wght@500&display=swap');
+@font-face {
+  font-family: "Comnic Mono";
+  src: url("./asset/fonts/ComicMono.ttf");
+}
+.font-body {
+  font-family: 'Comnic Mono','Niramit', sans-serif;
 }
