@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./shared/Form";
 import SelectBox from "./shared/SelectBox";
 import DateForm from "./shared/DateForm";
@@ -27,26 +27,25 @@ const Forms = (props) => {
   const { value: Salary, bind: bindSalary, reset: resetSalary } = useInput("180000");
   const { value: Where, bind: bindWhere, reset: resetWhere } = useInput("ไม่บอก");
   const isOpen = false;
-
+  
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const data = {
       firstName: firstName,
-      lastName: lastName,
       nickName: nickName,
-      Age: Age,
-      Facebook: Facebook,
-      Tel: Tel,
-      Address: Address,
-      Ability: Ability,
-      Ability: Ability,
-      Mentor: Mentor,
-      Group: Group,
-      Status: Status,
+      lastName: lastName,
       DateBelieve: DateBelieve,
-      Position: Position,
-      Salary: Salary,
-      Where: Where,
+      Age: Age,
+      Tel: Tel,
+      Facebook: Facebook,
+      Ability: Ability,
+      Address: Address,
+      //Mentor: Mentor,
+      //Group: Group,
+      //Status: Status,
+      //Position: Position,
+      //Salary: Salary,
+      //Where: Where,
     };
     props.dispatchAddUser(data);
 
@@ -101,7 +100,7 @@ const Forms = (props) => {
         </div>
         <div className="flex flex-wrap mb-6 mt-3">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
-          <p className="mt-8 font-bold">เพิ่มรูปตัวเอง</p>
+            <p className="mt-8 font-bold">เพิ่มรูปตัวเอง</p>
             <FormUpload />
           </div>
         </div>

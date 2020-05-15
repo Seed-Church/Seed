@@ -18,3 +18,9 @@ export const delUser = (id) => {
     id,
   };
 };
+
+export const getUsers = () => {
+  return {
+    type: "GET_USERS_ALL",
+  };
+};
