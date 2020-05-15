@@ -5,17 +5,6 @@ const CardBlogs = () => {
     <React.Fragment>
       <CardBlog />
       <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      <CardBlog />
-      
     </React.Fragment>
   );
 };
