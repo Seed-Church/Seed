@@ -12,13 +12,7 @@ import axios from "axios";
 const Board = (props) => {
   const [data, setData] = useState({ users: [] });
   const columns = ["User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
-  useEffect(async () => {
-    const result = await axios("http://159.89.204.113:3000/users");
-
-    setData({
-      users: result.data,
-    });
-  }, []);
+ 
 
   return (
     <React.Fragment>
