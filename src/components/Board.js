@@ -26,7 +26,7 @@ const Board = (props) => {
     
   }, []);
 
-  //https://api-seed.panupong.dev/users
+ 
   return (
     <React.Fragment>
       <Title name="Table" />
