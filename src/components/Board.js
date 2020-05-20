@@ -10,10 +10,23 @@ import fetch from "node-fetch";
 import axios from "axios";
 
 const Board = (props) => {
-  const [data, setData] = useState({ users: [] });
   const columns = ["User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
- 
+  const [data, setData] = useState({ users: [] });
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios("https://api-seed.panupong.dev/users");
 
+      setData({
+        users: result.data,
+      });
+    };
+
+    fetchData();
+  
+    
+  }, []);
+
+  //https://api-seed.panupong.dev/users
   return (
     <React.Fragment>
       <Title name="Table" />
