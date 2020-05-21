@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
   
   return {
     error: state.Users.error,
-    users: state.Users.users,
+    items: state.Users.items,
     pending:state.Users.pending
   };
 };

@@ -8,10 +8,10 @@ export const fetchUsersPending = () => {
   };
 };
 
-export const fetchUsersSuccess = (users) => {
+export const fetchUsersSuccess = (items) => {
   return {
     type: FETCH_USERS_SUCCESS,
-    users: users,
+    items: items,
   };
 };
 

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const initialState = {
   pending: false,
-  users: [],
+  items: [],
   error: null
 }
 const Users = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const Users = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
-        users: action.users,
+        items: action.items,
       };
     case FETCH_USERS_ERROR:
       return {
