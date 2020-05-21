@@ -8,10 +8,10 @@ export const fetchUsersPending = () => {
   };
 };
 
-export const fetchUsersSuccess = (products) => {
+export const fetchUsersSuccess = (users) => {
   return {
     type: FETCH_USERS_SUCCESS,
-    products: products,
+    users: users,
   };
 };
 
@@ -31,8 +31,8 @@ export const fetchUsers = () => {
         if (res.error) {
           throw res.error;
         }
-        dispatch(fetchUsersSuccess(res.users));
-        return res.user;
+        dispatch(fetchUsersSuccess(res));
+        return res;
       })
       .catch((error) => {
         dispatch(fetchUsersError(error));

@@ -12,8 +12,9 @@ import axios from "axios";
 const Board = (props) => {
   const columns = ["User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
   const [data, setData] = useState({ users: [] });
-  props.dispatchFetchUsers();
-  console.log(props);
+  //props.dispatchFetchUsers();
+
+  console.log(`props=`,props);
   
   
   // useEffect(() => {

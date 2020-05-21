@@ -17,7 +17,7 @@ const Users = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
-        products: action.payload,
+        users: action.users,
       };
     case FETCH_USERS_ERROR:
       return {

@@ -5,10 +5,12 @@ import { bindActionCreators } from "redux";
 import { addUser, editUser, delUser, getUsers, fetchUsers } from "../actions/Users";
 
 const mapStateToProps = (state) => {
+  console.log(`state`,state);
+  
   return {
-    error: state.error,
-    users: state.users,
-    pending:state.pending
+    error: state.Users.error,
+    users: state.Users.users,
+    pending:state.Users.pending
   };
 };
 
