@@ -6,17 +6,18 @@ import { addUser, editUser, delUser, getUsers, fetchUsers } from "../actions/Use
 
 const mapStateToProps = (state) => {
   return {
-    Users: state.Users,
+    error: state.error,
+    users: state.users,
+    pending:state.pending
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  bindActionCreators(
-    {
-      fetchUsers: fetchUsers,
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    dispatchFetchUsers: (data) => {
+      dispatch(fetchUsers());
     },
-    dispatch
-  );
+  }
 };
 
 const FormsWithLogic = connect(mapStateToProps, mapDispatchToProps)(Forms);

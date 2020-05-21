@@ -12,19 +12,23 @@ import axios from "axios";
 const Board = (props) => {
   const columns = ["User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
   const [data, setData] = useState({ users: [] });
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("https://api-seed.panupong.dev/users");
+  props.dispatchFetchUsers();
+  console.log(props);
+  
+  
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios("https://api-seed.panupong.dev/users");
 
-      setData({
-        users: result.data,
-      });
-    };
+  //     setData({
+  //       users: result.data,
+  //     });
+  //   };
 
-    fetchData();
+  //   fetchData();
   
     
-  }, []);
+  // }, []);
 
  
   return (
