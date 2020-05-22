@@ -2,7 +2,7 @@ import React from "react";
 import Colume from "./Colume";
 import RowsUser from "./RowsUser";
 
-const Table = ({ columns, data, props }) => {
+const Table = ({ columns, props }) => {
   return (
     <table className="min-w-full leading-normal">
       <thead>
@@ -13,7 +13,7 @@ const Table = ({ columns, data, props }) => {
         </tr>
       </thead>
       <tbody>
-        {data.users.map((user, i) => (
+        {props.items.map((user, i) => (
           <RowsUser
             key={i}
             index={i}

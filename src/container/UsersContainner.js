@@ -4,9 +4,7 @@ import Board from "../components/Board";
 import { bindActionCreators } from "redux";
 import { addUser, editUser, delUser, getUsers, fetchUsers } from "../actions/Users";
 
-const mapStateToProps = (state) => {
-  console.log(`state`,state);
-  
+const mapStateToProps = (state) => {  
   return {
     error: state.Users.error,
     items: state.Users.items,

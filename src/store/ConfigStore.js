@@ -9,7 +9,7 @@ export default () => {
       Users,
     }),
     {},
-    compose(middlewares)
+    middlewares
   );
 
   return store;
