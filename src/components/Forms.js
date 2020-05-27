@@ -32,13 +32,13 @@ const Forms = (props) => {
     evt.preventDefault();
     const data = {
       firstName: firstName,
-      nickName: nickName,
+      nickname: nickName,
       lastName: lastName,
-      DateBelieve: DateBelieve,
+      dateBelieve: DateBelieve,
       Age: Age,
       Tel: Tel,
-      Facebook: Facebook,
-      Ability: Ability,
+      facebook: Facebook,
+      ability: Ability,
       Address: Address,
       //Mentor: Mentor,
       //Group: Group,
@@ -47,6 +47,7 @@ const Forms = (props) => {
       //Salary: Salary,
       //Where: Where,
     };
+    console.log(`predata`,data);
     
     props.dispatchAddUser(data);
     console.log(props);

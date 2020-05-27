@@ -41,9 +41,15 @@ export const fetchUsers = () => {
 };
 
 export const addUser = (data) => {
+  console.log(`data`,data);
+  
   return (dispatch) => {
     dispatch(fetchUsersPending());
-    fetch("https://api-seed.panupong.dev/users",{ method: 'POST', body: data } )
+    fetch("https://api-seed.panupong.dev/users", {
+      headers: { "Content-Type": 'application/json'},
+      method: "POST",
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
@@ -53,7 +59,6 @@ export const addUser = (data) => {
       });
   };
 };
-
 
 // export const addUser = (data) => {
 //   return {
