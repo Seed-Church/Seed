@@ -39,13 +39,36 @@ export const fetchUsers = () => {
       });
   };
 };
-
+const FormData = require('form-data');
+const form = new FormData();
+form.append('firstName', `OMG`);
+form.append('nickName', `OMG`);
+form.append('lastName', `OMG`);
 export const addUser = (data) => {
-  return {
-    type: "ADD_USER",
-    data,
+  return (dispatch) => {
+    dispatch(fetchUsersPending());
+    fetch("https://api-seed.panupong.dev/users",{ method: 'POST', body: form } )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.error) {
+          throw res.error;
+        }
+        dispatch(fetchUsersSuccess(res));
+        return res;
+      })
+      .catch((error) => {
+        dispatch(fetchUsersError(error));
+      });
   };
 };
+
+
+// export const addUser = (data) => {
+//   return {
+//     type: "ADD_USER",
+//     data,
+//   };
+// };
 
 export const editUser = (id) => {
   return {
