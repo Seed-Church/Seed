@@ -47,8 +47,10 @@ const Forms = (props) => {
       //Salary: Salary,
       //Where: Where,
     };
+    
     props.dispatchAddUser(data);
-
+    console.log(props);
+    
     setOpenAlert(true);
     resetfirstName();
     resetlastName();
@@ -98,12 +100,12 @@ const Forms = (props) => {
           <Form label="รายได้" type="number" hook={bindSalary} />
           <Form label="ทำที่ไหน" type="text" hook={bindWhere} />
         </div>
-        <div className="flex flex-wrap mb-6 mt-3">
+        {/* <div className="flex flex-wrap mb-6 mt-3">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
             <p className="mt-8 font-bold">เพิ่มรูปตัวเอง</p>
-            <FormUpload />
+            <FormUpload /> // warning component unsafe
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
             <button className="bg-red-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
