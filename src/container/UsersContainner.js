@@ -22,7 +22,11 @@ const mapDispatchToProps = (dispatch) => {
     dispatchFetchUsers: () => {
       dispatch(fetchUsers());
     },
+<<<<<<< Updated upstream
     dispatchAddUser: (data) => {
+=======
+    dispatchAddUsers: (data) => {
+>>>>>>> Stashed changes
       dispatch(addUser(data));
     },
     dispatchEditUser: (id) => {
