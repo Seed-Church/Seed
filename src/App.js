@@ -6,7 +6,6 @@ import Main from "./views/layout/Main";
 import Cards from "./components/Cards";
 import CardBlogs from "./components/CardBlogs";
 import UsersContainner from "./container/UsersContainner";
-import FormUpload from "./components/shared/FormUpload";
 import generateMain from "./hoc/generateMain";
 import Maintenance from "./components/Maintenance";
 const history = createBrowserHistory();
@@ -14,7 +13,6 @@ const CardWithLayout = generateMain(Cards);
 const BoardWithLayout = generateMain(UsersContainner.BoardWithLogic);
 const FormsWithLayout = generateMain(UsersContainner.FormsWithLogic);
 const CardBlogsWithLayout = generateMain(CardBlogs);
-const FormUploadWithLayout = generateMain(FormUpload);
 
 const MaintenanceWithLayout = generateMain(Maintenance);
 
@@ -31,7 +29,7 @@ function App() {
         <Route exact path="/settings" component={MaintenanceWithLayout} />
         <Route exact path="/logout" component={MaintenanceWithLayout} />
         <Route exact path="/blog" component={CardBlogsWithLayout} />
-        <Route exact path="/upload" component={FormUploadWithLayout} />
+        {/* <Route exact path="/upload" component={} /> */}
       </Router>
     </div>
   );

@@ -6,8 +6,8 @@ import Title from "./shared/Title";
 import { mentors, groups, status } from "./mock/option";
 import useInput from "./hook/useInput";
 import useInputDate from "./hook/useInputDate";
+import useInputFile from './hook/useInputFile'
 import Alert from "../components/shared/Alert";
-import FormUpload from "../components/shared/FormUpload";
 
 const Forms = (props) => {
   const [isOpenAlert, setOpenAlert] = useState(false);
@@ -26,8 +26,9 @@ const Forms = (props) => {
   const { value: Position, bind: bindPosition, reset: resetPosition } = useInput("ขายน้ำ");
   const { value: Salary, bind: bindSalary, reset: resetSalary } = useInput("180000");
   const { value: Where, bind: bindWhere, reset: resetWhere } = useInput("ไม่บอก");
+  const { value: ProfilePicture, bind: bindProfilePicture, reset: resetProfilePicturetFile } = useInputFile([]);
   const isOpen = false;
-  
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const data = {
@@ -45,15 +46,15 @@ const Forms = (props) => {
       Status: parseInt(Status),
       Position: Position,
 
-
       Salary: Salary,
       Where: Where,
+      ProfilePicture: ProfilePicture
     };
-    console.log(`predata`,data);
-    
+    console.log(`predata`, data);
+
     props.dispatchAddUser(data);
     console.log(props);
-    
+
     setOpenAlert(true);
     resetfirstName();
     resetlastName();
@@ -70,13 +71,14 @@ const Forms = (props) => {
     resetPosition();
     resetSalary();
     resetWhere();
+    resetProfilePicturetFile();
   };
-
+ 
   return (
     <React.Fragment>
       <Title name="Form" />
       {isOpenAlert ? <Alert /> : ""}
-      <form className="mx-8" onSubmit={handleSubmit}>
+      <form className="mx-8" onSubmit={handleSubmit} encType="multipart/form-data">
         <p className="mt-8 font-bold">ข้อมูลทั่วไป</p>
         <div className="flex flex-wrap mb-6 mt-3">
           <Form label="ชื่อต้น" type="text" hook={bindfirstName} />
@@ -104,16 +106,22 @@ const Forms = (props) => {
           <Form label="ทำที่ไหน" type="text" hook={bindWhere} />
         </div>
         <div className="flex flex-wrap mb-6 mt-3">
-          <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
+          {/* <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
             <p className="mt-8 font-bold">เพิ่มรูปตัวเอง</p>
-         
-          </div>
+            <input
+              className="appearance-none block w-full p-1 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200"
+              type="file"
+              name="file"
+              onChange={handleFileUpload}
+            />
+          </div> */}
+            <Form label="รูปตัวเอง" type="file" hook={bindProfilePicture} />
         </div>
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
-            <button className="bg-red-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            {/* <button className="bg-red-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
               เคลียร์ข้อมูล
-            </button>{" "}
+            </button>{" "} */}
             <input
               type="submit"
               className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"

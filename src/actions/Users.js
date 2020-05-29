@@ -40,9 +40,7 @@ export const fetchUsers = () => {
   };
 };
 
-export const addUser = (data) => {
-  console.log(`data`,data);
-  
+export const addUser = (data) => {  
   return (dispatch) => {
     dispatch(fetchUsersPending());
     fetch("https://api-seed.panupong.dev/users", {
@@ -50,9 +48,9 @@ export const addUser = (data) => {
       method: "POST",
       body: JSON.stringify(data),
     })
-      .then((res) => res.json())
+      .then((res) => res.status)
       .then((res) => {
-        console.log(res);
+        console.log(`res=`,res);
       })
       .catch((error) => {
         dispatch(fetchUsersError(error));
