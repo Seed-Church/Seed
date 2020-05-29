@@ -10,7 +10,7 @@ const SelectBox = ({ label, test, hook }) => {
           id="grid-state"
           {...hook}>
           {test.map((t, index) => (
-            <option key={index}>{t}</option>
+            <option key={index} value={index+1}>{t}</option>
           ))}
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

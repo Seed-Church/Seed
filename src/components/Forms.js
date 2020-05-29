@@ -19,9 +19,9 @@ const Forms = (props) => {
   const { value: Tel, bind: bindTel, reset: resetTel } = useInput("093580486");
   const { value: Address, bind: bindAddress, reset: resetAddress } = useInput("9/1 กะทู้");
   const { value: Ability, bind: bindAbility, reset: resetAbility } = useInput("กระโดดตบ");
-  const { value: Mentor, bind: bindMentor, reset: resetMentor } = useInput(0);
-  const { value: Group, bind: bindGroup, reset: resetGroup } = useInput(0);
-  const { value: Status, bind: bindStatus, reset: resetStatus } = useInput(0);
+  const { value: Mentor, bind: bindMentor, reset: resetMentor } = useInput(1);
+  const { value: Group, bind: bindGroup, reset: resetGroup } = useInput(1);
+  const { value: Status, bind: bindStatus, reset: resetStatus } = useInput(1);
   const { startDate: DateBelieve, bind: bindDateBelieve, reset: resetDateBelieve } = useInputDate(new Date());
   const { value: Position, bind: bindPosition, reset: resetPosition } = useInput("ขายน้ำ");
   const { value: Salary, bind: bindSalary, reset: resetSalary } = useInput("180000");
@@ -40,12 +40,14 @@ const Forms = (props) => {
       facebook: Facebook,
       ability: Ability,
       Address: Address,
-      //Mentor: Mentor,
-      //Group: Group,
-      //Status: Status,
-      //Position: Position,
-      //Salary: Salary,
-      //Where: Where,
+      Mentor: parseInt(Mentor),
+      Group: parseInt(Group),
+      Status: parseInt(Status),
+      Position: Position,
+
+
+      Salary: Salary,
+      Where: Where,
     };
     console.log(`predata`,data);
     
