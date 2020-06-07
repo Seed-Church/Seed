@@ -1,3 +1,4 @@
+import { api } from "../api/index";
 export const FETCH_USERS_PENDING = "FETCH_USERS_PENDING";
 export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
 export const FETCH_USERS_ERROR = "FETCH_USERS_ERROR";
@@ -25,7 +26,7 @@ export const fetchUsersError = (error) => {
 export const fetchUsers = () => {
   return (dispatch) => {
     dispatch(fetchUsersPending());
-    fetch("https://api-seed.panupong.dev/users")
+    fetch(api + `users`)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
@@ -40,17 +41,17 @@ export const fetchUsers = () => {
   };
 };
 
-export const addUser = (data) => {  
+export const addUser = (data) => {
   return (dispatch) => {
     dispatch(fetchUsersPending());
-    fetch("https://api-seed.panupong.dev/users", {
-      headers: { "Content-Type": 'application/json'},
+    fetch(api + `users`, {
+      headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify(data),
     })
       .then((res) => res.status)
       .then((res) => {
-        console.log(`res=`,res);
+        console.log(`res=`, res);
       })
       .catch((error) => {
         dispatch(fetchUsersError(error));

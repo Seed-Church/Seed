@@ -33,7 +33,7 @@ const Forms = (props) => {
     evt.preventDefault();
     const data = {
       firstName: firstName,
-      nickname: nickName,
+      nickName: nickName,
       lastName: lastName,
       dateBelieve: DateBelieve,
       Age: Age,
@@ -48,9 +48,10 @@ const Forms = (props) => {
 
       Salary: Salary,
       Where: Where,
-      ProfilePicture: ProfilePicture
+      PictureProfile: ProfilePicture[0].name
     };
-    console.log(`predata`, data);
+    console.log(`preData`,data);
+    
 
     props.dispatchAddUser(data);
     console.log(props);

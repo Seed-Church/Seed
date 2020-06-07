@@ -1,1 +1,3 @@
-export const api = "https://api-seed.panupong.dev/users"
+const production = "https://api-seed.panupong.dev/"
+const local = "http://localhost:3001/"
+export const api = local
