@@ -1,4 +1,4 @@
-import { api } from "../api/index";
+import { API_URL } from "../api/index";
 export const FETCH_USERS_PENDING = "FETCH_USERS_PENDING";
 export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
 export const FETCH_USERS_ERROR = "FETCH_USERS_ERROR";
@@ -26,7 +26,7 @@ export const fetchUsersError = (error) => {
 export const fetchUsers = () => {
   return (dispatch) => {
     dispatch(fetchUsersPending());
-    fetch(api + `users`)
+    fetch(API_URL + `users`)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
@@ -44,8 +44,8 @@ export const fetchUsers = () => {
 export const addUser = (data) => {
   return (dispatch) => {
     dispatch(fetchUsersPending());
-    fetch(api + `users`, {
-      headers: { "Content-Type": "application/json" },
+    fetch(API_URL + `users`, {
+      headers: { "Content-Type": "application/json", "content-type": "multipart/form-data" },
       method: "POST",
       body: JSON.stringify(data),
     })

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Form from "./shared/Form";
 import SelectBox from "./shared/SelectBox";
 import DateForm from "./shared/DateForm";
 import Title from "./shared/Title";
-import { mentors, groups, status } from "./mock/option";
 import useInput from "./hook/useInput";
 import useInputDate from "./hook/useInputDate";
-import useInputFile from './hook/useInputFile'
+import useInputFile from "./hook/useInputFile";
 import Alert from "../components/shared/Alert";
+import { mentors, groups, status } from "./mock/option";
 
 const Forms = (props) => {
   const [isOpenAlert, setOpenAlert] = useState(false);
@@ -48,11 +48,10 @@ const Forms = (props) => {
 
       Salary: Salary,
       Where: Where,
-      PictureProfile: ProfilePicture[0].name
+      PictureProfile: ProfilePicture[0],
     };
-    console.log(`preData`,data);
-    
-
+    console.log(`data`,data);
+  
     props.dispatchAddUser(data);
     console.log(props);
 
@@ -74,7 +73,7 @@ const Forms = (props) => {
     resetWhere();
     resetProfilePicturetFile();
   };
- 
+
   return (
     <React.Fragment>
       <Title name="Form" />
@@ -116,7 +115,7 @@ const Forms = (props) => {
               onChange={handleFileUpload}
             />
           </div> */}
-            <Form label="รูปตัวเอง" type="file" hook={bindProfilePicture} />
+          <Form label="รูปตัวเอง" type="file" hook={bindProfilePicture} />
         </div>
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
