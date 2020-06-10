@@ -22,10 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     dispatchAddUser: (data) => {
       dispatch(addUser(data));
-    },
-    dispatchUpload: (file) => {
-      dispatch(upload(file));
-    },
+    }
   };
 };
 

@@ -48,25 +48,6 @@ export const addUser = (data) => {
       //headers: { "content-type": "multipart/form-data" },
       method: "POST",
       body: data,
-      file: data.PictureProfile,
-    })
-      .then((res) => res.status)
-      .then((res) => {
-        console.log(`res=`, res);
-      })
-      .catch((error) => {
-        dispatch(fetchUsersError(error));
-      });
-  };
-};
-
-export const upload = (file) => {
-  return (dispatch) => {
-    dispatch(fetchUsersPending());
-    fetch(API_URL + `users`, {
-      headers: { "Content-Type": "application/json", "content-type": "multipart/form-data" },
-      method: "POST",
-      body: JSON.stringify(file),
     })
       .then((res) => res.status)
       .then((res) => {

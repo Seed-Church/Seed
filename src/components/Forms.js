@@ -8,6 +8,7 @@ import useInputDate from "./hook/useInputDate";
 import useInputFile from "./hook/useInputFile";
 import Alert from "../components/shared/Alert";
 import { mentors, groups, status } from "./mock/option";
+import FormData from "form-data";
 
 const Forms = (props) => {
   const [isOpenAlert, setOpenAlert] = useState(false);
@@ -31,28 +32,25 @@ const Forms = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const data = {
-      firstName: firstName,
-      nickName: nickName,
-      lastName: lastName,
-      dateBelieve: DateBelieve,
-      Age: Age,
-      Tel: Tel,
-      facebook: Facebook,
-      ability: Ability,
-      Address: Address,
-      Mentor: parseInt(Mentor),
-      Group: parseInt(Group),
-      Status: parseInt(Status),
-      Position: Position,
-
-      Salary: Salary,
-      Where: Where,
-      PictureProfile: ProfilePicture[0],
-    };
-    console.log(`data`,data);
-  
-    props.dispatchAddUser(data);
+    let form = new FormData();
+    form.append("firstName", firstName);
+    form.append("nickName",nickName);
+    form.append("lastName", lastName);
+    form.append("dateBelieve", DateBelieve)
+    form.append("Age", Age)
+    form.append("Tel", Tel)
+    form.append("facebook", Facebook)
+    form.append("ability", Ability)
+    form.append("Address", Address)
+    form.append("Mentor", parseInt(Mentor))
+    form.append("Group", parseInt(Group))
+    form.append("Status", parseInt(Status))
+    form.append("Position", Position)
+    form.append("Salary", Salary)
+    form.append("Where", Where)
+    form.append("pictureProfile", ProfilePicture[0]);
+ 
+    props.dispatchAddUser(form);
     console.log(props);
 
     setOpenAlert(true);
