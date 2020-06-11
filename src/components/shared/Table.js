@@ -16,11 +16,8 @@ const Table = ({ columns, props }) => {
         {props.items.map((user, i) => (
           <RowsUser
             key={i}
-            index={i}
             user={user}
-            editUser={props.dispatchEditUser}
-            delUser={props.dispatchDelUser}
-            history={props.history}
+            props={props}
           />
         ))}
       </tbody>

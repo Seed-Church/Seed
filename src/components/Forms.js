@@ -51,7 +51,7 @@ const Forms = (props) => {
     form.append("pictureProfile", ProfilePicture[0]);
  
     props.dispatchAddUser(form);
-    console.log(props);
+    //console.log(props);
 
     setOpenAlert(true);
     resetfirstName();

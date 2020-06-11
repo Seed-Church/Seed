@@ -16,7 +16,7 @@ const Board = (props) => {
     props.dispatchFetchUsers();
    
   }, []);
-  console.log(`props.items`, props.items);
+  //console.log(`props.items`, props.items);
   return (
     <React.Fragment>
       <Title name="Table" />

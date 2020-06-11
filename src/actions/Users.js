@@ -48,7 +48,11 @@ export const addUser = (data) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(`res=`, res);
+        if (res.error) {
+          throw res.error;
+        }
+        dispatch(fetchUsersSuccess(res));
+        return res;
       })
       .catch((error) => {
         dispatch(fetchUsersError(error));
@@ -60,11 +64,15 @@ export const editUser = (id) => {
   return (dispatch) => {
     dispatch(fetchUsersPending());
     fetch(API_URL + USERS + `/${id}`, {
-      method: "POST",
+      method: "GET",
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(`res=`, res);
+        if (res.error) {
+          throw res.error;
+        }
+        dispatch(fetchUsersSuccess(res));
+        return res;
       })
       .catch((error) => {
         dispatch(fetchUsersError(error));
