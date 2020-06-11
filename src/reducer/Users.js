@@ -1,5 +1,4 @@
-import { FETCH_USERS_PENDING, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../actions/Users";
-import axios from "axios";
+import { FETCH_USERS_PENDING, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../constants/Users";
 
 const initialState = {
   pending: false,
