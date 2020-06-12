@@ -23,7 +23,7 @@ function App() {
       <Router history={history}>
         <Route exact path="/" component={Main} />
         <Route exact path="/form" component={FormsWithLayout} />
-        <Route exact path="/form/:id/edit" component={FormsEditWithLayout} />
+        <Route exact path="/form/:id/edit" component={FormsWithLayout} />
         <Route exact path="/card" component={CardWithLayout} />
         <Route exact path="/board" component={BoardWithLayout} />
         {/* <Route exact path="/form/:id/edit" component={FormsWithLayout} /> */}

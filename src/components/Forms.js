@@ -12,12 +12,12 @@ import { mentors, groups, status } from "./mock/option";
 import FormData from "form-data";
 
 const Forms = (props) => {
-  //console.log(`props`, props);
+  console.log(`props`, props);
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   const { register, handleSubmit, watch, errors, control } = useForm({
     defaultValues: {
-      firstName: "bill",
+      firstName: props.items.firstName || "bill",
       nickName: "หอย",
       lastName: "บ้า",
       Age: 15,
@@ -60,7 +60,6 @@ const Forms = (props) => {
 
     props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
-
   };
 
   return (
