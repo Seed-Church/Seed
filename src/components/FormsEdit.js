@@ -14,11 +14,8 @@ const FormsEdit = (props) => {
   console.log(`props`,String(props.items.firstName));
   
   const [isOpenAlert, setOpenAlert] = useState(false);
-  const [fitstName, setfitstName] = useState({...props.items.firstName});
-  React.useEffect(() => {
-    setfitstName(props.items.firstName);
-}, [props.items.firstName])
-  console.log(`fitstName`,fitstName);
+
+
   //const { setValue: setfitstName,value: firstName, bind: bindfirstName, reset: resetfirstName } = useInput(fitstName);
   // const { value: lastName, bind: bindlastName, reset: resetlastName } = useInput(`TEST`);
   // const { value: nickName, bind: bindnickName, reset: resetnickName } = useInput();
@@ -84,15 +81,6 @@ const FormsEdit = (props) => {
       <form className="mx-8" onSubmit={handleSubmit} encType="multipart/form-data">
         <p className="mt-8 font-bold">ข้อมูลทั่วไป</p>
         <div className="flex flex-wrap mb-6 mt-3">
-          <div className="w-full md:w-1/5 px-3 md:mb-0 mt-3">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold text-xs mb-2">ชื่อ</label>
-            <input
-              className="appearance-none block w-full p-1 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200"
-              type="text"
-              name="ชื่อ"
-              value={fitstName}
-            />
-          </div>
           {/* <Form label="ชื่อต้น" type="text" hook={bindfirstName} /> */}
           {/* <Form label="นามสกุล" type="text" hook={bindlastName} />
           <Form label="ชื่อเล่น" type="text" hook={bindnickName} />

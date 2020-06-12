@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import Form from "./shared/Form";
 import SelectBox from "./shared/SelectBox";
 import DateForm from "./shared/DateForm";
@@ -11,115 +12,89 @@ import { mentors, groups, status } from "./mock/option";
 import FormData from "form-data";
 
 const Forms = (props) => {
+  const { register, handleSubmit, watch, errors, control } = useForm({
+    defaultValues: {
+      firstName: "bill",
+      nickName: "หอย",
+      lastName: "บ้า",
+      Age: 15,
+      Tel: "095801444",
+      Facebook: "facebook/inwza",
+      Ability: "ว่ายน้ำ",
+      Address: "วัง",
+      Mentor: 1,
+      Group: 1,
+      Status: 1,
+      Position: "คนขายม้า",
+      Salary: 1500000,
+      Where: "ที่บ้าน",
+      Where: "ที่บ้าน",
+      dateBelieve: new Date(),
+    },
+  });
+
   const [isOpenAlert, setOpenAlert] = useState(false);
-  const { value: firstName, bind: bindfirstName, reset: resetfirstName } = useInput("army");
-  const { value: lastName, bind: bindlastName, reset: resetlastName } = useInput("god");
-  const { value: nickName, bind: bindnickName, reset: resetnickName } = useInput("inw");
-  const { value: Age, bind: bindAge, reset: resetAge } = useInput("22");
-  const { value: Facebook, bind: bindFacebook, reset: resetFacebook } = useInput("facebook/army");
-  const { value: Tel, bind: bindTel, reset: resetTel } = useInput("093580486");
-  const { value: Address, bind: bindAddress, reset: resetAddress } = useInput("9/1 กะทู้");
-  const { value: Ability, bind: bindAbility, reset: resetAbility } = useInput("กระโดดตบ");
-  const { value: Mentor, bind: bindMentor, reset: resetMentor } = useInput(1);
-  const { value: Group, bind: bindGroup, reset: resetGroup } = useInput(1);
-  const { value: Status, bind: bindStatus, reset: resetStatus } = useInput(1);
-  const { startDate: DateBelieve, bind: bindDateBelieve, reset: resetDateBelieve } = useInputDate(new Date());
-  const { value: Position, bind: bindPosition, reset: resetPosition } = useInput("ขายน้ำ");
-  const { value: Salary, bind: bindSalary, reset: resetSalary } = useInput("180000");
-  const { value: Where, bind: bindWhere, reset: resetWhere } = useInput("ไม่บอก");
-  const { value: ProfilePicture, bind: bindProfilePicture, reset: resetProfilePicturetFile } = useInputFile([]);
-  const isOpen = false;
+  const onSubmit = (data) => {
+    let date = JSON.stringify(data.dateBelieve);
+    date = date.slice(1,11)
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
     let form = new FormData();
-    form.append("firstName", firstName);
-    form.append("nickName",nickName);
-    form.append("lastName", lastName);
-    form.append("dateBelieve", DateBelieve)
-    form.append("Age", Age)
-    form.append("Tel", Tel)
-    form.append("facebook", Facebook)
-    form.append("ability", Ability)
-    form.append("Address", Address)
-    form.append("Mentor", parseInt(Mentor))
-    form.append("Group", parseInt(Group))
-    form.append("Status", parseInt(Status))
-    form.append("Position", Position)
-    form.append("Salary", Salary)
-    form.append("Where", Where)
-    form.append("pictureProfile", ProfilePicture[0]);
- 
-    props.dispatchAddUser(form);
-    //console.log(props);
+    form.append("firstName", data.firstName);
+    form.append("nickName", data.nickName);
+    form.append("lastName", data.lastName);
+    form.append("dateBelieve", date);
+    form.append("Age", data.Age);
+    form.append("Tel", data.Tel);
+    form.append("facebook", data.Facebook);
+    form.append("ability", data.Ability);
+    form.append("Address", data.Address);
+    form.append("Mentor", data.Mentor);
+    form.append("Group", data.Group);
+    form.append("Status", data.Status);
+    form.append("Position", data.Position);
+    form.append("Salary", data.Salary);
+    form.append("Where", data.Where);
+    form.append("pictureProfile", data.ProfilePicture[0]);
 
-    setOpenAlert(true);
-    resetfirstName();
-    resetlastName();
-    resetnickName();
-    resetAge();
-    resetFacebook();
-    resetTel();
-    resetAddress();
-    resetAbility();
-    resetMentor();
-    resetGroup();
-    resetStatus();
-    resetDateBelieve();
-    resetPosition();
-    resetSalary();
-    resetWhere();
-    resetProfilePicturetFile();
+    props.dispatchAddUser(form);
   };
 
   return (
     <React.Fragment>
       <Title name="Form" />
       {isOpenAlert ? <Alert /> : ""}
-      <form className="mx-8" onSubmit={handleSubmit} encType="multipart/form-data">
+      <form className="mx-8" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <p className="mt-8 font-bold">ข้อมูลทั่วไป</p>
         <div className="flex flex-wrap mb-6 mt-3">
-          <Form label="ชื่อต้น" type="text" hook={bindfirstName} />
-          <Form label="นามสกุล" type="text" hook={bindlastName} />
-          <Form label="ชื่อเล่น" type="text" hook={bindnickName} />
-          <Form label="อายุ" type="number" hook={bindAge} />
+          <Form label="ชื่อต้น" type="text" name="firstName" register={register} />
+          <Form label="นามสกุล" type="text" name="lastName" register={register} />
+          <Form label="ชื่อเล่น" type="text" name="nickName" register={register} />
+          <Form label="อายุ" type="number" name="Age" register={register} />
         </div>
         <div className="flex flex-wrap  mb-6 mt-3">
-          <Form label="facebook" type="text" hook={bindFacebook} />
-          <Form label="เบอร์มือถือ" type="number" hook={bindTel} />
-          <Form label="ที่อยู่" test="กะทู้แลน" type="text" hook={bindAddress} />
-          <Form label="ความสามารถพิเศษ" type="text" hook={bindAbility} />
+          <Form label="facebook" type="text" name="Facebook" register={register} />
+          <Form label="เบอร์มือถือ" type="number" name="Tel" register={register} />
+          <Form label="ที่อยู่" type="text" name="Address" register={register} />
+          <Form label="ความสามารถพิเศษ" type="text" name="Ability" register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">
-          <SelectBox label="พี่เลี้ยง" test={mentors} hook={bindMentor} />
-          <SelectBox label="กลุ่มแคร์" test={groups} hook={bindGroup} />
-          <SelectBox label="ระดับความเชื่อ" test={status} hook={bindStatus} />
-          <DateForm label="วันที่เชื่อ" hook={bindDateBelieve} selected={DateBelieve} />
+          <SelectBox label="พี่เลี้ยง" test={mentors} name="Mentor" register={register} />
+          <SelectBox label="กลุ่มแคร์" test={groups} name="Group" register={register} />
+          <SelectBox label="ระดับความเชื่อ" test={status} name="Status" register={register} />
+          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>
         <div className="flex flex-wrap  mb-2">
-          <Form label="อาชีพ" type="text" hook={bindPosition} />
-          <Form label="รายได้" type="number" hook={bindSalary} />
-          <Form label="ทำที่ไหน" type="text" hook={bindWhere} />
+          <Form label="อาชีพ" type="text" name="Position" register={register} />
+          <Form label="รายได้" type="number" name="Salary" register={register} />
+          <Form label="ทำที่ไหน" type="text" name="Where" register={register} />
         </div>
         <div className="flex flex-wrap mb-6 mt-3">
-          {/* <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
-            <p className="mt-8 font-bold">เพิ่มรูปตัวเอง</p>
-            <input
-              className="appearance-none block w-full p-1 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200"
-              type="file"
-              name="file"
-              onChange={handleFileUpload}
-            />
-          </div> */}
-          <Form label="รูปตัวเอง" type="file" hook={bindProfilePicture} />
+          <Form label="รูปตัวเอง" type="file" name="ProfilePicture" register={register} />
         </div>
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
-            {/* <button className="bg-red-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-              เคลียร์ข้อมูล
-            </button>{" "} */}
             <input
               type="submit"
               className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
