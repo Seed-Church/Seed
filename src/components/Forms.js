@@ -12,6 +12,7 @@ import { mentors, groups, status } from "./mock/option";
 import FormData from "form-data";
 
 const Forms = (props) => {
+  const [isOpenAlert, setOpenAlert] = useState(false);
   const { register, handleSubmit, watch, errors, control } = useForm({
     defaultValues: {
       firstName: "bill",
@@ -33,7 +34,7 @@ const Forms = (props) => {
     },
   });
 
-  const [isOpenAlert, setOpenAlert] = useState(false);
+
   const onSubmit = (data) => {
     let date = JSON.stringify(data.dateBelieve);
     date = date.slice(1,11)
@@ -57,6 +58,7 @@ const Forms = (props) => {
     form.append("pictureProfile", data.ProfilePicture[0]);
 
     props.dispatchAddUser(form);
+    setOpenAlert(true);
   };
 
   return (
