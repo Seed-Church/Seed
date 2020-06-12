@@ -12,7 +12,9 @@ import { mentors, groups, status } from "./mock/option";
 import FormData from "form-data";
 
 const Forms = (props) => {
-  const [isOpenAlert, setOpenAlert] = useState(false);
+  //console.log(`props`, props);
+  let flags = { complete: 0, no_action: 1, something_wrong: 2 };
+  const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   const { register, handleSubmit, watch, errors, control } = useForm({
     defaultValues: {
       firstName: "bill",
@@ -34,10 +36,9 @@ const Forms = (props) => {
     },
   });
 
-
   const onSubmit = (data) => {
     let date = JSON.stringify(data.dateBelieve);
-    date = date.slice(1,11)
+    date = date.slice(1, 11);
 
     let form = new FormData();
     form.append("firstName", data.firstName);
@@ -58,13 +59,20 @@ const Forms = (props) => {
     form.append("pictureProfile", data.ProfilePicture[0]);
 
     props.dispatchAddUser(form);
-    setOpenAlert(true);
+    setOpenAlert(flags.complete);
+
   };
 
   return (
     <React.Fragment>
       <Title name="Form" />
-      {isOpenAlert ? <Alert /> : ""}
+      {isOpenAlert === flags.complete ? (
+        <Alert color="teal" topic="เพิ่มข้อมูลเรียบร้อย" message="ข้อมูลถูกเพิ่มลงในฐานข้อมูลแล้ว" />
+      ) : isOpenAlert === flags.something_wrong ? (
+        <Alert color="red" topic="เพิ่มข้อมูลไม่ได้" message="ข้อมูลยังไม่ถูกเพิ่มในฐานข้อมูล" />
+      ) : (
+        ``
+      )}
       <form className="mx-8" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <p className="mt-8 font-bold">ข้อมูลทั่วไป</p>
         <div className="flex flex-wrap mb-6 mt-3">
