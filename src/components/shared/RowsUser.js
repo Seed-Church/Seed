@@ -1,12 +1,12 @@
 import React from "react";
 
-const RowsUser = ({ index, user, editUser, delUser, history }) => {
+const RowsUser = ({user,props}) => {
   const handleEditClick = (id) => {
-    editUser(id);
-    history.push(`/form/${id}/edit`);
+    props.dispatchEditUser(id);
+    props.history.push(`/form/${id}/edit`);
   };
   const handleDelClick = (id) => {
-    delUser(id);
+    //delUser(id);
     //history.push(`/form/${id}/edit`);
   };
   return (
@@ -46,12 +46,12 @@ const RowsUser = ({ index, user, editUser, delUser, history }) => {
           </button>{" "} */}
           <button
             href="edit"
-            onClick={() => handleEditClick(index)}
+            onClick={() => handleEditClick(user.id)}
             className="bg-yellow-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
             แก้ไข
           </button>{" "}
           <button
-            onClick={() => handleDelClick(index)}
+            onClick={() => handleDelClick(user.id)}
             className="bg-red-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
             ลบ
           </button>

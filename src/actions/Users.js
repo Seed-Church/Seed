@@ -1,7 +1,5 @@
-export const FETCH_USERS_PENDING = "FETCH_USERS_PENDING";
-export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
-export const FETCH_USERS_ERROR = "FETCH_USERS_ERROR";
-
+import { API_URL } from "../api/index";
+import { USERS, FETCH_USERS_PENDING, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../constants/Users";
 export const fetchUsersPending = () => {
   return {
     type: FETCH_USERS_PENDING,
@@ -25,7 +23,7 @@ export const fetchUsersError = (error) => {
 export const fetchUsers = () => {
   return (dispatch) => {
     dispatch(fetchUsersPending());
-    fetch("https://api-seed.panupong.dev/users")
+    fetch(API_URL + USERS)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
@@ -39,15 +37,15 @@ export const fetchUsers = () => {
       });
   };
 };
-const FormData = require('form-data');
-const form = new FormData();
-form.append('firstName', `OMG`);
-form.append('nickName', `OMG`);
-form.append('lastName', `OMG`);
+
 export const addUser = (data) => {
   return (dispatch) => {
     dispatch(fetchUsersPending());
-    fetch("https://api-seed.panupong.dev/users",{ method: 'POST', body: form } )
+    fetch(API_URL + USERS, {
+      //headers: { "content-type": "multipart/form-data" },
+      method: "POST",
+      body: data,
+    })
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
@@ -62,20 +60,32 @@ export const addUser = (data) => {
   };
 };
 
-
-// export const addUser = (data) => {
-//   return {
-//     type: "ADD_USER",
-//     data,
-//   };
-// };
-
 export const editUser = (id) => {
-  return {
-    type: "EDIT_USER",
-    id,
+  return (dispatch) => {
+    dispatch(fetchUsersPending());
+    fetch(API_URL + USERS + `/${id}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.error) {
+          throw res.error;
+        }
+        dispatch(fetchUsersSuccess(res));
+        return res;
+      })
+      .catch((error) => {
+        dispatch(fetchUsersError(error));
+      });
   };
 };
+
+// export const editUser = (id) => {
+//   return {
+//     type: "EDIT_USER",
+//     id,
+//   };
+// };
 
 export const delUser = (id) => {
   return {

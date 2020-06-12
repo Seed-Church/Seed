@@ -1,16 +1,19 @@
 import React from "react";
 
-const SelectBox = ({ label, test, hook }) => {
+const SelectBox = ({ label, test, name, register }) => {
   return (
     <div className="w-full md:w-1/5 px-3 md:mb-0 mt-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold text-xs mb-2">{label}</label>
       <div className="relative">
         <select
+          name={name}
           className="appearance-none block w-full p-1 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200"
           id="grid-state"
-          {...hook}>
+          ref={register}>
           {test.map((t, index) => (
-            <option key={index}>{t}</option>
+            <option key={index} value={index + 1}>
+              {t}
+            </option>
           ))}
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

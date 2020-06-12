@@ -1,5 +1,4 @@
-import { FETCH_USERS_PENDING, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../actions/Users";
-import axios from "axios";
+import { FETCH_USERS_PENDING, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../constants/Users";
 
 const initialState = {
   pending: false,
@@ -12,6 +11,7 @@ const Users = (state = initialState, action) => {
       return {
         ...state,
         pending: true,
+        items: [],
       };
     case FETCH_USERS_SUCCESS:
       return {
@@ -23,16 +23,9 @@ const Users = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
+        items: [],
         error: action.error,
       };
-    case "ADD_USER":
-      return state.concat([action.data]);
-    case "EDIT_USER":
-      return state;
-    case "DELETE_USER":
-      return state;
-    case "GET_USERS_ALL":
-      return state;
     default:
       return state;
   }
