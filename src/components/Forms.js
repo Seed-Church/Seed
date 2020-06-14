@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Form from "./shared/Form";
 import SelectBox from "./shared/SelectBox";
@@ -9,33 +9,23 @@ import useInputDate from "./hook/useInputDate";
 import useInputFile from "./hook/useInputFile";
 import Alert from "../components/shared/Alert";
 import { mentors, groups, status } from "./mock/option";
+import { fakeValue } from "./mock/form";
 import FormData from "form-data";
 
 const Forms = (props) => {
   console.log(`props`, props);
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
-  const { register, handleSubmit, watch, errors, control } = useForm({
-    defaultValues: {
-      firstName: props.items.firstName || "bill",
-      nickName: "หอย",
-      lastName: "บ้า",
-      Age: 15,
-      Tel: "095801444",
-      Facebook: "facebook/inwza",
-      Ability: "ว่ายน้ำ",
-      Address: "วัง",
-      Mentor: 1,
-      Group: 1,
-      Status: 1,
-      Position: "คนขายม้า",
-      Salary: 1500000,
-      Where: "ที่บ้าน",
-      Where: "ที่บ้าน",
-      dateBelieve: new Date(),
-    },
+  const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
+  useEffect(() => {
+    console.log(`useEffect`);
+    
+    if(!props.pending){
+      console.log(`condition`);
+      setValue("lastName", props.items.lastName)
+      setValue("lastName", props.items.lastName)
+    }
   });
-
   const onSubmit = (data) => {
     let date = JSON.stringify(data.dateBelieve);
     date = date.slice(1, 11);

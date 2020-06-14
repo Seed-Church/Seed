@@ -1,8 +1,8 @@
 import React from "react";
 
-const RowsUser = ({user,props}) => {
-  const handleEditClick = (id) => {
-    props.dispatchEditUser(id);
+const RowsUser = ({ user, props }) => {
+  const handleEditClick = async (id) => {
+    await props.dispatchEditUser(id);
     props.history.push(`/form/${id}/edit`);
   };
   const handleDelClick = (id) => {
