@@ -11,30 +11,43 @@ import Alert from "../components/shared/Alert";
 import { mentors, groups, status } from "./mock/option";
 import { fakeValue } from "./mock/form";
 import FormData from "form-data";
-
+import moment  from 'moment'
 const Forms = (props) => {
   console.log(`props`, props);
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
+  const [isEditing, setEditing] = useState(true);
   const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
+  
   useEffect(() => {
-    console.log(`useEffect`);
-    
-    if(!props.pending){
-      console.log(`condition`);
+    if(isEditing){
+      console.log(props.items.dateBelieve)
+      
+      setValue("firstName", props.items.firstName)
+      setValue("nickName", props.items.nickName)
       setValue("lastName", props.items.lastName)
-      setValue("lastName", props.items.lastName)
+      setValue("dateBelieve", moment(props.items.dateBelieve).format("YYYY-MM-DD"))
+      setValue("Age", props.items.Age)
+      setValue("Tel", props.items.Tel)
+      setValue("Facebook", props.items.facebook)
+      setValue("Ability", props.items.ability)
+      setValue("Address", props.items.Address)
+      setValue("Mentor", props.items.Mentor)
+      setValue("Group", props.items.Group)
+      setValue("Status", props.items.Status)
+      setValue("Position", props.items.Position)
+      setValue("Salary", props.items.Salary)
+      setValue("Where", props.items.Where)
+      setValue("pictureProfile", props.items.pictureProfile)
     }
   });
   const onSubmit = (data) => {
-    let date = JSON.stringify(data.dateBelieve);
-    date = date.slice(1, 11);
-
+    
     let form = new FormData();
     form.append("firstName", data.firstName);
     form.append("nickName", data.nickName);
     form.append("lastName", data.lastName);
-    form.append("dateBelieve", date);
+    form.append("dateBelieve", moment(data.dateBelieve).format("YYYY-MM-DD"));
     form.append("Age", data.Age);
     form.append("Tel", data.Tel);
     form.append("facebook", data.Facebook);
@@ -48,7 +61,7 @@ const Forms = (props) => {
     form.append("Where", data.Where);
     form.append("pictureProfile", data.ProfilePicture[0]);
 
-    props.dispatchAddUser(form);
+    //props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
   };
 
@@ -72,7 +85,7 @@ const Forms = (props) => {
         </div>
         <div className="flex flex-wrap  mb-6 mt-3">
           <Form label="facebook" type="text" name="Facebook" register={register} />
-          <Form label="เบอร์มือถือ" type="number" name="Tel" register={register} />
+          <Form label="เบอร์มือถือ" type="text" name="Tel" register={register} />
           <Form label="ที่อยู่" type="text" name="Address" register={register} />
           <Form label="ความสามารถพิเศษ" type="text" name="Ability" register={register} />
         </div>
@@ -81,7 +94,7 @@ const Forms = (props) => {
           <SelectBox label="พี่เลี้ยง" test={mentors} name="Mentor" register={register} />
           <SelectBox label="กลุ่มแคร์" test={groups} name="Group" register={register} />
           <SelectBox label="ระดับความเชื่อ" test={status} name="Status" register={register} />
-          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} register={register} />
+          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} isEditing={isEditing} register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>
         <div className="flex flex-wrap  mb-2">
