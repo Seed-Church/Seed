@@ -94,13 +94,6 @@ export const editUser = (id) => {
   };
 };
 
-// export const editUser = (id) => {
-//   return {
-//     type: "EDIT_USER",
-//     id,
-//   };
-// };
-
 export const delUser = (id) => {
   return {
     type: "DELETE_USER",

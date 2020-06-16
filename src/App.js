@@ -12,7 +12,6 @@ const history = createBrowserHistory();
 const CardWithLayout = generateMain(Cards);
 const BoardWithLayout = generateMain(UsersContainner.BoardWithLogic);
 const FormsWithLayout = generateMain(UsersContainner.FormsWithLogic);
-const FormsEditWithLayout = generateMain(UsersContainner.FormsEditWithLogic);
 const CardBlogsWithLayout = generateMain(CardBlogs);
 
 const MaintenanceWithLayout = generateMain(Maintenance);
@@ -26,7 +25,6 @@ function App() {
         <Route exact path="/form/:id/edit" component={FormsWithLayout} />
         <Route exact path="/card" component={CardWithLayout} />
         <Route exact path="/board" component={BoardWithLayout} />
-        {/* <Route exact path="/form/:id/edit" component={FormsWithLayout} /> */}
         <Route exact path="/profile" component={MaintenanceWithLayout} />
         <Route exact path="/settings" component={MaintenanceWithLayout} />
         <Route exact path="/logout" component={MaintenanceWithLayout} />

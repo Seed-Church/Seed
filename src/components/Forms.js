@@ -13,15 +13,14 @@ import { fakeValue } from "./mock/form";
 import FormData from "form-data";
 import moment  from 'moment'
 const Forms = (props) => {
-  console.log(`props`, props);
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   // const [isEditing, setEditing] = useState(true);
   const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
-  
   useEffect(() => {
+    props.dispatchFetchStatuses();
+    console.log(`props`, props);
     if(props.editing){
-    
       setValue("firstName", props.items.firstName)
       setValue("nickName", props.items.nickName)
       setValue("lastName", props.items.lastName)
@@ -39,7 +38,7 @@ const Forms = (props) => {
       setValue("Where", props.items.Where)
       setValue("pictureProfile", props.items.pictureProfile)
     }
-  });
+  },[]);
   const onSubmit = (data) => {
     
     let form = new FormData();
@@ -63,8 +62,10 @@ const Forms = (props) => {
     //props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
   };
-
+  console.log(props);
+  
   return (
+    
     <React.Fragment>
       <Title name="Form" />
       {isOpenAlert === flags.complete ? (
@@ -90,8 +91,8 @@ const Forms = (props) => {
         </div>
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">
-          <SelectBox label="พี่เลี้ยง" test={mentors} name="Mentor" register={register} />
-          <SelectBox label="กลุ่มแคร์" test={groups} name="Group" register={register} />
+          {/* <SelectBox label="พี่เลี้ยง" test={mentors} name="Mentor" register={register} />
+          <SelectBox label="กลุ่มแคร์" test={groups} name="Group" register={register} /> */}
           <SelectBox label="ระดับความเชื่อ" test={status} name="Status" register={register} />
           <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} isEditing={props.editing} register={register} />
         </div>
