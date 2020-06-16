@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
     error: state.Users.error,
     items: state.Users.items,
     pending: state.Users.pending,
+    editing: state.Users.editing
   };
 };
 

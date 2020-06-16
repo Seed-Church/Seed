@@ -16,13 +16,12 @@ const Forms = (props) => {
   console.log(`props`, props);
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
-  const [isEditing, setEditing] = useState(true);
+  // const [isEditing, setEditing] = useState(true);
   const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
   
   useEffect(() => {
-    if(isEditing){
-      console.log(props.items.dateBelieve)
-      
+    if(props.editing){
+    
       setValue("firstName", props.items.firstName)
       setValue("nickName", props.items.nickName)
       setValue("lastName", props.items.lastName)
@@ -94,7 +93,7 @@ const Forms = (props) => {
           <SelectBox label="พี่เลี้ยง" test={mentors} name="Mentor" register={register} />
           <SelectBox label="กลุ่มแคร์" test={groups} name="Group" register={register} />
           <SelectBox label="ระดับความเชื่อ" test={status} name="Status" register={register} />
-          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} isEditing={isEditing} register={register} />
+          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} isEditing={props.editing} register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>
         <div className="flex flex-wrap  mb-2">

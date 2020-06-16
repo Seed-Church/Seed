@@ -1,5 +1,11 @@
 import { API_URL } from "../api/index";
-import { USERS, FETCH_USERS_PENDING, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../constants/Users";
+import {
+  USERS,
+  FETCH_USERS_PENDING,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_ERROR,
+  EDIT_USERS_SUCCESS,
+} from "../constants/Users";
 export const fetchUsersPending = () => {
   return {
     type: FETCH_USERS_PENDING,
@@ -17,6 +23,14 @@ export const fetchUsersError = (error) => {
   return {
     type: FETCH_USERS_ERROR,
     error: error,
+  };
+};
+
+export const editUsersSuccess = (item) => {
+  return {
+    type: EDIT_USERS_SUCCESS,
+    items: item,
+    editing: true,
   };
 };
 
@@ -71,7 +85,7 @@ export const editUser = (id) => {
         if (res.error) {
           throw res.error;
         }
-        dispatch(fetchUsersSuccess(res));
+        dispatch(editUsersSuccess(res));
         return res;
       })
       .catch((error) => {
