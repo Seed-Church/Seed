@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
 const useInput = (initialValue) => {
-  console.log(`initialValue`,initialValue);
-  
   const [value, setValue] = useState(initialValue);
 
   return {

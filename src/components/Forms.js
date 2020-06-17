@@ -19,7 +19,7 @@ const Forms = (props) => {
   const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
   useEffect(() => {
     props.dispatchFetchStatuses();
-    console.log(`props`, props);
+    props.dispatchFetchGroups();
     if(props.editing){
       setValue("firstName", props.items.firstName)
       setValue("nickName", props.items.nickName)
@@ -62,7 +62,6 @@ const Forms = (props) => {
     //props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
   };
-  console.log(props);
   
   return (
     
@@ -91,9 +90,9 @@ const Forms = (props) => {
         </div>
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">
-          {/* <SelectBox label="พี่เลี้ยง" test={mentors} name="Mentor" register={register} />
-          <SelectBox label="กลุ่มแคร์" test={groups} name="Group" register={register} /> */}
-          <SelectBox label="ระดับความเชื่อ" test={status} name="Status" register={register} />
+          {/* <SelectBox label="พี่เลี้ยง" values={mentors} name="Mentor" register={register} /> */}
+          <SelectBox label="กลุ่มแคร์" values={props.groups} name="Group" register={register} />
+          <SelectBox label="ระดับความเชื่อ" values={props.statuses} name="Status" register={register} />
           <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} isEditing={props.editing} register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>

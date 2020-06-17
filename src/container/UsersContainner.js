@@ -1,16 +1,18 @@
 import { connect } from "react-redux";
 import Forms from "../components/Forms";
-import FormsEdit from "../components/FormsEdit";
 import Board from "../components/Board";
 import { addUser, editUser, delUser,  fetchUsers } from "../actions/Users";
 import { fetchStatus } from "../actions/Statuses";
+import { fetchGroups } from "../actions/Groups";
+
 const mapStateToProps = (state) => {
   return {
     error: state.Users.error,
     items: state.Users.items,
     pending: state.Users.pending,
     editing: state.Users.editing,
-    statuses : state.Statuses.statuses
+    statuses : state.Statuses.statuses,
+    groups : state.Groups.groups
   };
 };
 
@@ -28,15 +30,16 @@ const mapDispatchToProps = (dispatch) => {
     dispatchFetchStatuses: () => {
       dispatch(fetchStatus());
     },
+    dispatchFetchGroups: () => {
+      dispatch(fetchGroups());
+    },
   };
 };
 
 const FormsWithLogic = connect(mapStateToProps, mapDispatchToProps)(Forms);
-const FormsEditWithLogic = connect(mapStateToProps, mapDispatchToProps)(FormsEdit);
 const BoardWithLogic = connect(mapStateToProps, mapDispatchToProps)(Board);
 
 export default {
   FormsWithLogic,
   BoardWithLogic,
-  FormsEditWithLogic
 };

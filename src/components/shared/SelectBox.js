@@ -1,6 +1,6 @@
 import React from "react";
 
-const SelectBox = ({ label, test, name, register }) => {
+const SelectBox = ({ label, values, name, register }) => {
   return (
     <div className="w-full md:w-1/5 px-3 md:mb-0 mt-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold text-xs mb-2">{label}</label>
@@ -10,9 +10,9 @@ const SelectBox = ({ label, test, name, register }) => {
           className="appearance-none block w-full p-1 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200"
           id="grid-state"
           ref={register}>
-          {test.map((t, index) => (
-            <option key={index} value={index + 1}>
-              {t}
+          {values.map((t, index) => (
+            <option key={index} value={index}>
+              {t.name}
             </option>
           ))}
         </select>
