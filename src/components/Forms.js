@@ -33,12 +33,12 @@ const Forms = (props) => {
       setValue("Mentor", props.items.Mentor)
       setValue("Group", props.items.Group)
       setValue("Status", props.items.Status)
-      setValue("Position", props.items.Position)
-      setValue("Salary", props.items.Salary)
-      setValue("Where", props.items.Where)
+      setValue("Position", props.items.usersRelation.careers.position)
+      setValue("Salary", props.items.usersRelation.careers.salary)
+      setValue("Where", props.items.usersRelation.careers.address)
       setValue("pictureProfile", props.items.pictureProfile)
     }
-  },[]);
+  },[props.items]);
   const onSubmit = (data) => {
     
     let form = new FormData();
@@ -59,10 +59,10 @@ const Forms = (props) => {
     form.append("Where", data.Where);
     form.append("pictureProfile", data.ProfilePicture[0]);
 
-    //props.dispatchAddUser(form);
+    props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
   };
-  
+  console.log(props);
   return (
     
     <React.Fragment>
