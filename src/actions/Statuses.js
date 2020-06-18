@@ -24,22 +24,4 @@ import { STATUSES, FETCH_STATUSES_PENDING, FETCH_STATUSES_SUCCESS, FETCH_STATUSE
 
 const  actionGroup = getActionGroup(fetchStatusesPending,fetchStatusesError)
 
-// export const fetchStatus = () => {
-//   return (dispatch) => {
-//     dispatch(fetchStatusesPending());
-//     fetch(API_URL + STATUSES)
-//       .then((res) => res.json())
-//       .then((res) => {
-//         if (res.error) {
-//           throw res.error;
-//         }
-//         dispatch(fetchStatusesSuccess(res));
-//         return res;
-//       })
-//       .catch((error) => {
-//         dispatch(fetchStatusesError(error));
-//       });
-//   };
-// };
-
 export const fetchStatus = () => generateAction(STATUSES, "GET", fetchStatusesSuccess, actionGroup);
