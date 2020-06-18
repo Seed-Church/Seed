@@ -2,11 +2,11 @@ import { API_URL } from "../api/index";
 import { fetchUsersPending, fetchUsersError } from "../actions/Users";
 import { USERS } from "../constants/Users";
 
-const generateAction = (method = "GET", mainAction, actionGruop, id = ``) => {
+const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = ``) => {
   const { Pending, Error } = actionGruop;
   const WrappedAction = (dispatch) => {
     dispatch(Pending());
-    fetch(API_URL + USERS + `${id}`, {
+    fetch(API_URL + moudule + `${id}`, {
       method: method,
     })
       .then((res) => res.json())

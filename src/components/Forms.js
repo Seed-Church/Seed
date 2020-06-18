@@ -39,6 +39,7 @@ const Forms = (props) => {
     }
   },[props.items]);
   const onSubmit = (data) => {
+    console.log(data);
     
     let form = new FormData();
     form.append("firstName", data.firstName);

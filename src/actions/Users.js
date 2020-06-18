@@ -53,8 +53,8 @@ const deleteUsersSuccess = (item) => {
   };
 };
 
-let actionGruop = getActionGroup(fetchUsersPending, fetchUsersError);
+const actionGruop = getActionGroup(fetchUsersPending, fetchUsersError);
 
-export const fetchUsers = () => generateAction("GET", fetchUsersSuccess, actionGruop);
-export const addUser = (data) => generateAction("POST", fetchUsersSuccess, actionGruop);
-export const editUser = (id) => generateAction("GET", editUsersSuccess, actionGruop, `/` + id);
+export const fetchUsers = () => generateAction(USERS, "GET", fetchUsersSuccess, actionGruop);
+export const addUser = (data) => generateAction(USERS, "POST", addUsersSuccess, actionGruop);
+export const editUser = (id) => generateAction(USERS, "GET", editUsersSuccess, actionGruop, `/` + id);
