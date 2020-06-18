@@ -2,16 +2,19 @@ import React from "react";
 
 const RowsUser = ({ user, props }) => {
   const handleEditClick = async (id) => {
-    await props.dispatchEditUser(id);
+    props.dispatchEditUser(id);
     props.history.push(`/form/${id}/edit`);
   };
-  const handleDelClick = (id) => {
-    //delUser(id);
-    //history.push(`/form/${id}/edit`);
+  const handleDeleteClick = (id) => {
+    props.dispatchDeleteUser(id);
+    // history.push(`/form/${id}/edit`);
   };
   return (
     <React.Fragment>
       <tr>
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p className="text-gray-900 whitespace-no-wrap">{user.id}</p>
+        </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <div className="flex items-center">
             <div className="flex-shrink-0 w-10 h-10">
@@ -51,7 +54,7 @@ const RowsUser = ({ user, props }) => {
             แก้ไข
           </button>{" "}
           <button
-            onClick={() => handleDelClick(user.id)}
+            onClick={() => handleDeleteClick(user.id)}
             className="bg-red-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
             ลบ
           </button>

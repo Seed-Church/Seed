@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Forms from "../components/Forms";
 import Board from "../components/Board";
-import { addUser, editUser, delUser,  fetchUsers } from "../actions/Users";
+import { addUser, editUser, deleteUser,  fetchUsers } from "../actions/Users";
 import { fetchStatus } from "../actions/Statuses";
 import { fetchGroups } from "../actions/Groups";
 
@@ -32,6 +32,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     dispatchFetchGroups: () => {
       dispatch(fetchGroups());
+    },
+    dispatchDeleteUser: (id) => {
+      dispatch(deleteUser(id));
     },
   };
 };

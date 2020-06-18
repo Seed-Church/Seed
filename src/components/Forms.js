@@ -39,8 +39,6 @@ const Forms = (props) => {
     }
   },[props.items]);
   const onSubmit = (data) => {
-    console.log(data);
-    
     let form = new FormData();
     form.append("firstName", data.firstName);
     form.append("nickName", data.nickName);
@@ -62,7 +60,7 @@ const Forms = (props) => {
     props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
   };
-  console.log(props);
+ 
   return (
     
     <React.Fragment>

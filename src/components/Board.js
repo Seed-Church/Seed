@@ -10,7 +10,7 @@ import fetch from "node-fetch";
 import axios from "axios";
 
 const Board = (props) => {
-  const columns = ["User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
+  const columns = ["id","User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
   console.log(props);
   
   useEffect(() => {
