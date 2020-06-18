@@ -55,6 +55,7 @@ const deleteUsersSuccess = (item) => {
 
 const actionGruop = getActionGroup(fetchUsersPending, fetchUsersError);
 
+
 export const fetchUsers = () => generateAction(USERS, "GET", fetchUsersSuccess, actionGruop);
-export const addUser = (data) => generateAction(USERS, "POST", addUsersSuccess, actionGruop);
+export const addUser = (data) => generateAction(USERS, "POST", addUsersSuccess, actionGruop, ``, data);
 export const editUser = (id) => generateAction(USERS, "GET", editUsersSuccess, actionGruop, `/` + id);
