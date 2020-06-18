@@ -15,7 +15,6 @@ import moment  from 'moment'
 const Forms = (props) => {
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
-  // const [isEditing, setEditing] = useState(true);
   const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
   useEffect(() => {
     props.dispatchFetchStatuses();

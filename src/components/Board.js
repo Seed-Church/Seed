@@ -11,6 +11,7 @@ import axios from "axios";
 
 const Board = (props) => {
   const columns = ["User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
+  console.log(props);
   
   useEffect(() => {
     props.dispatchFetchUsers();

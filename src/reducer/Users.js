@@ -1,4 +1,10 @@
-import { FETCH_USERS_PENDING, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR,EDIT_USERS_SUCCESS } from "../constants/Users";
+import {
+  FETCH_USERS_PENDING,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_ERROR,
+  ADD_USERS_SUCCESS,
+  EDIT_USERS_SUCCESS,
+} from "../constants/Users";
 
 const initialState = {
   pending: false,
@@ -14,18 +20,24 @@ const Users = (state = initialState, action) => {
         pending: true,
         items: [],
       };
-    case FETCH_USERS_SUCCESS:
-      return {
-        ...state,
-        pending: false,
-        items: action.items,
-      };
     case FETCH_USERS_ERROR:
       return {
         ...state,
         pending: false,
         items: [],
         error: action.error,
+      };
+    case FETCH_USERS_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        items: action.items,
+      };
+    case ADD_USERS_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        items: action.items,
       };
     case EDIT_USERS_SUCCESS:
       return {

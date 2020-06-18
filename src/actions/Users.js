@@ -1,28 +1,40 @@
-import { API_URL } from "../api/index";
+import generateAction from "../hoc/generateAction";
+import getActionGroup from "../utils/getActionGroup";
 import {
   USERS,
   FETCH_USERS_PENDING,
   FETCH_USERS_SUCCESS,
   FETCH_USERS_ERROR,
+  ADD_USERS_SUCCESS,
   EDIT_USERS_SUCCESS,
+  DELETE_USERS_SUCCESS,
 } from "../constants/Users";
-export const fetchUsersPending = () => {
+
+const fetchUsersPending = () => {
   return {
     type: FETCH_USERS_PENDING,
   };
 };
 
-export const fetchUsersSuccess = (items) => {
-  return {
-    type: FETCH_USERS_SUCCESS,
-    items: items,
-  };
-};
-
-export const fetchUsersError = (error) => {
+const fetchUsersError = (error) => {
   return {
     type: FETCH_USERS_ERROR,
     error: error,
+  };
+};
+
+const addUsersSuccess = (item) => {
+  return {
+    type: ADD_USERS_SUCCESS,
+    items: item,
+    editing: true,
+  };
+};
+
+const fetchUsersSuccess = (items) => {
+  return {
+    type: FETCH_USERS_SUCCESS,
+    items: items,
   };
 };
 
@@ -34,75 +46,15 @@ export const editUsersSuccess = (item) => {
   };
 };
 
-export const fetchUsers = () => {
-  return (dispatch) => {
-    dispatch(fetchUsersPending());
-    fetch(API_URL + USERS)
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) {
-          throw res.error;
-        }
-        dispatch(fetchUsersSuccess(res));
-        return res;
-      })
-      .catch((error) => {
-        dispatch(fetchUsersError(error));
-      });
-  };
-};
-
-export const addUser = (data) => {
-  return (dispatch) => {
-    dispatch(fetchUsersPending());
-    fetch(API_URL + USERS, {
-      //headers: { "content-type": "multipart/form-data" },
-      method: "POST",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) {
-          throw res.error;
-        }
-        dispatch(fetchUsersSuccess(res));
-        return res;
-      })
-      .catch((error) => {
-        dispatch(fetchUsersError(error));
-      });
-  };
-};
-
-export const editUser = (id) => {
-  return (dispatch) => {
-    dispatch(fetchUsersPending());
-    fetch(API_URL + USERS + `/${id}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) {
-          throw res.error;
-        }
-        dispatch(editUsersSuccess(res));
-        return res;
-      })
-      .catch((error) => {
-        dispatch(fetchUsersError(error));
-      });
-  };
-};
-
-export const delUser = (id) => {
+const deleteUsersSuccess = (item) => {
   return {
-    type: "DELETE_USER",
-    id,
+    type: DELETE_USERS_SUCCESS,
+    items: item,
   };
 };
 
-export const getUsers = () => {
-  return {
-    type: "GET_USERS_ALL",
-  };
-};
+let actionGruop = getActionGroup(fetchUsersPending, fetchUsersError);
+
+export const fetchUsers = () => generateAction("GET", fetchUsersSuccess, actionGruop);
+export const addUser = (data) => generateAction("POST", fetchUsersSuccess, actionGruop);
+export const editUser = (id) => generateAction("GET", editUsersSuccess, actionGruop, `/` + id);
