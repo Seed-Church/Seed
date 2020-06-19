@@ -1,8 +1,10 @@
 import React from "react";
 import ModalReact from "react-modal";
-import ButtonArmy from "./shared/ButtonArmy";
-ModalReact.setAppElement("#root");
+import ButtonArmy from './shared/ButtonArmy'
+ModalReact.setAppElement('#root')
 const Modal = () => {
+
+
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const customStyles = {
     content: {
@@ -39,8 +41,9 @@ const Modal = () => {
             <p className="text-2xl font-bold">⚠️ จะลบข้อมูลผู้ใช้จริง ๆ หรอ ! </p>
           </div>
           <div className="flex justify-end pt-2">
-            <ButtonArmy value="เปลี่ยนใจ ไม่ลบแล้ว" color="blue" />{" "}
-            <ButtonArmy value="แน่ใจแล้ว ลบแน่นอล" color="red" OnClick={closeModal} />
+            <ButtonArmy value="เปลี่ยนใจ ไม่ลบแล้ว" color="blue" />
+            {" "}
+            <ButtonArmy value="แน่ใจแล้ว ลบแน่นอล"color="red" OnClick={closeModal}  />
           </div>
         </div>
       </ModalReact>
