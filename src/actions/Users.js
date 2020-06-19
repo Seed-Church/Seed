@@ -23,10 +23,10 @@ const fetchUsersError = (error) => {
   };
 };
 
-const addUsersSuccess = (item) => {
+const addUsersSuccess = (status) => {
   return {
     type: ADD_USERS_SUCCESS,
-    items: item,
+    statusAPI: status,
     editing: true,
   };
 };
@@ -46,10 +46,10 @@ export const editUsersSuccess = (item) => {
   };
 };
 
-const deleteUsersSuccess = (item) => {
+const deleteUsersSuccess = (status) => {
   return {
     type: DELETE_USERS_SUCCESS,
-    items: item,
+    statusAPI: status,
   };
 };
 

@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
     pending: state.Users.pending,
     editing: state.Users.editing,
     statuses : state.Statuses.statuses,
-    groups : state.Groups.groups
+    groups : state.Groups.groups,
+    statusAPI: state.Users.statusAPI
   };
 };
 

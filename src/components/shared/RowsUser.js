@@ -5,9 +5,11 @@ const RowsUser = ({ user, props }) => {
     props.dispatchEditUser(id);
     props.history.push(`/form/${id}/edit`);
   };
-  const handleDeleteClick = (id) => {
-    props.dispatchDeleteUser(id);
-    // history.push(`/form/${id}/edit`);
+  const handleDeleteClick = async (id) => {
+    await props.dispatchDeleteUser(id);
+    setTimeout(() => {
+      props.dispatchFetchUsers();
+    },200);
   };
   return (
     <React.Fragment>
