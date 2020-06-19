@@ -10,7 +10,8 @@ const Navbar = () => {
           <Menu href="/card" name="Card" icon="fa fa-envelope pr-0 md:pr-3" />
           <Menu href="/board" name="ตาราง" icon="fas fa-chart-area pr-0 md:pr-3" />
           <Menu href="/blog" name="บล็อก" icon="fa fa-wallet pr-0 md:pr-3" />
-           <Menu href="/upload" name="upload" icon="fa fa-wallet pr-0 md:pr-3" />
+          <Menu href="/upload" name="upload" icon="fa fa-wallet pr-0 md:pr-3" />
+          <Menu href="/modal" name="Modal" icon="fa fa-wallet pr-0 md:pr-3" />
         </ul>
       </div>
     </div>
