@@ -11,13 +11,10 @@ import axios from "axios";
 
 const Board = (props) => {
   const columns = ["id","User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
-  console.log(props);
-  
   useEffect(() => {
     props.dispatchFetchUsers();
    
   }, []);
-  //console.log(`props.items`, props.items);
   return (
     <React.Fragment>
       <Title name="Table" />
