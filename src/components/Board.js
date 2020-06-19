@@ -10,13 +10,11 @@ import fetch from "node-fetch";
 import axios from "axios";
 
 const Board = (props) => {
-  const columns = ["User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
-  
+  const columns = ["id","User", "facebook", "Tel", "dateBelieve", "Address", "Action"];
   useEffect(() => {
     props.dispatchFetchUsers();
    
   }, []);
-  //console.log(`props.items`, props.items);
   return (
     <React.Fragment>
       <Title name="Table" />

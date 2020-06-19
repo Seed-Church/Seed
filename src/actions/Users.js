@@ -1,101 +1,62 @@
-import { API_URL } from "../api/index";
-import { USERS, FETCH_USERS_PENDING, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../constants/Users";
-export const fetchUsersPending = () => {
+import generateAction from "../hoc/generateAction";
+import getActionGroup from "../utils/getActionGroup";
+import {
+  USERS,
+  FETCH_USERS_PENDING,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_ERROR,
+  ADD_USERS_SUCCESS,
+  EDIT_USERS_SUCCESS,
+  DELETE_USERS_SUCCESS,
+} from "../constants/Users";
+
+const fetchUsersPending = () => {
   return {
     type: FETCH_USERS_PENDING,
   };
 };
 
-export const fetchUsersSuccess = (items) => {
-  return {
-    type: FETCH_USERS_SUCCESS,
-    items: items,
-  };
-};
-
-export const fetchUsersError = (error) => {
+const fetchUsersError = (error) => {
   return {
     type: FETCH_USERS_ERROR,
     error: error,
   };
 };
 
-export const fetchUsers = () => {
-  return (dispatch) => {
-    dispatch(fetchUsersPending());
-    fetch(API_URL + USERS)
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) {
-          throw res.error;
-        }
-        dispatch(fetchUsersSuccess(res));
-        return res;
-      })
-      .catch((error) => {
-        dispatch(fetchUsersError(error));
-      });
-  };
-};
-
-export const addUser = (data) => {
-  return (dispatch) => {
-    dispatch(fetchUsersPending());
-    fetch(API_URL + USERS, {
-      //headers: { "content-type": "multipart/form-data" },
-      method: "POST",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) {
-          throw res.error;
-        }
-        dispatch(fetchUsersSuccess(res));
-        return res;
-      })
-      .catch((error) => {
-        dispatch(fetchUsersError(error));
-      });
-  };
-};
-
-export const editUser = (id) => {
-  return (dispatch) => {
-    dispatch(fetchUsersPending());
-    fetch(API_URL + USERS + `/${id}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) {
-          throw res.error;
-        }
-        dispatch(fetchUsersSuccess(res));
-        return res;
-      })
-      .catch((error) => {
-        dispatch(fetchUsersError(error));
-      });
-  };
-};
-
-// export const editUser = (id) => {
-//   return {
-//     type: "EDIT_USER",
-//     id,
-//   };
-// };
-
-export const delUser = (id) => {
+const addUsersSuccess = (status) => {
   return {
-    type: "DELETE_USER",
-    id,
+    type: ADD_USERS_SUCCESS,
+    statusAPI: status,
+    editing: true,
   };
 };
 
-export const getUsers = () => {
+const fetchUsersSuccess = (items) => {
   return {
-    type: "GET_USERS_ALL",
+    type: FETCH_USERS_SUCCESS,
+    items: items,
   };
 };
+
+export const editUsersSuccess = (item) => {
+  return {
+    type: EDIT_USERS_SUCCESS,
+    items: item,
+    editing: true,
+  };
+};
+
+const deleteUsersSuccess = (status) => {
+  return {
+    type: DELETE_USERS_SUCCESS,
+    statusAPI: status,
+  };
+};
+
+const actionGruop = getActionGroup(fetchUsersPending, fetchUsersError);
+
+
+export const fetchUsers = () => generateAction(USERS, "GET", fetchUsersSuccess, actionGruop);
+export const addUser = (data) => generateAction(USERS, "POST", addUsersSuccess, actionGruop, ``, data);
+export const editUser = (id) => generateAction(USERS, "GET", editUsersSuccess, actionGruop, `/` + id);
+export const deleteUser = (id) => generateAction(USERS, "DELETE", deleteUsersSuccess, actionGruop, `/` + id);

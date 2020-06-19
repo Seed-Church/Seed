@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Form from "./shared/Form";
 import SelectBox from "./shared/SelectBox";
@@ -9,40 +9,41 @@ import useInputDate from "./hook/useInputDate";
 import useInputFile from "./hook/useInputFile";
 import Alert from "../components/shared/Alert";
 import { mentors, groups, status } from "./mock/option";
+import { fakeValue } from "./mock/form";
 import FormData from "form-data";
-
+import moment  from 'moment'
 const Forms = (props) => {
-  const { register, handleSubmit, watch, errors, control } = useForm({
-    defaultValues: {
-      firstName: "bill",
-      nickName: "หอย",
-      lastName: "บ้า",
-      Age: 15,
-      Tel: "095801444",
-      Facebook: "facebook/inwza",
-      Ability: "ว่ายน้ำ",
-      Address: "วัง",
-      Mentor: 1,
-      Group: 1,
-      Status: 1,
-      Position: "คนขายม้า",
-      Salary: 1500000,
-      Where: "ที่บ้าน",
-      Where: "ที่บ้าน",
-      dateBelieve: new Date(),
-    },
-  });
-
-  const [isOpenAlert, setOpenAlert] = useState(false);
+  let flags = { complete: 0, no_action: 1, something_wrong: 2 };
+  const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
+  const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
+  useEffect(() => {
+    props.dispatchFetchStatuses();
+    props.dispatchFetchGroups();
+    if(props.editing){
+      setValue("firstName", props.items.firstName)
+      setValue("nickName", props.items.nickName)
+      setValue("lastName", props.items.lastName)
+      setValue("dateBelieve", moment(props.items.dateBelieve).format("YYYY-MM-DD"))
+      setValue("Age", props.items.Age)
+      setValue("Tel", props.items.Tel)
+      setValue("Facebook", props.items.facebook)
+      setValue("Ability", props.items.ability)
+      setValue("Address", props.items.Address)
+      setValue("Mentor", props.items.Mentor)
+      setValue("Group", props.items.Group)
+      setValue("Status", props.items.Status)
+      setValue("Position", props.items.usersRelation.careers.position)
+      setValue("Salary", props.items.usersRelation.careers.salary)
+      setValue("Where", props.items.usersRelation.careers.address)
+      setValue("pictureProfile", props.items.pictureProfile)
+    }
+  },[props.items]);
   const onSubmit = (data) => {
-    let date = JSON.stringify(data.dateBelieve);
-    date = date.slice(1,11)
-
     let form = new FormData();
     form.append("firstName", data.firstName);
     form.append("nickName", data.nickName);
     form.append("lastName", data.lastName);
-    form.append("dateBelieve", date);
+    form.append("dateBelieve", moment(data.dateBelieve).format("YYYY-MM-DD"));
     form.append("Age", data.Age);
     form.append("Tel", data.Tel);
     form.append("facebook", data.Facebook);
@@ -57,12 +58,20 @@ const Forms = (props) => {
     form.append("pictureProfile", data.ProfilePicture[0]);
 
     props.dispatchAddUser(form);
+    setOpenAlert(flags.complete);
   };
-
+  
   return (
+    
     <React.Fragment>
       <Title name="Form" />
-      {isOpenAlert ? <Alert /> : ""}
+      {isOpenAlert === flags.complete ? (
+        <Alert color="teal" topic="เพิ่มข้อมูลเรียบร้อย" message="ข้อมูลถูกเพิ่มลงในฐานข้อมูลแล้ว" />
+      ) : isOpenAlert === flags.something_wrong ? (
+        <Alert color="red" topic="เพิ่มข้อมูลไม่ได้" message="ข้อมูลยังไม่ถูกเพิ่มในฐานข้อมูล" />
+      ) : (
+        ``
+      )}
       <form className="mx-8" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <p className="mt-8 font-bold">ข้อมูลทั่วไป</p>
         <div className="flex flex-wrap mb-6 mt-3">
@@ -73,16 +82,16 @@ const Forms = (props) => {
         </div>
         <div className="flex flex-wrap  mb-6 mt-3">
           <Form label="facebook" type="text" name="Facebook" register={register} />
-          <Form label="เบอร์มือถือ" type="number" name="Tel" register={register} />
+          <Form label="เบอร์มือถือ" type="text" name="Tel" register={register} />
           <Form label="ที่อยู่" type="text" name="Address" register={register} />
           <Form label="ความสามารถพิเศษ" type="text" name="Ability" register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">
-          <SelectBox label="พี่เลี้ยง" test={mentors} name="Mentor" register={register} />
-          <SelectBox label="กลุ่มแคร์" test={groups} name="Group" register={register} />
-          <SelectBox label="ระดับความเชื่อ" test={status} name="Status" register={register} />
-          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} register={register} />
+          {/* <SelectBox label="พี่เลี้ยง" values={mentors} name="Mentor" register={register} /> */}
+          <SelectBox label="กลุ่มแคร์" values={props.groups} name="Group" register={register} />
+          <SelectBox label="ระดับความเชื่อ" values={props.statuses} name="Status" register={register} />
+          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} isEditing={props.editing} register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>
         <div className="flex flex-wrap  mb-2">
