@@ -62,7 +62,6 @@ const Forms = (props) => {
     props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
   };
-  console.log(props);
 
   return (
     <React.Fragment>
