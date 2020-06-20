@@ -5,6 +5,7 @@ import {
   ADD_USERS_SUCCESS,
   EDIT_USERS_SUCCESS,
   DELETE_USERS_SUCCESS,
+  UPDATE_USERS_SUCCESS
 } from "../constants/Users";
 
 const initialState = {
@@ -45,6 +46,11 @@ const Users = (state = initialState, action) => {
         editing: action.editing,
       };
     case DELETE_USERS_SUCCESS:
+      return {
+        ...state,
+        statusAPI: action.statusAPI,
+      };
+    case UPDATE_USERS_SUCCESS:
       return {
         ...state,
         statusAPI: action.statusAPI,

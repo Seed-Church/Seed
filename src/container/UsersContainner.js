@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Forms from "../components/Forms";
 import Board from "../components/Board";
-import { addUser, editUser, deleteUser,  fetchUsers } from "../actions/Users";
+import { addUser, editUser, deleteUser, updateUser, fetchUsers } from "../actions/Users";
 import { fetchStatus } from "../actions/Statuses";
 import { fetchGroups } from "../actions/Groups";
 
@@ -11,9 +11,9 @@ const mapStateToProps = (state) => {
     items: state.Users.items,
     pending: state.Users.pending,
     editing: state.Users.editing,
-    statuses : state.Statuses.statuses,
-    groups : state.Groups.groups,
-    statusAPI: state.Users.statusAPI
+    statuses: state.Statuses.statuses,
+    groups: state.Groups.groups,
+    statusAPI: state.Users.statusAPI,
   };
 };
 
@@ -36,6 +36,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     dispatchDeleteUser: (id) => {
       dispatch(deleteUser(id));
+    },
+    dispatchUpdateUser: (id, data) => {
+      dispatch(updateUser(id, data));
     },
   };
 };

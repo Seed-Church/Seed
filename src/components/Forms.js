@@ -21,7 +21,7 @@ const Forms = (props) => {
   useEffect(() => {
     props.dispatchFetchStatuses();
     props.dispatchFetchGroups();
-    if (props.editing) {
+    if (props.editing && props.items.usersRelation) {
       setValue("firstName", props.items.firstName);
       setValue("nickName", props.items.nickName);
       setValue("lastName", props.items.lastName);
@@ -31,7 +31,9 @@ const Forms = (props) => {
       setValue("Facebook", props.items.facebook);
       setValue("Ability", props.items.ability);
       setValue("Address", props.items.Address);
-      //setValue("Mentor", props.items.Mentor)
+      setValue("Mentor", props.items.Mentor)
+      setValue("Groups", props.items.usersRelation.groups)
+      setValue("Statuses", props.items.usersRelation.statuses)
       setPreviousGroup(props.items.usersRelation.groups);
       setPreviousStatus(props.items.usersRelation.statuses);
       setValue("Position", props.items.usersRelation.careers.position);
@@ -41,6 +43,8 @@ const Forms = (props) => {
     }
   }, [props.items, props.editing]);
   const onSubmit = (data) => {
+    console.log(`data`,data);
+    
     let form = new FormData();
     form.append("firstName", data.firstName);
     form.append("nickName", data.nickName);
@@ -58,10 +62,11 @@ const Forms = (props) => {
     form.append("Salary", data.Salary);
     form.append("Where", data.Where);
     form.append("pictureProfile", data.ProfilePicture[0]);
-
-    props.dispatchAddUser(form);
+    if (props.editing) props.dispatchUpdateUser(props.items.id, form);
+    else props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
   };
+  console.log(props);
 
   return (
     <React.Fragment>
