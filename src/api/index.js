@@ -1,3 +1,2 @@
-const production = "https://api-seed.panupong.dev/"
-const local = "http://localhost:3001/"
-export const API_URL = local
+export const API_URL =
+  process.env.NODE_ENV === "production" ? "https://api-seed.panupong.dev/" : "http://localhost:3001/";

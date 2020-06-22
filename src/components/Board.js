@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Title from "./shared/Title";
 import SelectBox from "./shared/SelectBox";
 import FormIcon from "./shared/FormIcon";
-import Colume from "./shared/Colume";
-import RowsUser from "./shared/RowsUser";
-// import { data } from "./mock/table";
 import Table from "./shared/Table";
-import fetch from "node-fetch";
-import axios from "axios";
+
 
 const Board = (props) => {
   const columns = ["id","User", "facebook", "Tel", "dateBelieve", "Address", "Action"];

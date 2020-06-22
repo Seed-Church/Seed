@@ -15,7 +15,6 @@ export const fakeValue = {
     Position: "คนขายม้า",
     Salary: 1500000,
     Where: "ที่บ้าน",
-    Where: "ที่บ้าน",
     dateBelieve: moment(new Date()).toDate(),
   },
 };

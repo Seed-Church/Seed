@@ -1,4 +1,3 @@
-import { API_URL } from "../api/index";
 import generateAction from '../hoc/generateAction'
 import getActionGroup from "../utils/getActionGroup";
 import { STATUSES, FETCH_STATUSES_PENDING, FETCH_STATUSES_SUCCESS, FETCH_STATUSES_ERROR } from "../constants/Statuses";
@@ -22,6 +21,6 @@ import { STATUSES, FETCH_STATUSES_PENDING, FETCH_STATUSES_SUCCESS, FETCH_STATUSE
   };
 };
 
-const  actionGroup = getActionGroup(fetchStatusesPending,fetchStatusesError)
+const  actionStatus= getActionGroup(fetchStatusesPending,fetchStatusesError)
 
-export const fetchStatus = () => generateAction(STATUSES, "GET", fetchStatusesSuccess, actionGroup);
+export const fetchStatus = () => generateAction(STATUSES, "GET", fetchStatusesSuccess, actionStatus);
