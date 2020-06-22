@@ -78,10 +78,26 @@ const Forms = (props) => {
       <form className="mx-8" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <p className="mt-8 font-bold">ข้อมูลทั่วไป</p>
         <div className="flex flex-wrap mb-6 mt-3">
-          <Form label="ชื่อต้น" type="text" name="firstName" register={register} />
-          <Form label="นามสกุล" type="text" name="lastName" register={register} />
-          <Form label="ชื่อเล่น" type="text" name="nickName" register={register} />
-          <Form label="อายุ" type="number" name="Age" register={register} />
+          <Form
+            label="ชื่อต้น"
+            type="text"
+            name="firstName"
+            register={register({ required: true, maxLength: 25, pattern: /^[A-Za-z]+$/i })}
+          />
+                {errors.firstName && <span>This field is required</span>}
+          <Form
+            label="นามสกุล"
+            type="text"
+            name="lastName"
+            register={register({ required: true, maxLength: 25, pattern: /^[A-Za-z]+$/i })}
+          />
+          <Form
+            label="ชื่อเล่น"
+            type="text"
+            name="nickName"
+            register={register({ required: true, maxLength: 25, pattern: /^[A-Za-z]+$/i })}
+          />
+          <Form label="อายุ" type="number" name="Age" register={register({ min: 18, max: 99 })} />
         </div>
         <div className="flex flex-wrap  mb-6 mt-3">
           <Form label="facebook" type="text" name="Facebook" register={register} />
