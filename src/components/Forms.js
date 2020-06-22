@@ -31,9 +31,9 @@ const Forms = (props) => {
       setValue("Facebook", props.items.facebook);
       setValue("Ability", props.items.ability);
       setValue("Address", props.items.Address);
-      setValue("Mentor", props.items.Mentor)
-      setValue("Groups", props.items.usersRelation.groups)
-      setValue("Statuses", props.items.usersRelation.statuses)
+      setValue("Mentor", props.items.Mentor);
+      setValue("Groups", props.items.usersRelation.groups);
+      setValue("Statuses", props.items.usersRelation.statuses);
       setPreviousGroup(props.items.usersRelation.groups);
       setPreviousStatus(props.items.usersRelation.statuses);
       setValue("Position", props.items.usersRelation.careers.position);
@@ -43,8 +43,8 @@ const Forms = (props) => {
     }
   }, [props.items, props.editing]);
   const onSubmit = (data) => {
-    console.log(`data`,data);
-    
+    console.log(`data`, data);
+
     let form = new FormData();
     form.append("firstName", data.firstName);
     form.append("nickName", data.nickName);
@@ -112,13 +112,7 @@ const Forms = (props) => {
             previousValue={previousStatus}
             register={register}
           />
-          <DateForm
-            label="วันที่เชื่อ"
-            name="dateBelieve"
-            controlPassing={control}
-            isEditing={props.editing}
-            register={register}
-          />
+          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>
         <div className="flex flex-wrap  mb-2">
