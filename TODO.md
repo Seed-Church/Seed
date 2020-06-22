@@ -6,7 +6,8 @@ Project Description
 
 - [ ] change table  
 - [ ] option table  
-- [ ]   
+- [ ] clear data after send  
+- [ ] notify update  
 
 ### In Progress
 
