@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Form from "./shared/Form";
 import SelectBox from "./shared/SelectBox";
@@ -11,34 +11,40 @@ import Alert from "../components/shared/Alert";
 import { mentors, groups, status } from "./mock/option";
 import { fakeValue } from "./mock/form";
 import FormData from "form-data";
-import moment  from 'moment'
+import moment from "moment";
 const Forms = (props) => {
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
+  const [previousGroup, setPreviousGroup] = useState({});
+  const [previousStatus, setPreviousStatus] = useState({});
   const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
   useEffect(() => {
     props.dispatchFetchStatuses();
     props.dispatchFetchGroups();
-    if(props.editing){
-      setValue("firstName", props.items.firstName)
-      setValue("nickName", props.items.nickName)
-      setValue("lastName", props.items.lastName)
-      setValue("dateBelieve", moment(props.items.dateBelieve).format("YYYY-MM-DD"))
-      setValue("Age", props.items.Age)
-      setValue("Tel", props.items.Tel)
-      setValue("Facebook", props.items.facebook)
-      setValue("Ability", props.items.ability)
-      setValue("Address", props.items.Address)
-      setValue("Mentor", props.items.Mentor)
-      setValue("Group", props.items.Group)
-      setValue("Status", props.items.Status)
-      setValue("Position", props.items.usersRelation.careers.position)
-      setValue("Salary", props.items.usersRelation.careers.salary)
-      setValue("Where", props.items.usersRelation.careers.address)
-      setValue("pictureProfile", props.items.pictureProfile)
+    if (props.editing && props.items.usersRelation) {
+      setValue("firstName", props.items.firstName);
+      setValue("nickName", props.items.nickName);
+      setValue("lastName", props.items.lastName);
+      setValue("dateBelieve", moment(props.items.dateBelieve).toDate());
+      setValue("Age", props.items.Age);
+      setValue("Tel", props.items.Tel);
+      setValue("Facebook", props.items.facebook);
+      setValue("Ability", props.items.ability);
+      setValue("Address", props.items.Address);
+      setValue("Mentor", props.items.Mentor);
+      setValue("Groups", props.items.usersRelation.groups);
+      setValue("Statuses", props.items.usersRelation.statuses);
+      setPreviousGroup(props.items.usersRelation.groups);
+      setPreviousStatus(props.items.usersRelation.statuses);
+      setValue("Position", props.items.usersRelation.careers.position);
+      setValue("Salary", props.items.usersRelation.careers.salary);
+      setValue("Where", props.items.usersRelation.careers.address);
+      setValue("pictureProfile", props.items.pictureProfile);
     }
-  },[props.items]);
+  }, [props.items, props.editing]);
   const onSubmit = (data) => {
+    console.log(`data`, data);
+
     let form = new FormData();
     form.append("firstName", data.firstName);
     form.append("nickName", data.nickName);
@@ -56,13 +62,14 @@ const Forms = (props) => {
     form.append("Salary", data.Salary);
     form.append("Where", data.Where);
     form.append("pictureProfile", data.ProfilePicture[0]);
-
-    props.dispatchAddUser(form);
+    if (props.editing) props.dispatchUpdateUser(props.items.id, form);
+    else props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
+    //props.history.push(`/board`);
   };
-  
+  console.log(props);
+
   return (
-    
     <React.Fragment>
       <Title name="Form" />
       {isOpenAlert === flags.complete ? (
@@ -89,9 +96,23 @@ const Forms = (props) => {
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">
           {/* <SelectBox label="พี่เลี้ยง" values={mentors} name="Mentor" register={register} /> */}
-          <SelectBox label="กลุ่มแคร์" values={props.groups} name="Group" register={register} />
-          <SelectBox label="ระดับความเชื่อ" values={props.statuses} name="Status" register={register} />
-          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} isEditing={props.editing} register={register} />
+          <SelectBox
+            label="กลุ่มแคร์"
+            values={props.groups}
+            name="Group"
+            isEditing={props.editing}
+            previousValue={previousGroup}
+            register={register}
+          />
+          <SelectBox
+            label="ระดับความเชื่อ"
+            values={props.statuses}
+            name="Status"
+            isEditing={props.editing}
+            previousValue={previousStatus}
+            register={register}
+          />
+          <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>
         <div className="flex flex-wrap  mb-2">

@@ -8,21 +8,27 @@ const Table = ({ columns, props }) => {
       <thead>
         <tr>
           {columns.map((name, i) => (
-              <Colume key={i} name={name} />
+            <Colume key={i} name={name} />
           ))}
         </tr>
       </thead>
       <tbody>
-        {props.items.map((user, i) => (
-          <RowsUser
-            key={i}
-            user={user}
-            props={props}
-          />
-        ))}
+        <LoadRow list={props.items} props={props} />
       </tbody>
     </table>
   );
 };
 
+const LoadRow = ({ list, props }) => {
+  if (!Array.isArray(list)) {
+    return null;
+  } else
+    return (
+      <React.Fragment>
+        {list.map((user, i) => (
+          <RowsUser key={i} user={user} props={props} />
+        ))}
+      </React.Fragment>
+    );
+};
 export default Table;
