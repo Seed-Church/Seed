@@ -65,6 +65,7 @@ const Forms = (props) => {
     if (props.editing) props.dispatchUpdateUser(props.items.id, form);
     else props.dispatchAddUser(form);
     setOpenAlert(flags.complete);
+    //props.history.push(`/board`);
   };
   console.log(props);
 
