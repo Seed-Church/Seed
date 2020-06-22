@@ -25,7 +25,7 @@ const Forms = (props) => {
       setValue("firstName", props.items.firstName);
       setValue("nickName", props.items.nickName);
       setValue("lastName", props.items.lastName);
-      setValue("dateBelieve", moment(props.items.dateBelieve).format("YYYY-MM-DD"));
+      setValue("dateBelieve", moment(props.items.dateBelieve).toDate());
       setValue("Age", props.items.Age);
       setValue("Tel", props.items.Tel);
       setValue("Facebook", props.items.facebook);

@@ -11,8 +11,8 @@ const DateForm = ({ label, name, controlPassing, isEditing, register }) => {
         dateFormat="yyyy-MM-dd"
         as={DatePicker}
         control={controlPassing}
-        valueName={isEditing ? "" : "selected"}
-        // onChange={([selected]) => selected}
+        valueName={"selected"}
+        onChange={([selected]) => selected}
         name={name}
         className="appearance-none block w-full p-1 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200"
         placeholderText="Select date"

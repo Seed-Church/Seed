@@ -1,3 +1,4 @@
+import moment from "moment";
 export const fakeValue = {
   defaultValues: {
     firstName: "bill",
@@ -15,6 +16,8 @@ export const fakeValue = {
     Salary: 1500000,
     Where: "ที่บ้าน",
     Where: "ที่บ้าน",
-    dateBelieve: new Date(),
+    dateBelieve: moment(new Date()).toDate(),
   },
 };
+
+
