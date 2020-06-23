@@ -14,6 +14,8 @@ const Forms = (props) => {
   const [previousGroup, setPreviousGroup] = useState({});
   const [previousStatus, setPreviousStatus] = useState({});
   const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
+  console.log(`errors`,errors);
+  console.log(`firstName=`,watch("firstName"));
   useEffect(() => {
     props.dispatchFetchStatuses();
     props.dispatchFetchGroups();
@@ -82,10 +84,11 @@ const Forms = (props) => {
             label="ชื่อต้น"
             type="text"
             name="firstName"
-            register={register({ required: true, maxLength: 25, pattern: /^[A-Za-z]+$/i })}
+            register={register}
+            errors={errors.firstName}
           />
-                {errors.firstName && <span>This field is required</span>}
-          <Form
+        {/* {errors.firstName && errors.firstName.message} */}
+          {/* <Form
             label="นามสกุล"
             type="text"
             name="lastName"
@@ -95,15 +98,15 @@ const Forms = (props) => {
             label="ชื่อเล่น"
             type="text"
             name="nickName"
-            register={register({ required: true, maxLength: 25, pattern: /^[A-Za-z]+$/i })}
+            register={register}
           />
-          <Form label="อายุ" type="number" name="Age" register={register({ min: 18, max: 99 })} />
+          <Form label="อายุ" type="number" name="Age" register={register} /> */}
         </div>
         <div className="flex flex-wrap  mb-6 mt-3">
-          <Form label="facebook" type="text" name="Facebook" register={register} />
+          {/* <Form label="facebook" type="text" name="Facebook" register={register} />
           <Form label="เบอร์มือถือ" type="text" name="Tel" register={register} />
           <Form label="ที่อยู่" type="text" name="Address" register={register} />
-          <Form label="ความสามารถพิเศษ" type="text" name="Ability" register={register} />
+          <Form label="ความสามารถพิเศษ" type="text" name="Ability" register={register} /> */}
         </div>
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">
@@ -128,9 +131,9 @@ const Forms = (props) => {
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>
         <div className="flex flex-wrap  mb-2">
-          <Form label="อาชีพ" type="text" name="Position" register={register} />
+          {/* <Form label="อาชีพ" type="text" name="Position" register={register} />
           <Form label="รายได้" type="number" name="Salary" register={register} />
-          <Form label="ทำที่ไหน" type="text" name="Where" register={register} />
+          <Form label="ทำที่ไหน" type="text" name="Where" register={register} /> */}
         </div>
         <div className="flex flex-wrap mb-6 mt-3">
           <Form label="รูปตัวเอง" type="file" name="ProfilePicture" register={register} />
