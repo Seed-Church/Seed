@@ -5,17 +5,17 @@ import SelectBox from "./shared/SelectBox";
 import DateForm from "./shared/DateForm";
 import Title from "./shared/Title";
 import Alert from "../components/shared/Alert";
-import { fakeValue } from "./mock/form";
 import FormData from "form-data";
 import moment from "moment";
+import { fakeValue, patternName, patternAge, patternFacebook } from "./mock/form";
 const Forms = (props) => {
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   const [previousGroup, setPreviousGroup] = useState({});
   const [previousStatus, setPreviousStatus] = useState({});
   const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
-  console.log(`errors`,errors);
-  console.log(`firstName=`,watch("firstName"));
+  console.log(`errors`, errors);
+  console.log(`firstName=`, watch("firstName"));
   useEffect(() => {
     props.dispatchFetchStatuses();
     props.dispatchFetchGroups();
@@ -84,29 +84,24 @@ const Forms = (props) => {
             label="ชื่อต้น"
             type="text"
             name="firstName"
-            register={register}
+            register={register(patternName)}
             errors={errors.firstName}
           />
-        {/* {errors.firstName && errors.firstName.message} */}
-          {/* <Form
-            label="นามสกุล"
-            type="text"
-            name="lastName"
-            register={register({ required: true, maxLength: 25, pattern: /^[A-Za-z]+$/i })}
-          />
+          <Form label="นามสกุล" type="text" name="lastName" register={register(patternName)} errors={errors.lastName} />
           <Form
             label="ชื่อเล่น"
             type="text"
             name="nickName"
-            register={register}
+            register={register(patternName)}
+            errors={errors.nickName}
           />
-          <Form label="อายุ" type="number" name="Age" register={register} /> */}
+          <Form label="อายุ" type="number" name="Age" register={register(patternAge)} errors={errors.Age} />
         </div>
         <div className="flex flex-wrap  mb-6 mt-3">
-          {/* <Form label="facebook" type="text" name="Facebook" register={register} />
+          <Form label="facebook" type="text" name="Facebook" register={register} register={register(patternFacebook)} />
           <Form label="เบอร์มือถือ" type="text" name="Tel" register={register} />
           <Form label="ที่อยู่" type="text" name="Address" register={register} />
-          <Form label="ความสามารถพิเศษ" type="text" name="Ability" register={register} /> */}
+          <Form label="ความสามารถพิเศษ" type="text" name="Ability" register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">

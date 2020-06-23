@@ -8,15 +8,9 @@ const Form = ({ label, type, name, register, errors }) => {
         className="appearance-none block w-full p-1 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200"
         type={type}
         name={name}
-        ref={register({
-          required: "Required",
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: "invalid email address"
-          }
-        })}
+        ref={register}
       />
-         {errors && errors.message}
+      <span style={{ color: "red", fontSize: "0.700em" }}>{errors && errors.message}</span>
     </div>
   );
 };
