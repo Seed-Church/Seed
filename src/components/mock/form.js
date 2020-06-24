@@ -5,10 +5,10 @@ export const fakeValue = {
     nickName: "หอย",
     lastName: "บ้า",
     Age: 15,
-    Tel: "095801444",
-    Facebook: "facebook/inwza",
-    Ability: "ว่ายน้ำ",
-    Address: "วัง",
+    Tel: "0935",
+    Facebook: "ไทยทย",
+    Ability: "English",
+    Address: "English",
     Mentor: 1,
     Group: 1,
     Status: 1,
@@ -43,15 +43,30 @@ export const patternAge = {
 export const patternFacebook = {
   maxLength: { value: 25, message: "ไม่เกิน 25 ตัวอักษร" },
   pattern: {
-    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-    message: "ภาษาอังกฤษ ตัวเลข อักขระ เท่านั้น",
+    value: /^[A-Za-z0-9._]$/i,
+    message: "ภาษาอังกฤษ ตัวเลข และ `.` `_` เท่านั้น",
   },
 };
 
 export const patternTel = {
-  maxLength: { value: 25, message: "ไม่เกิน 25 ตัวอักษร" },
   pattern: {
     value: /^[0-9]{10}$/i,
-    message: "ภาษาอังกฤษ ตัวเลข อักขระ เท่านั้น",
+    message: "ตัวเลข 10 ตัวเท่านั้น",
+  },
+};
+
+export const patternAddress = {
+  maxLength: { value: 50, message: "ไม่เกิน 50 ตัวอักษร" },
+  pattern: {
+    value: /^[ก-๙]+$/i,
+    message: "ภาษาไทยเท่านั้น",
+  },
+};
+
+export const patternAbility = {
+  maxLength: { value: 25, message: "ไม่เกิน 25 ตัวอักษร" },
+  pattern: {
+    value: /^[ก-๙]+$/i,
+    message: "ภาษาไทยเท่านั้น",
   },
 };
