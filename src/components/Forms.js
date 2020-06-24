@@ -7,13 +7,21 @@ import Title from "./shared/Title";
 import Alert from "../components/shared/Alert";
 import FormData from "form-data";
 import moment from "moment";
-import { fakeValue, patternName, patternAge, patternFacebook, patternTel, patternAddress } from "./mock/form";
+import {
+  fakeValue,
+  patternName,
+  patternAge,
+  patternFacebook,
+  patternTel,
+  patternAddress,
+  patternSalary,
+} from "./mock/form";
 const Forms = (props) => {
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   const [previousGroup, setPreviousGroup] = useState({});
   const [previousStatus, setPreviousStatus] = useState({});
-  const { register, handleSubmit, watch, errors, control, setValue } = useForm(fakeValue);
+  const { register, handleSubmit, watch, errors, control, setValue, patternSelect } = useForm(fakeValue);
   console.log(`error`, errors);
 
   useEffect(() => {
@@ -130,7 +138,8 @@ const Forms = (props) => {
             name="Group"
             isEditing={props.editing}
             previousValue={previousGroup}
-            register={register}
+            register={register(patternSelect)}
+            errors={errors.Group}
           />
           <SelectBox
             label="ระดับความเชื่อ"
@@ -138,15 +147,16 @@ const Forms = (props) => {
             name="Status"
             isEditing={props.editing}
             previousValue={previousStatus}
-            register={register}
+            register={register(patternSelect)}
+            errors={errors.Status}
           />
           <DateForm label="วันที่เชื่อ" name="dateBelieve" controlPassing={control} register={register} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลอาชีพ</p>
         <div className="flex flex-wrap  mb-2">
-          {/* <Form label="อาชีพ" type="text" name="Position" register={register} />
-          <Form label="รายได้" type="number" name="Salary" register={register} />
-          <Form label="ทำที่ไหน" type="text" name="Where" register={register} /> */}
+          <Form label="อาชีพ" type="text" name="Position" register={register(patternName)} errors={errors.Position} />
+          <Form label="รายได้" type="number" name="Salary" register={register(patternSalary)} errors={errors.Salary} />
+          <Form label="ทำที่ไหน" type="text" name="Where" register={register(patternAddress)} errors={errors.Where} />
         </div>
         <div className="flex flex-wrap mb-6 mt-3">
           <Form label="รูปตัวเอง" type="file" name="ProfilePicture" register={register} />

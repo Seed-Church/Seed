@@ -1,6 +1,6 @@
 import React from "react";
 
-const SelectBox = ({ label, values, name, isEditing, previousValue, register }) => {
+const SelectBox = ({ label, values, name, isEditing, previousValue, register, errors }) => {
   return (
     <div className="w-full md:w-1/5 px-3 md:mb-0 mt-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold text-xs mb-2">{label}</label>
@@ -23,6 +23,7 @@ const SelectBox = ({ label, values, name, isEditing, previousValue, register }) 
           </svg>
         </div>
       </div>
+      <span style={{ color: "red", fontSize: "0.700em" }}>{errors && errors.message}</span>
     </div>
   );
 };
