@@ -1,4 +1,4 @@
-import { GROUPS, FETCH_GROUPS_PENDING, FETCH_GROUPS_SUCCESS, FETCH_GROUPS_ERROR } from "../constants/Groups";
+import { FETCH_GROUPS_PENDING, FETCH_GROUPS_SUCCESS, FETCH_GROUPS_ERROR } from "../constants/Groups";
 const initialState = {
   pending: false,
   groups: [],

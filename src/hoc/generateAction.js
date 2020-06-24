@@ -1,6 +1,4 @@
 import { API_URL } from "../api/index";
-import { fetchUsersPending, fetchUsersError } from "../actions/Users";
-import { USERS } from "../constants/Users";
 
 const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = ``, data) => {
   const { Pending, Error } = actionGruop;

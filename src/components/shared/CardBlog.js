@@ -1,7 +1,7 @@
 import React from "react";
-import Amp from "../../asset/img/amp.jpg";
-import Yuno from "../../asset/img/yuno.jpg";
-import bg from "../../asset/img/bg_test.jpg";
+// import Amp from "../../asset/img/amp.jpg";
+// import Yuno from "../../asset/img/yuno.jpg";
+// import bg from "../../asset/img/bg_test.jpg";
 const CardBlog = () => {
   const mock = "https://tailwindcss.com/img/card-left.jpg";
   const mockpf = "https://tailwindcss.com/img/jonathan.jpg";

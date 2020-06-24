@@ -1,7 +1,6 @@
 import React from "react";
 import ModalReact from "react-modal";
 import ButtonArmy from "../shared/ButtonArmy";
-import Modal from '../../components/Modal'
 ModalReact.setAppElement("#root");
 
 const RowsUser = ({ user, props }) => {
