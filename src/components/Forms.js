@@ -16,10 +16,10 @@ import {
   patternTel,
   patternAddress,
   patternSalary,
-  patternFile
+  patternFile,
 } from "./mock/form";
 const Forms = (props) => {
-  let flags = { complete: 0, no_action: 1, something_wrong: 2 };
+  let flags = { complete: 0, no_action: 1, something_wrong: 2, edit: 3 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   const [previousGroup, setPreviousGroup] = useState({});
   const [previousStatus, setPreviousStatus] = useState({});
@@ -67,9 +67,32 @@ const Forms = (props) => {
     form.append("Salary", data.Salary);
     form.append("Where", data.Where);
     form.append("pictureProfile", data.ProfilePicture[0]);
-    if (props.editing) props.dispatchUpdateUser(props.items.id, form);
-    else props.dispatchAddUser(form);
-    setOpenAlert(flags.complete);
+    if (props.editing) {
+      props.dispatchUpdateUser(props.items.id, form);
+      setOpenAlert(flags.edit);
+    } else {
+      props.dispatchAddUser(form);
+      setOpenAlert(flags.complete);
+      setValue("firstName", "");
+      setValue("nickName", "");
+      setValue("lastName", "");
+      setValue("dateBelieve", moment(new Date()).toDate());
+      setValue("Age", "");
+      setValue("Tel", "");
+      setValue("Facebook", "");
+      setValue("Ability", "");
+      setValue("Address", "");
+      setValue("Mentor", "");
+      setValue("Groups", "");
+      setValue("Statuses", "");
+      setPreviousGroup("");
+      setPreviousStatus("");
+      setValue("Position", "");
+      setValue("Salary", "");
+      setValue("Where", "");
+      setValue("pictureProfile", "");
+    }
+
     //props.history.push(`/board`);
   };
   console.log(props);
@@ -81,6 +104,8 @@ const Forms = (props) => {
         <Alert color="teal" topic="เพิ่มข้อมูลเรียบร้อย" message="ข้อมูลถูกเพิ่มลงในฐานข้อมูลแล้ว" />
       ) : isOpenAlert === flags.something_wrong ? (
         <Alert color="red" topic="เพิ่มข้อมูลไม่ได้" message="ข้อมูลยังไม่ถูกเพิ่มในฐานข้อมูล" />
+      ) : isOpenAlert === flags.edit ? (
+        <Alert color="teal" topic="แก้ไขข้อมูลเรียบร้อย" message="ข้อมูลถูกแก้ไข้ไปยังฐานข้อมูลแล้ว" />
       ) : (
         ``
       )}
@@ -158,7 +183,13 @@ const Forms = (props) => {
           <Form label="ทำที่ไหน" type="text" name="Where" register={register(patternAddress)} errors={errors.Where} />
         </div>
         <div className="flex flex-wrap mb-6 mt-3">
-          <Form label="รูปตัวเอง" type="file" name="ProfilePicture" register={register(patternFile)} errors={errors.ProfilePicture} />
+          <Form
+            label="รูปตัวเอง"
+            type="file"
+            name="ProfilePicture"
+            register={register(patternFile)}
+            errors={errors.ProfilePicture}
+          />
         </div>
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">

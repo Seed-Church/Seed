@@ -112,7 +112,7 @@ export const patternSalary = {
     message: "เงินเดือนขั้นต่ำสุดคือ 100",
   },
   pattern: {
-    value:/^\d{1,6}$/i,
+    value:/^\d{1,8}$/i,
     message: "ตัวเลขเท่านั้น",
   },
 };
