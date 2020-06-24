@@ -20,6 +20,7 @@ import {
 } from "./mock/form";
 const Forms = (props) => {
   let flags = { complete: 0, no_action: 1, something_wrong: 2, edit: 3 };
+  const [ButtonStyle,setButtonStyle] = useState({color : `blue` , name :`เพิ่มข้อมูล`})
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   const [previousGroup, setPreviousGroup] = useState({});
   const [previousStatus, setPreviousStatus] = useState({});
@@ -28,6 +29,7 @@ const Forms = (props) => {
     props.dispatchFetchStatuses();
     props.dispatchFetchGroups();
     if (props.editing && props.items.usersRelation) {
+      setButtonStyle({color : `yellow` , name :`แก้ไขข้อมูล`})
       setValue("firstName", props.items.firstName);
       setValue("nickName", props.items.nickName);
       setValue("lastName", props.items.lastName);
@@ -105,7 +107,7 @@ const Forms = (props) => {
       ) : isOpenAlert === flags.something_wrong ? (
         <Alert color="red" topic="เพิ่มข้อมูลไม่ได้" message="ข้อมูลยังไม่ถูกเพิ่มในฐานข้อมูล" />
       ) : isOpenAlert === flags.edit ? (
-        <Alert color="teal" topic="แก้ไขข้อมูลเรียบร้อย" message="ข้อมูลถูกแก้ไข้ไปยังฐานข้อมูลแล้ว" />
+        <Alert color="yellow" topic="แก้ไขข้อมูลเรียบร้อย" message="ข้อมูลถูกแก้ไข้ไปยังฐานข้อมูลแล้ว" />
       ) : (
         ``
       )}
@@ -195,8 +197,8 @@ const Forms = (props) => {
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
             <input
               type="submit"
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-              value="เพิ่มข้อมูล"
+              className={`bg-${ButtonStyle.color}-500 hover:bg-${ButtonStyle.color}-400 text-white font-bold py-2 px-4 border-b-4 border-${ButtonStyle.color}-700 hover:border-${ButtonStyle.color}-500 rounded`}
+              value={ButtonStyle.name}
             />
           </div>
         </div>
