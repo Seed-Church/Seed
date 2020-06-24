@@ -6,13 +6,13 @@ Project Description
 
 - [ ] change table  
 - [ ] option table  
-- [ ] clear data after send  
-- [ ] notify update  
 
 ### In Progress
 
-- [ ] validate data  
 
 ### Done ✓
 
+- [x] notify update  
+- [x] validate data  
+- [x] clear data after send  
 
