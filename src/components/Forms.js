@@ -8,22 +8,22 @@ import Alert from "../components/shared/Alert";
 import FormData from "form-data";
 import moment from "moment";
 import {
-  fakeValue,
+  expectFakeValue,
+  UnExpectFakeValue,
   patternName,
   patternAge,
   patternFacebook,
   patternTel,
   patternAddress,
   patternSalary,
+  patternFile
 } from "./mock/form";
 const Forms = (props) => {
   let flags = { complete: 0, no_action: 1, something_wrong: 2 };
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   const [previousGroup, setPreviousGroup] = useState({});
   const [previousStatus, setPreviousStatus] = useState({});
-  const { register, handleSubmit, watch, errors, control, setValue, patternSelect } = useForm(fakeValue);
-  console.log(`error`, errors);
-
+  const { register, handleSubmit, watch, errors, control, setValue, patternSelect } = useForm(expectFakeValue);
   useEffect(() => {
     props.dispatchFetchStatuses();
     props.dispatchFetchGroups();
@@ -50,7 +50,6 @@ const Forms = (props) => {
   }, [props.items, props.editing]);
   const onSubmit = (data) => {
     console.log(`data`, data);
-
     let form = new FormData();
     form.append("firstName", data.firstName);
     form.append("nickName", data.nickName);
@@ -159,7 +158,7 @@ const Forms = (props) => {
           <Form label="ทำที่ไหน" type="text" name="Where" register={register(patternAddress)} errors={errors.Where} />
         </div>
         <div className="flex flex-wrap mb-6 mt-3">
-          <Form label="รูปตัวเอง" type="file" name="ProfilePicture" register={register} />
+          <Form label="รูปตัวเอง" type="file" name="ProfilePicture" register={register(patternFile)} errors={errors.ProfilePicture} />
         </div>
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">

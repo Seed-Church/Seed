@@ -5,3 +5,8 @@ const expectStringThai = (str) => /^[ก-ฮ]+$/i.test(str);
 const expectStringThaiWithNumber = (str) => /^[ก-ฮ0-9]+$/i.test(str);
 const expectStringThaiWithNumberWithSpecial  = (str) => /^[ก-ฮ0-9_.-/]+$/i.test(str);
 const expectStringEngORThaiWithNumber = (str) => /^[A-Za-z0-9ก-ฮ]+$/i.test(str);
+
+
+const expectNumber = (str) => /^\d{1,6}$/i.test(str)
+
+console.log(expectNumber(99));
