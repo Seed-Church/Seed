@@ -49,4 +49,5 @@ const BoardWithLogic = connect(mapStateToProps, mapDispatchToProps)(Board);
 export default {
   FormsWithLogic,
   BoardWithLogic,
+
 };

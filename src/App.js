@@ -9,13 +9,14 @@ import CardBlogs from "./components/CardBlogs";
 import UsersContainner from "./container/UsersContainner";
 import generateMain from "./hoc/generateMain";
 import Maintenance from "./components/Maintenance";
+import TableV2 from './components/shared/TableV2'
 const history = createBrowserHistory();
 const CardWithLayout = generateMain(Cards);
+const TableV2WithLayout = generateMain(TableV2);
 const ModalWithLayout = generateMain(Modal);
 const BoardWithLayout = generateMain(UsersContainner.BoardWithLogic);
 const FormsWithLayout = generateMain(UsersContainner.FormsWithLogic);
 const CardBlogsWithLayout = generateMain(CardBlogs);
-
 const MaintenanceWithLayout = generateMain(Maintenance);
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/logout" component={MaintenanceWithLayout} />
         <Route exact path="/blog" component={CardBlogsWithLayout} />
         <Route exact path="/modal" component={ModalWithLayout} />
+        <Route exact path="/tablev2" component={TableV2WithLayout} />
         {/* <Route exact path="/upload" component={} /> */}
       </Router>
     </div>

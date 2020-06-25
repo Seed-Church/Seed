@@ -12,6 +12,7 @@ const Navbar = () => {
           <Menu href="/blog" name="บล็อก" icon="fa fa-wallet pr-0 md:pr-3" />
           <Menu href="/upload" name="upload" icon="fa fa-wallet pr-0 md:pr-3" />
           <Menu href="/modal" name="Modal" icon="fa fa-wallet pr-0 md:pr-3" />
+          <Menu href="/tablev2" name="tableV2" icon="fa fa-wallet pr-0 md:pr-3" />
         </ul>
       </div>
     </div>
