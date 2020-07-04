@@ -59,7 +59,7 @@ const Users = (state = initialState, action) => {
     case SEARCH_USERS_SUCCESS:
       return {
         ...state,
-        word: action.word,
+        items: action.items,
       };
     default:
       return state;

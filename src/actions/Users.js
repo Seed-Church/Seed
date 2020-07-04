@@ -61,10 +61,10 @@ const deleteUsersSuccess = (status) => {
     statusAPI: status,
   };
 };
-const searchUsersSuccess = (word) => {
+const searchUsersSuccess = (item) => {
   return {
     type: SEARCH_USERS_SUCCESS,
-    word: word,
+    items: item,
   };
 };
 

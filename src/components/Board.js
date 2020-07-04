@@ -7,7 +7,7 @@ import TableV2 from "./shared/TableV2";
 
 const Board = (props) => {
   console.log(props);
-  
+
   const [searchTerm, setSearchTerm] = React.useState("");
   const columns = ["id", "User", "statuses", "groups", "Action"];
   const handleChange = (e) => {
@@ -17,7 +17,7 @@ const Board = (props) => {
   };
   useEffect(() => {
     props.dispatchFetchUsers();
-    props.dispatchSearcheUser(searchTerm);
+    if (searchTerm !== "") props.dispatchSearcheUser(searchTerm);
   }, []);
   return (
     <React.Fragment>
