@@ -34,15 +34,10 @@ const RowsUser = ({ user, props }) => {
       <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
         <td className="border-grey-light border hover:bg-gray-100 p-3">{user.id}</td>
         <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
-          <div className="flex-shrink-0 w-10 h-10">
-            <img className="w-full h-full rounded-full" src={user.pictureProfile} alt="" />
-          </div>{" "}
           {user.nickName} {user.firstName} {user.lastName}
         </td>
-        <td className="border-grey-light border hover:bg-gray-100 p-3">{user.facebook}</td>
-        {/* <td className="border-grey-light border hover:bg-gray-100 p-3">{user.Tel}</td>
-        <td className="border-grey-light border hover:bg-gray-100 p-3">{user.dateBelieve}</td>
-        <td className="border-grey-light border hover:bg-gray-100 p-3">{user.Address}</td> */}
+        <td className="border-grey-light border hover:bg-gray-100 p-3">{user.usersRelation.statuses.name}</td>
+        <td className="border-grey-light border hover:bg-gray-100 p-3">{user.usersRelation.groups.name}</td>
         <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
           <ButtonArmy value="แก้ไข" color="yellow" OnClick={() => handleEditClick(user.id)} />{" "}
           <ButtonArmy value="ลบ" color="red" OnClick={openModal} />

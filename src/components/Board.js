@@ -6,7 +6,9 @@ import Table from "./shared/Table";
 import TableV2 from "./shared/TableV2";
 
 const Board = (props) => {
-  const columns = ["id", "User", "facebook", "Action"];
+  const columns = ["id", "User", "statuses","groups","Action"];
+  console.log(`prop`,props);
+  
   useEffect(() => {
     props.dispatchFetchUsers();
   }, []);
