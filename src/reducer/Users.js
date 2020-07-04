@@ -5,7 +5,8 @@ import {
   ADD_USERS_SUCCESS,
   EDIT_USERS_SUCCESS,
   DELETE_USERS_SUCCESS,
-  UPDATE_USERS_SUCCESS
+  UPDATE_USERS_SUCCESS,
+  SEARCH_USERS_SUCCESS,
 } from "../constants/Users";
 
 const initialState = {
@@ -54,6 +55,11 @@ const Users = (state = initialState, action) => {
       return {
         ...state,
         statusAPI: action.statusAPI,
+      };
+    case SEARCH_USERS_SUCCESS:
+      return {
+        ...state,
+        word: action.word,
       };
     default:
       return state;
