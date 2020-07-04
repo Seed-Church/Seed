@@ -6,21 +6,35 @@ import Table from "./shared/Table";
 import TableV2 from "./shared/TableV2";
 
 const Board = (props) => {
-  const columns = ["id", "User", "statuses","groups","Action"];
-  console.log(`prop`,props);
+  console.log(props);
   
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const columns = ["id", "User", "statuses", "groups", "Action"];
+  const handleChange = (e) => {
+    console.log(e.target.value);
+
+    setSearchTerm(e.target.value);
+  };
   useEffect(() => {
     props.dispatchFetchUsers();
+    props.dispatchSearcheUser(searchTerm);
   }, []);
   return (
     <React.Fragment>
       <Title name="Table" />
       <div className="flex flex-wrap mb-6 mt-3">
-        <SelectBox label="Max Row" test={[5, 10, 20]} />
-        <SelectBox label="Filter" test={["Active", "Inactive"]} />
-        <FormIcon />
+        {/* <SelectBox label="Max Row" test={[5, 10, 20]} />
+        <SelectBox label="Filter" test={["Active", "Inactive"]} /> */}
+        <div className="container mx-5 py-3">
+          <input
+            className="w-full h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg"
+            type="search"
+            value={searchTerm}
+            onChange={handleChange}
+            placeholder="Search..."></input>
+        </div>
       </div>
-      <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+      <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
         <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
           <TableV2 columns={columns} props={props} />
           <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">

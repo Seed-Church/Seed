@@ -75,4 +75,4 @@ export const addUser = (data) => generateAction(USERS, "POST", addUsersSuccess, 
 export const editUser = (id) => generateAction(USERS, "GET", editUsersSuccess, actionGruop, `/` + id);
 export const deleteUser = (id) => generateAction(USERS, "DELETE", deleteUsersSuccess, actionGruop, `/` + id);
 export const updateUser = (id, data) => generateAction(USERS, "PUT", updateUsersSuccess, actionGruop, `/` + id, data);
-export const searchUser = (word) => generateAction(USERS, "GET", updateUsersSuccess, actionGruop, `/` + word);
+export const searchUser = (word) => generateAction(USERS, "GET", searchUsersSuccess, actionGruop, `/` + word);
