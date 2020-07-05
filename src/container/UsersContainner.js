@@ -44,6 +44,7 @@ const mapDispatchToProps = (dispatch) => {
     dispatchSearcheUser: (word) => {
       dispatch(searchUser(word));
     },
+    
   };
 };
 

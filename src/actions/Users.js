@@ -40,7 +40,7 @@ const fetchUsersSuccess = (items) => {
   };
 };
 
-export const editUsersSuccess = (item) => {
+const editUsersSuccess = (item) => {
   return {
     type: EDIT_USERS_SUCCESS,
     items: item,
@@ -61,7 +61,7 @@ const deleteUsersSuccess = (status) => {
     statusAPI: status,
   };
 };
-const searchUsersSuccess = (item) => {
+export const searchUsersSuccess = (item) => {
   return {
     type: SEARCH_USERS_SUCCESS,
     items: item,
@@ -75,4 +75,4 @@ export const addUser = (data) => generateAction(USERS, "POST", addUsersSuccess, 
 export const editUser = (id) => generateAction(USERS, "GET", editUsersSuccess, actionGruop, `/` + id);
 export const deleteUser = (id) => generateAction(USERS, "DELETE", deleteUsersSuccess, actionGruop, `/` + id);
 export const updateUser = (id, data) => generateAction(USERS, "PUT", updateUsersSuccess, actionGruop, `/` + id, data);
-export const searchUser = (word) => generateAction(USERS, "GET", searchUsersSuccess, actionGruop, `/` + word);
+export const searchUser = (word) => generateAction(USERS, "GET", searchUsersSuccess, actionGruop, `/search/` + word);
