@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Forms from "../components/Forms";
 import Board from "../components/Board";
-import { addUser, editUser, deleteUser, updateUser, fetchUsers } from "../actions/Users";
+import { addUser, editUser, deleteUser, updateUser, fetchUsers, searchUser } from "../actions/Users";
 import { fetchStatus } from "../actions/Statuses";
 import { fetchGroups } from "../actions/Groups";
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
     statuses: state.Statuses.statuses,
     groups: state.Groups.groups,
     statusAPI: state.Users.statusAPI,
+    word: state.Users.word,
   };
 };
 
@@ -40,6 +41,10 @@ const mapDispatchToProps = (dispatch) => {
     dispatchUpdateUser: (id, data) => {
       dispatch(updateUser(id, data));
     },
+    dispatchSearcheUser: (word) => {
+      dispatch(searchUser(word));
+    },
+    
   };
 };
 

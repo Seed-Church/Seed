@@ -15,7 +15,6 @@ const ModalWithLayout = generateMain(Modal);
 const BoardWithLayout = generateMain(UsersContainner.BoardWithLogic);
 const FormsWithLayout = generateMain(UsersContainner.FormsWithLogic);
 const CardBlogsWithLayout = generateMain(CardBlogs);
-
 const MaintenanceWithLayout = generateMain(Maintenance);
 
 function App() {

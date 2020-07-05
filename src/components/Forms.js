@@ -97,8 +97,6 @@ const Forms = (props) => {
 
     //props.history.push(`/board`);
   };
-  console.log(props);
-
   return (
     <React.Fragment>
       <Title name="Form" />
