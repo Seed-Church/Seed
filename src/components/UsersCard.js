@@ -6,24 +6,23 @@ const UsersCard = (props) => {
   }, []);
   return (
     <React.Fragment>
-      {/* <div className="flex flex-wrap bg-gray-200">
-        <div class="flex-auto px-4 py-2 m-2">
-          <UserCard />
-        </div>
-        <div class="flex-auto px-4 py-2 m-2">
-          <UserCard />
-        </div>{" "}
-        <div class="flex-auto px-4 py-2 m-2">
-          <UserCard />
-        </div>
-      </div> */}
       <div className="flex flex-wrap bg-gray-200">
-        {props.items.map((user, i) => (
-          <UserCard key={i} user={user} />
-        ))}
+        <LoadRow list={props.items} props={props} />
       </div>
     </React.Fragment>
   );
 };
 
+const LoadRow = ({ list, props }) => {
+  if (!Array.isArray(list)) {
+    return null;
+  } else
+    return (
+      <React.Fragment>
+        {list.map((user, i) => (
+          <UserCard key={i} user={user} props={props} />
+        ))}
+      </React.Fragment>
+    );
+};
 export default UsersCard;
