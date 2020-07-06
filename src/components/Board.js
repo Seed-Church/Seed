@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import Title from "./shared/Title";
-import SelectBox from "./shared/SelectBox";
-import FormIcon from "./shared/FormIcon";
-import Table from "./shared/Table";
+import FormSearch from "./shared/FormSearch";
 import TableV2 from "./shared/TableV2";
 
 const Board = (props) => {
@@ -12,8 +10,7 @@ const Board = (props) => {
   const handleChange = (e) => {
     console.log(e.target.value);
     props.dispatchSearcheUser(e.target.value);
-    if(e.target.value === "")
-    props.dispatchFetchUsers();
+    if (e.target.value === "") props.dispatchFetchUsers();
   };
 
   useEffect(() => {
@@ -25,13 +22,7 @@ const Board = (props) => {
       <div className="flex flex-wrap mb-6 mt-3">
         {/* <SelectBox label="Max Row" test={[5, 10, 20]} />
         <SelectBox label="Filter" test={["Active", "Inactive"]} /> */}
-        <div className="container mx-5 py-3">
-          <input
-            className="w-full h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg"
-            type="search"
-            onChange={handleChange}
-            placeholder="Search..."></input>
-        </div>
+        <FormSearch handleChange={handleChange} />
       </div>
       <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
         <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">

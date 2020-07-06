@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Forms from "../components/Forms";
 import Board from "../components/Board";
+import UsersCard from '../components/UsersCard'
 import { addUser, editUser, deleteUser, updateUser, fetchUsers, searchUser } from "../actions/Users";
 import { fetchStatus } from "../actions/Statuses";
 import { fetchGroups } from "../actions/Groups";
@@ -50,8 +51,10 @@ const mapDispatchToProps = (dispatch) => {
 
 const FormsWithLogic = connect(mapStateToProps, mapDispatchToProps)(Forms);
 const BoardWithLogic = connect(mapStateToProps, mapDispatchToProps)(Board);
+const UsersCardWithLogic = connect(mapStateToProps, mapDispatchToProps)(UsersCard);
 
 export default {
   FormsWithLogic,
   BoardWithLogic,
+  UsersCardWithLogic
 };
