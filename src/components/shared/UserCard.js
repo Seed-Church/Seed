@@ -1,11 +1,12 @@
 import React from "react";
+import moment from "moment";
 import Modal from "./Modal";
 import ButtonArmy from "../shared/ButtonArmy";
 
 const UserCard = ({ user, props }) => {
-  console.log(user);
+  const currectDate = moment(moment().toArray())
+  const userDate = moment(user.dateBelieve).toArray()
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
   const openModal = () => setIsOpen(true);
   const afterOpenModal = () => {};
   const closeModal = () => setIsOpen(false);
@@ -45,10 +46,10 @@ const UserCard = ({ user, props }) => {
           </div>
           <div className="flex items-center mt-4 text-gray-700">
             📅 <h1 className="px-2 text-sm">{user.dateBelieve}</h1>
-            ⏱️ <h1 className="px-2 text-sm">มีความเชื่อมาแล้ว 777 ปี </h1>
+            ⏱️ <h1 className="px-2 text-sm">มีความเชื่อมาแล้ว {currectDate.diff(userDate,`day`)} วัน </h1>
           </div>
           <div className="flex items-center mt-4 text-gray-700">
-            <i class="fab fa-facebook-square fa-lg"></i> <h1 className="px-2 text-sm"> {user.facebook}</h1>
+            <i className="fab fa-facebook-square fa-lg"></i> <h1 className="px-2 text-sm"> {user.facebook}</h1>
           </div>
           <div className="flex items-center mt-4 text-gray-700">
             🏠 <h1 className="px-2 text-sm"> {user.Address}</h1>
