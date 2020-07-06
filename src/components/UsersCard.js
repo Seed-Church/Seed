@@ -17,9 +17,11 @@ const UsersCard = (props) => {
           <UserCard />
         </div>
       </div> */}
-      {props.items.map((user, i) => (
-            <UserCard key={i} user={user} />
-      ))}
+      <div className="flex flex-wrap bg-gray-200">
+        {props.items.map((user, i) => (
+          <UserCard key={i} user={user} />
+        ))}
+      </div>
     </React.Fragment>
   );
 };
