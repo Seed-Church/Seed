@@ -1,5 +1,5 @@
 import React from "react";
-
+import ButtonArmy from "../shared/ButtonArmy";
 const UserCard = ({ user }) => {
   console.log(user);
 
@@ -18,8 +18,8 @@ const UserCard = ({ user }) => {
       </div>
       <div className="py-4 px-6">
         <p className="py-2 text-sm text-gray-700">
-         📜 Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก สัก 2-3 บรรทัด Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก สัก 2-3
-          บรรทัด
+          📜 Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก สัก 2-3 บรรทัด Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก สัก
+          2-3 บรรทัด
         </p>
         <div className="flex items-center mt-4 text-gray-700">
           👨‍👩‍👧‍👦 <h1 className="px-2 text-sm">กลุ่มแคร์ {user.usersRelation.groups.name}</h1>
@@ -30,7 +30,7 @@ const UserCard = ({ user }) => {
           ⏱️ <h1 className="px-2 text-sm">มีความเชื่อมาแล้ว 777 ปี </h1>
         </div>
         <div className="flex items-center mt-4 text-gray-700">
-          <i class="fab fa-facebook-square fa-lg"></i> <h1 className="px-2 text-xs"> {user.facebook}</h1>
+          <i class="fab fa-facebook-square fa-lg"></i> <h1 className="px-2 text-sm"> {user.facebook}</h1>
         </div>
         <div className="flex items-center mt-4 text-gray-700">
           🏠 <h1 className="px-2 text-sm"> {user.Address}</h1>
@@ -39,7 +39,18 @@ const UserCard = ({ user }) => {
           📱 <h1 className="px-2 text-sm"> {user.Tel}</h1>
         </div>
         <div className="flex items-center mt-4 text-gray-700">
-         📌 <h1 className="px-2 text-sm"> อาชีพ {user.usersRelation.careers.position}</h1>
+          📌 <h1 className="px-2 text-sm"> อาชีพ {user.usersRelation.careers.position}</h1>
+        </div>
+        <div className="flex items-center mt-4 text-gray-700">
+          <div className="px-2 text-sm">
+            <ButtonArmy value="ยังคิดไม่ออก" color="teal" />{" "}
+          </div>
+          <div className="px-2 text-sm">
+            <ButtonArmy value="แก้ไข" color="blue" />{" "}
+          </div>
+          <div className="px-2 text-sm">
+            <ButtonArmy value="ลบ" color="red" />{" "}
+          </div>
         </div>
       </div>
     </div>
