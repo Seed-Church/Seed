@@ -6,7 +6,7 @@ import Main from "./views/layout/Main";
 import Cards from "./components/Cards";
 import Modal from './components/Modal'
 import CardBlogs from "./components/CardBlogs";
-import UserCard from "./components/shared/UserCard";
+import UsersCard from "./components/UsersCard";
 import UsersContainner from "./container/UsersContainner";
 import generateMain from "./hoc/generateMain";
 import Maintenance from "./components/Maintenance";
@@ -15,9 +15,10 @@ const CardWithLayout = generateMain(Cards);
 const ModalWithLayout = generateMain(Modal);
 const BoardWithLayout = generateMain(UsersContainner.BoardWithLogic);
 const FormsWithLayout = generateMain(UsersContainner.FormsWithLogic);
+const UsersCardWithLayout = generateMain(UsersContainner.UsersCardWithLogic);
 const CardBlogsWithLayout = generateMain(CardBlogs);
 const MaintenanceWithLayout = generateMain(Maintenance);
-const UserCardWithLayout = generateMain(UserCard);
+
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
         <Route exact path="/logout" component={MaintenanceWithLayout} />
         <Route exact path="/blog" component={CardBlogsWithLayout} />
         <Route exact path="/modal" component={ModalWithLayout} />
-        <Route exact path="/usercard" component={UserCardWithLayout} />
+        <Route exact path="/usercard" component={UsersCardWithLayout} />
         {/* <Route exact path="/upload" component={} /> */}
       </Router>
     </div>
