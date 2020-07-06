@@ -4,8 +4,8 @@ import Modal from "./Modal";
 import ButtonArmy from "../shared/ButtonArmy";
 
 const UserCard = ({ user, props }) => {
-  const currectDate = moment(moment().toArray())
-  const userDate = moment(user.dateBelieve).toArray()
+  const currectDate = moment(moment().toArray());
+  const userDate = moment(user.dateBelieve).toArray();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const openModal = () => setIsOpen(true);
   const afterOpenModal = () => {};
@@ -36,28 +36,31 @@ const UserCard = ({ user, props }) => {
           </h1>
         </div>
         <div className="py-4 px-6">
-          <p className="py-2 text-sm text-gray-700">
+          <p className="py-2 text-sm  text-blue-600">
             📜 Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก สัก 2-3 บรรทัด Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก
             สัก 2-3 บรรทัด
           </p>
-          <div className="flex items-center mt-4 text-gray-700">
+          <div className="flex items-center mt-4 text-yellow-500">
+            👩‍🏫 <h1 className="px-2 text-sm">พี่เลี้ยง ใครสักคน</h1>
+          </div>
+          <div className="flex items-center mt-4 text-pink-600">
             👨‍👩‍👧‍👦 <h1 className="px-2 text-sm">กลุ่มแคร์ {user.usersRelation.groups.name}</h1>
             💕 <h1 className="px-2 text-sm">สถานะ {user.usersRelation.statuses.name}</h1>
           </div>
-          <div className="flex items-center mt-4 text-gray-700">
+          <div className="flex items-center mt-4 text-teal-600">
             📅 <h1 className="px-2 text-sm">{user.dateBelieve}</h1>
-            ⏱️ <h1 className="px-2 text-sm">มีความเชื่อมาแล้ว {currectDate.diff(userDate,`day`)} วัน </h1>
+            ⏱️ <h1 className="px-2 text-sm">มีความเชื่อมาแล้ว {currectDate.diff(userDate, `day`)} วัน </h1>
           </div>
-          <div className="flex items-center mt-4 text-gray-700">
+          <div className="flex items-center mt-4 text-blue-300">
             <i className="fab fa-facebook-square fa-lg"></i> <h1 className="px-2 text-sm"> {user.facebook}</h1>
           </div>
           <div className="flex items-center mt-4 text-gray-700">
             🏠 <h1 className="px-2 text-sm"> {user.Address}</h1>
           </div>
-          <div className="flex items-center mt-4 text-gray-700">
+          <div className="flex items-center mt-4 text-purple-600">
             📱 <h1 className="px-2 text-sm"> {user.Tel}</h1>
           </div>
-          <div className="flex items-center mt-4 text-gray-700">
+          <div className="flex items-center mt-4 text-yellow-600">
             📌 <h1 className="px-2 text-sm"> อาชีพ {user.usersRelation.careers.position}</h1>
           </div>
           <div className="flex items-center mt-4 text-gray-700">
