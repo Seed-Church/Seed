@@ -23,3 +23,15 @@ th:not(:last-child) {
   background-position: 70% 0;
   background-repeat: no-repeat;
 }
+
+input:focus{
+ 
+  border:1px solid #09E8D1;
+}
+
+input:focus:hover{
+  outline: none;
+  box-shadow: 0px 0px 5px #09E8D1;
+
+  
+}

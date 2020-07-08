@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MenuUserPanel from "./shared/MenuUserPanel";
+
 const Header = () => {
   const [visible, setVisible] = useState(false);
   const style = {
@@ -59,9 +60,9 @@ const Header = () => {
                     "dropdownlist absolute bg-gray-900 text-white right-0 mt-3 p-3 overflow-auto z-30 " +
                     (visible ? "" : "invisible")
                   }>
-                  <MenuUserPanel href="/profile" name="Profile" />
-                  <MenuUserPanel href="/settings" name="Settings" />
-                  <MenuUserPanel href="/logout" name="Log Out" />
+                  <MenuUserPanel href="/profile" name="Profile" icon="fas fa-user" />
+                  <MenuUserPanel href="/settings" name="Settings" icon="fas fa-cogs" />
+                  <MenuUserPanel href="/logout" name="Log Out" icon="fas fa-sign-out-alt" />
                 </div>
               </div>
             </li>
