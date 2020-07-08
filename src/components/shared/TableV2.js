@@ -5,7 +5,7 @@ import RowsUser from "./RowsUser";
 
 const Table2 = ({ columns, props }) => {
   return (
-    <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+    <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
       <thead className="text-white">
         <LoadColumn columns={columns} props={props} />
       </thead>
@@ -25,7 +25,7 @@ const LoadColumn = ({ columns, props }) => {
         {props.items.map((user, i) => (
           <tr
             key={i}
-            className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+            className="bg-gray-600 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
             {columns.map((name, i) => (
               <th key={i} className="p-3 text-left">
                 {name}
