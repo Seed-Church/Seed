@@ -8,13 +8,13 @@ const Header = () => {
         <div className="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
           <a href="#">
             <span className="text-xl pl-2">
-            🌱🌱Corin Theme 🌱🌱
+            🌱🌱🌱
             </span>
           </a>
         </div>
 
         <div className="flex flex-1 md:w-1/3 justify-center md:justify-start text-white px-2">
-          <span className="relative w-full">
+          {/* <span className="relative w-full">
             <input
               type="search"
               placeholder="Search"
@@ -28,7 +28,7 @@ const Header = () => {
                 <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
               </svg>
             </div>
-          </span>
+          </span> */}
         </div>
 
         <div className="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end">
