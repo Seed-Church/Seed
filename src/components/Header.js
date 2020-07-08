@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import MenuUserPanel from "./shared/MenuUserPanel";
 const Header = () => {
   const [visible, setVisible] = useState(false);
+  const style = {
+    backgroundColor: `rgba(17, 21, 22, 0.14)`,
+  };
   return (
-    <nav className="bg-gray-900 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
+    <nav className="pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0" style={style}>
       <div className="flex flex-wrap items-center">
         <div className="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
           <a href="#">
-            <span className="text-xl pl-2">
-            🌱🌱🌱
-            </span>
+            <span className="text-xl pl-2">🌱🌱🌱</span>
           </a>
         </div>
 
@@ -38,7 +39,7 @@ const Header = () => {
                 ยังคิดไม่ออก
               </a>
             </li>
-        
+
             <li className="flex-1 md:flex-none md:mr-3">
               <div className="relative inline-block">
                 <button

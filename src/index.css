@@ -8,3 +8,7 @@
 .font-body {
   font-family: 'Comnic Mono','Niramit', sans-serif;
 }
+
+body {
+  background-color: rgba(17, 21, 22, 0.9);
+}
