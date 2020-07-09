@@ -6,7 +6,6 @@ import Main from "./views/layout/Main";
 import Cards from "./components/Cards";
 import Modal from './components/Modal'
 import CardBlogs from "./components/CardBlogs";
-import UsersCard from "./components/UsersCard";
 import UsersContainner from "./container/UsersContainner";
 import generateMain from "./hoc/generateMain";
 import Maintenance from "./components/Maintenance";

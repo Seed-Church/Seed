@@ -7,6 +7,7 @@ import Title from "./shared/Title";
 import Alert from "../components/shared/Alert";
 import FormData from "form-data";
 import moment from "moment";
+import Resizer from "react-image-file-resizer";
 import {
   expectFakeValue,
   UnExpectFakeValue,
@@ -53,7 +54,21 @@ const Forms = (props) => {
   }, [props.items, props.editing]);
   const handleChangeUpload = (event) => {
     console.log(`handleChangeUpload`, event.target.files[0]);
-    if (event.target.files[0] !== undefined) setpreviewImage(URL.createObjectURL(event.target.files[0]));
+    if (event.target.files[0] !== undefined) {
+      Resizer.imageFileResizer(
+        event.target.files[0],
+        300,
+        300,
+        "PNG",
+        100,
+        0,
+        (uri) => {
+          setpreviewImage(URL.createObjectURL(uri));
+        },
+        "blob"
+      );
+      //setpreviewImage(URL.createObjectURL(event.target.files[0]));
+    }
   };
   const onSubmit = (data) => {
     console.log(`data`, data);
@@ -73,7 +88,19 @@ const Forms = (props) => {
     form.append("Position", data.Position);
     form.append("Salary", data.Salary);
     form.append("Where", data.Where);
-    form.append("pictureProfile", data.ProfilePicture[0]);
+    Resizer.imageFileResizer(
+      data.ProfilePicture[0],
+      300,
+      300,
+      "PNG",
+      100,
+      0,
+      (images) => {
+        form.append("pictureProfile", images);
+      },
+      "blob"
+    );
+
     if (props.editing) {
       props.dispatchUpdateUser(props.items.id, form);
       setOpenAlert(flags.edit);
@@ -98,6 +125,7 @@ const Forms = (props) => {
       setValue("Salary", "");
       setValue("Where", "");
       setValue("pictureProfile", "");
+      setpreviewImage("");
     }
 
     //props.history.push(`/board`);
@@ -200,7 +228,7 @@ const Forms = (props) => {
           <div className="bg-gray-400">
             {previewImage !== "" ? (
               <img
-                className="object-contain sm:object-cover md:object-fill lg:object-none xl:object-scale-down w-40"
+                className="object-contain sm:object-cover md:object-fill lg:object-none xl:object-scale-down"
                 src={previewImage}
               />
             ) : (
