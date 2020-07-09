@@ -20,16 +20,17 @@ import {
 } from "./mock/form";
 const Forms = (props) => {
   let flags = { complete: 0, no_action: 1, something_wrong: 2, edit: 3 };
-  const [ButtonStyle,setButtonStyle] = useState({color : `blue` , name :`เพิ่มข้อมูล`})
+  const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `เพิ่มข้อมูล` });
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
   const [previousGroup, setPreviousGroup] = useState({});
   const [previousStatus, setPreviousStatus] = useState({});
   const { register, handleSubmit, watch, errors, control, setValue, patternSelect } = useForm(expectFakeValue);
+  const [previewImage, setpreviewImage] = useState();
   useEffect(() => {
     props.dispatchFetchStatuses();
     props.dispatchFetchGroups();
     if (props.editing && props.items.usersRelation) {
-      setButtonStyle({color : `yellow` , name :`แก้ไขข้อมูล`})
+      setButtonStyle({ color: `yellow`, name: `แก้ไขข้อมูล` });
       setValue("firstName", props.items.firstName);
       setValue("nickName", props.items.nickName);
       setValue("lastName", props.items.lastName);
@@ -50,6 +51,10 @@ const Forms = (props) => {
       setValue("pictureProfile", props.items.pictureProfile);
     }
   }, [props.items, props.editing]);
+  const handleChangeUpload = (event) => {
+    console.log(`handleChangeUpload`, event.target.files[0]);
+    setpreviewImage(URL.createObjectURL(event.target.files[0]));
+  };
   const onSubmit = (data) => {
     console.log(`data`, data);
     let form = new FormData();
@@ -155,7 +160,7 @@ const Forms = (props) => {
         </div>
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">
-          {/* <SelectBox label="พี่เลี้ยง" values={mentors} name="Mentor" register={register} /> */}
+          <SelectBox label="พี่เลี้ยง" name="Mentor" register={register} />
           <SelectBox
             label="กลุ่มแคร์"
             values={props.groups}
@@ -189,6 +194,7 @@ const Forms = (props) => {
             name="ProfilePicture"
             register={register(patternFile)}
             errors={errors.ProfilePicture}
+            onChange={handleChangeUpload}
           />
         </div>
         <div className="flex flex-wrap w-full">
