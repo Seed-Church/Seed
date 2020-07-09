@@ -215,6 +215,13 @@ const Forms = (props) => {
           <Form label="อาชีพ" type="text" name="Position" register={register(patternName)} errors={errors.Position} />
           <Form label="รายได้" type="number" name="Salary" register={register(patternSalary)} errors={errors.Salary} />
           <Form label="ทำที่ไหน" type="text" name="Where" register={register(patternAddress)} errors={errors.Where} />
+        </div>
+        <div className="flex flex-wrap mb-6 mt-3">
+        <img
+          className="w-48 h-48 object-cover object-center"
+          src={props.items.pictureProfile}
+          alt="avatar"
+        />
           <Form
             label="รูปตัวเอง"
             type="file"
