@@ -146,46 +146,16 @@ const Forms = (props) => {
       <form className="mx-8" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <p className="mt-8 font-bold">ข้อมูลทั่วไป</p>
         <div className="flex flex-wrap mb-6 mt-3">
-          <Form
-            label="ชื่อต้น"
-            type="text"
-            name="firstName"
-            register={register(patternName)}
-            errors={errors.firstName}
-          />
+          <Form label="ชื่อต้น" type="text" name="firstName" register={register(patternName)} errors={errors.firstName} />
           <Form label="นามสกุล" type="text" name="lastName" register={register(patternName)} errors={errors.lastName} />
-          <Form
-            label="ชื่อเล่น"
-            type="text"
-            name="nickName"
-            register={register(patternName)}
-            errors={errors.nickName}
-          />
+          <Form label="ชื่อเล่น" type="text" name="nickName" register={register(patternName)} errors={errors.nickName} />
           <Form label="อายุ" type="number" name="Age" register={register(patternAge)} errors={errors.Age} />
         </div>
         <div className="flex flex-wrap  mb-6 mt-3">
-          <Form
-            label="facebook"
-            type="text"
-            name="Facebook"
-            register={register(patternFacebook)}
-            errors={errors.Facebook}
-          />
+          <Form label="facebook" type="text" name="Facebook" register={register(patternFacebook)} errors={errors.Facebook} />
           <Form label="เบอร์มือถือ" type="text" name="Tel" register={register(patternTel)} errors={errors.Tel} />
-          <Form
-            label="ที่อยู่"
-            type="text"
-            name="Address"
-            register={register(patternAddress)}
-            errors={errors.Address}
-          />
-          <Form
-            label="ความสามารถพิเศษ"
-            type="text"
-            name="Ability"
-            register={register(patternAddress)}
-            errors={errors.Ability}
-          />
+          <Form label="ที่อยู่" type="text" name="Address" register={register(patternAddress)} errors={errors.Address} />
+          <Form label="ความสามารถพิเศษ" type="text" name="Ability" register={register(patternAddress)} errors={errors.Ability} />
         </div>
         <p className="mt-8 font-bold">ข้อมูลฝ่ายวิญญาณ</p>
         <div className="flex flex-wrap  mb-2">
@@ -215,13 +185,6 @@ const Forms = (props) => {
           <Form label="อาชีพ" type="text" name="Position" register={register(patternName)} errors={errors.Position} />
           <Form label="รายได้" type="number" name="Salary" register={register(patternSalary)} errors={errors.Salary} />
           <Form label="ทำที่ไหน" type="text" name="Where" register={register(patternAddress)} errors={errors.Where} />
-        </div>
-        <div className="flex flex-wrap mb-6 mt-3">
-        <img
-          className="w-48 h-48 object-cover object-center"
-          src={props.items.pictureProfile}
-          alt="avatar"
-        />
           <Form
             label="รูปตัวเอง"
             type="file"
@@ -234,10 +197,7 @@ const Forms = (props) => {
         <div className="flex flex-wrap mb-6 mt-3">
           <div className="bg-gray-400">
             {previewImage !== "" ? (
-              <img
-                className="object-contain sm:object-cover md:object-fill lg:object-none xl:object-scale-down"
-                src={previewImage}
-              />
+              <img className="object-contain sm:object-cover md:object-fill lg:object-none xl:object-scale-down" src={previewImage} />
             ) : (
               ""
             )}
