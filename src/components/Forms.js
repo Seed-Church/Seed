@@ -197,10 +197,10 @@ const Forms = (props) => {
           />
         </div>
         <div className="flex flex-wrap mb-6 mt-3">
-          <div class="bg-gray-400">
+          <div className="bg-gray-400">
             {previewImage !== "" ? (
               <img
-                class="object-contain sm:object-cover md:object-fill lg:object-none xl:object-scale-down h-48 w-52"
+                className="object-contain sm:object-cover md:object-fill lg:object-none xl:object-scale-down w-40"
                 src={previewImage}
               />
             ) : (
