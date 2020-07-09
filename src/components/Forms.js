@@ -25,7 +25,7 @@ const Forms = (props) => {
   const [previousGroup, setPreviousGroup] = useState({});
   const [previousStatus, setPreviousStatus] = useState({});
   const { register, handleSubmit, watch, errors, control, setValue, patternSelect } = useForm(expectFakeValue);
-  const [previewImage, setpreviewImage] = useState();
+  const [previewImage, setpreviewImage] = useState("");
   useEffect(() => {
     props.dispatchFetchStatuses();
     props.dispatchFetchGroups();
@@ -53,7 +53,7 @@ const Forms = (props) => {
   }, [props.items, props.editing]);
   const handleChangeUpload = (event) => {
     console.log(`handleChangeUpload`, event.target.files[0]);
-    setpreviewImage(URL.createObjectURL(event.target.files[0]));
+    if (event.target.files[0] !== undefined) setpreviewImage(URL.createObjectURL(event.target.files[0]));
   };
   const onSubmit = (data) => {
     console.log(`data`, data);
@@ -114,6 +114,7 @@ const Forms = (props) => {
       ) : (
         ``
       )}
+
       <form className="mx-8" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <p className="mt-8 font-bold">ข้อมูลทั่วไป</p>
         <div className="flex flex-wrap mb-6 mt-3">
@@ -186,8 +187,6 @@ const Forms = (props) => {
           <Form label="อาชีพ" type="text" name="Position" register={register(patternName)} errors={errors.Position} />
           <Form label="รายได้" type="number" name="Salary" register={register(patternSalary)} errors={errors.Salary} />
           <Form label="ทำที่ไหน" type="text" name="Where" register={register(patternAddress)} errors={errors.Where} />
-        </div>
-        <div className="flex flex-wrap mb-6 mt-3">
           <Form
             label="รูปตัวเอง"
             type="file"
@@ -196,6 +195,18 @@ const Forms = (props) => {
             errors={errors.ProfilePicture}
             onChange={handleChangeUpload}
           />
+        </div>
+        <div className="flex flex-wrap mb-6 mt-3">
+          <div class="bg-gray-400">
+            {previewImage !== "" ? (
+              <img
+                class="object-contain sm:object-cover md:object-fill lg:object-none xl:object-scale-down h-48 w-52"
+                src={previewImage}
+              />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
