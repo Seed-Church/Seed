@@ -25,7 +25,7 @@ const UserCard = ({ user, props }) => {
     <React.Fragment>
       <div className="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4 mx-8">
         <img
-          className="w-full h-56 object-cover object-center"
+          className="w-full h-auto object-cover object-center"
           // src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
           src={user.pictureProfile}
           alt="avatar"

@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import MenuUserPanel from "./shared/MenuUserPanel";
+
 const Header = () => {
   const [visible, setVisible] = useState(false);
+  const style = {
+    backgroundColor: `rgba(17, 21, 22, 0.14)`,
+  };
   return (
-    <nav className="bg-gray-900 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
+    <nav className="pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0" style={style}>
       <div className="flex flex-wrap items-center">
         <div className="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
           <a href="#">
-            <span className="text-xl pl-2">
-            🌱🌱Corin Theme 🌱🌱
-            </span>
+            <span className="text-xl pl-2">🌱🌱🌱</span>
           </a>
         </div>
 
         <div className="flex flex-1 md:w-1/3 justify-center md:justify-start text-white px-2">
-          <span className="relative w-full">
+          {/* <span className="relative w-full">
             <input
               type="search"
               placeholder="Search"
@@ -28,7 +30,7 @@ const Header = () => {
                 <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
               </svg>
             </div>
-          </span>
+          </span> */}
         </div>
 
         <div className="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end">
@@ -38,7 +40,7 @@ const Header = () => {
                 ยังคิดไม่ออก
               </a>
             </li>
-        
+
             <li className="flex-1 md:flex-none md:mr-3">
               <div className="relative inline-block">
                 <button
@@ -58,9 +60,9 @@ const Header = () => {
                     "dropdownlist absolute bg-gray-900 text-white right-0 mt-3 p-3 overflow-auto z-30 " +
                     (visible ? "" : "invisible")
                   }>
-                  <MenuUserPanel href="/profile" name="Profile" />
-                  <MenuUserPanel href="/settings" name="Settings" />
-                  <MenuUserPanel href="/logout" name="Log Out" />
+                  <MenuUserPanel href="/profile" name="Profile" icon="fas fa-user" />
+                  <MenuUserPanel href="/settings" name="Settings" icon="fas fa-cogs" />
+                  <MenuUserPanel href="/logout" name="Log Out" icon="fas fa-sign-out-alt" />
                 </div>
               </div>
             </li>

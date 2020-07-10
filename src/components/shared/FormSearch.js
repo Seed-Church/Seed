@@ -1,5 +1,6 @@
 import React from "react";
-const FormSearch = ({handleChange}) => {
+
+const FormSearch = ({ handleChange }) => {
   return (
     <div className="container mx-5 py-3">
       <input

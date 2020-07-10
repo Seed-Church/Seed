@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = ({ label, type, name, register, errors }) => {
+const Form = ({ label, type, name, register, errors, onChange = null }) => {
   return (
     <div className="w-full md:w-1/5 px-3 md:mb-0 mt-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold text-xs mb-2">{label}</label>
@@ -9,6 +9,7 @@ const Form = ({ label, type, name, register, errors }) => {
         type={type}
         name={name}
         ref={register}
+        onChange={onChange}
       />
       <span style={{ color: "red", fontSize: "0.700em" }}>{errors && errors.message}</span>
     </div>
