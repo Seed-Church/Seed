@@ -9,11 +9,11 @@ Project Description
 ### In Progress
 
 - [ ] auth  
-- [ ] fix layout table  
-- [ ] fix layout table  
+- [ ] change color icon  
 
 ### Done ✓
 
+- [x] fix layout table  
 - [x] ค่า file ตอนโหลดไม่ถูกส่ง  
 - [x] upload preview image  
 - [x] image preview  
