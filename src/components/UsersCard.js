@@ -6,7 +6,8 @@ const UsersCard = (props) => {
   useEffect(() => {
     props.dispatchFetchUsers();
   }, []);
-
+  console.log(`props,`,props);
+  
   const handleChange = (e) => {
     console.log(e.target.value);
     props.dispatchSearcheUser(e.target.value);
@@ -32,7 +33,7 @@ const LoadRow = ({ list, props }) => {
   } else
     return (
       <React.Fragment>
-        {list.map((user, i) => (
+        {list.reverse().map((user, i) => (
           <UserCard key={i} user={user} props={props} />
         ))}
       </React.Fragment>
