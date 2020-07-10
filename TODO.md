@@ -6,6 +6,8 @@ Project Description
 
 - [ ] create animetion UI  
 - [ ] upload preview image  
+- [ ] ค่า file ตอนโหลดไม่ถูกส่ง  
+- [ ] fix layout รูป  
 
 ### In Progress
 

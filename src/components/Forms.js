@@ -94,7 +94,7 @@ const Forms = (props) => {
     if (props.editing) {
       props.dispatchUpdateUser(props.items.id, form);
       setOpenAlert(flags.edit);
-      props.history.push(`/usercard`);
+      // props.history.push(`/usercard`);
     } else {
       props.dispatchAddUser(form);
       setOpenAlert(flags.complete);
