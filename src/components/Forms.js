@@ -91,14 +91,17 @@ const Forms = (props) => {
     form.append("Position", data.Position);
     form.append("Salary", data.Salary);
     form.append("Where", data.Where);
-    form.append("pictureProfile", data.ProfilePicture[0]);
     if (props.editing) {
+      if (data.ProfilePicture[0]) {
+        form.append("pictureProfile", data.ProfilePicture[0]); // file or URL
+      } else form.append("pictureProfile", data.pictureProfile);
       props.dispatchUpdateUser(props.items.id, form);
       setOpenAlert(flags.edit);
-      // setTimeout(() => {
-      //   props.history.push(`/usercard`);
-      // }, 1000);
+      setTimeout(() => {
+        props.history.push(`/usercard`);
+      }, 1000);
     } else {
+      form.append("pictureProfile", data.ProfilePicture[0]);
       props.dispatchAddUser(form);
       setOpenAlert(flags.complete);
       setTimeout(() => {
@@ -195,6 +198,7 @@ const Forms = (props) => {
             onChange={handleChangeUpload}
           />
         </div>
+        <Form label="" type="hidden" name="pictureProfile" register={register()} />
         <div className="flex flex-wrap mb-6 mt-3">
           <div className="bg-gray-400">
             {previewImage !== "" ? (
