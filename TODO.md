@@ -5,16 +5,17 @@ Project Description
 ### Todo
 
 - [ ] create animetion UI  
-- [ ] upload preview image  
-- [ ] ค่า file ตอนโหลดไม่ถูกส่ง  
-- [ ] fix layout รูป  
 
 ### In Progress
 
 - [ ] auth  
+- [ ] fix layout table  
+- [ ] fix layout table  
 
 ### Done ✓
 
+- [x] ค่า file ตอนโหลดไม่ถูกส่ง  
+- [x] upload preview image  
 - [x] image preview  
 - [x] change table  
 - [x] search and pagnition table  
