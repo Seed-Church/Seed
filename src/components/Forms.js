@@ -49,6 +49,7 @@ const Forms = (props) => {
       setValue("Position", props.items.usersRelation.careers.position);
       setValue("Salary", props.items.usersRelation.careers.salary);
       setValue("Where", props.items.usersRelation.careers.address);
+
       setValue("pictureProfile", props.items.pictureProfile);
     }
   }, [props.items, props.editing]);
@@ -64,12 +65,10 @@ const Forms = (props) => {
         0,
         (uri) => {
           console.log(URL.createObjectURL(uri));
-          
           setpreviewImage(URL.createObjectURL(uri));
         },
         "blob"
       );
-      //setpreviewImage(URL.createObjectURL(event.target.files[0]));
     }
   };
   const onSubmit = (data) => {
@@ -90,11 +89,12 @@ const Forms = (props) => {
     form.append("Position", data.Position);
     form.append("Salary", data.Salary);
     form.append("Where", data.Where);
-    form.append("pictureProfile",  data.ProfilePicture[0],);
-  
+    form.append("pictureProfile", data.ProfilePicture[0]);
+
     if (props.editing) {
       props.dispatchUpdateUser(props.items.id, form);
       setOpenAlert(flags.edit);
+      props.history.push(`/usercard`);
     } else {
       props.dispatchAddUser(form);
       setOpenAlert(flags.complete);
@@ -119,7 +119,7 @@ const Forms = (props) => {
       setpreviewImage("");
     }
 
-    //props.history.push(`/board`);
+
   };
   return (
     <React.Fragment>
@@ -193,6 +193,7 @@ const Forms = (props) => {
               ""
             )}
           </div>
+          <div className="">{props.items.pictureProfile ? <img className="object-scale-down h-48 w-full" src={props.items.pictureProfile} /> : ""}</div>
         </div>
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">

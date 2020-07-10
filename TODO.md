@@ -4,15 +4,16 @@ Project Description
 
 ### Todo
 
-- [ ] auth  
 - [ ] create animetion UI  
+- [ ] upload preview image  
 
 ### In Progress
 
-- [ ] image preview  
+- [ ] auth  
 
 ### Done ✓
 
+- [x] image preview  
 - [x] change table  
 - [x] search and pagnition table  
 - [x] change color theam  
