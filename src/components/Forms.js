@@ -63,6 +63,8 @@ const Forms = (props) => {
         100,
         0,
         (uri) => {
+          console.log(URL.createObjectURL(uri));
+          
           setpreviewImage(URL.createObjectURL(uri));
         },
         "blob"
@@ -88,19 +90,8 @@ const Forms = (props) => {
     form.append("Position", data.Position);
     form.append("Salary", data.Salary);
     form.append("Where", data.Where);
-    Resizer.imageFileResizer(
-      data.ProfilePicture[0],
-      300,
-      300,
-      "PNG",
-      100,
-      0,
-      (images) => {
-        form.append("pictureProfile", images);
-      },
-      "blob"
-    );
-
+    form.append("pictureProfile",  data.ProfilePicture[0],);
+  
     if (props.editing) {
       props.dispatchUpdateUser(props.items.id, form);
       setOpenAlert(flags.edit);
