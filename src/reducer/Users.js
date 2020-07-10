@@ -7,6 +7,7 @@ import {
   DELETE_USERS_SUCCESS,
   UPDATE_USERS_SUCCESS,
   SEARCH_USERS_SUCCESS,
+  FETCH_ONE_USERS_SUCCESS,
 } from "../constants/Users";
 
 const initialState = {
@@ -57,6 +58,11 @@ const Users = (state = initialState, action) => {
         statusAPI: action.statusAPI,
       };
     case SEARCH_USERS_SUCCESS:
+      return {
+        ...state,
+        items: action.items,
+      };
+    case FETCH_ONE_USERS_SUCCESS:
       return {
         ...state,
         items: action.items,

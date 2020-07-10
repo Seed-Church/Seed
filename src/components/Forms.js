@@ -96,10 +96,11 @@ const Forms = (props) => {
         form.append("pictureProfile", data.ProfilePicture[0]); // file or URL
       } else form.append("pictureProfile", data.pictureProfile);
       props.dispatchUpdateUser(props.items.id, form);
+      props.dispatchFetchOneUsers(props.match.params.id)
       setOpenAlert(flags.edit);
       setTimeout(() => {
-        props.history.push(`/usercard`);
-      }, 1000);
+        setOpenAlert(flags.no_action);
+      }, 5000);
     } else {
       form.append("pictureProfile", data.ProfilePicture[0]);
       props.dispatchAddUser(form);
