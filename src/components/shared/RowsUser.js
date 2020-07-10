@@ -23,25 +23,39 @@ const RowsUser = ({ user, props }) => {
   };
   return (
     <React.Fragment>
-      <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-        <td className="border-grey-light border hover:bg-gray-100 p-3">{user.id}</td>
-        <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
-          {user.nickName} {user.firstName} {user.lastName}
+      <tr>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 w-10 h-10">
+              <img
+                class="w-full h-full rounded-full"
+                src={user.pictureProfile}
+                alt=""
+              />
+            </div>
+            <div class="ml-3">
+  <p class="text-gray-900 whitespace-no-wrap">{user.nickName} {user.firstName} {user.lastName}</p>
+            </div>
+          </div>
         </td>
-        <td className="border-grey-light border hover:bg-gray-100 p-3">{user.usersRelation.statuses.name}</td>
-        <td className="border-grey-light border hover:bg-gray-100 p-3">{user.usersRelation.groups.name}</td>
-        <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p class="text-gray-900 whitespace-no-wrap">Admin</p>
+        </td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p class="text-gray-900 whitespace-no-wrap">Jan 21, 2020</p>
+        </td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+            <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+            <span class="relative">Activo</span>
+          </span>
+        </td>
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <ButtonArmy value="แก้ไข" color="yellow" OnClick={() => handleEditClick(user.id)} />{" "}
           <ButtonArmy value="ลบ" color="red" OnClick={openModal} />
         </td>
       </tr>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        handle={handleDeleteClick}
-        userId={user.id}
-      />
+      <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} handle={handleDeleteClick} userId={user.id} />
     </React.Fragment>
   );
 };
