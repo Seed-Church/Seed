@@ -8,6 +8,7 @@ import Alert from "../components/shared/Alert";
 import FormData from "form-data";
 import moment from "moment";
 import Resizer from "react-image-file-resizer";
+import Progressbar from "./shared/Progressbar";
 import {
   expectFakeValue,
   UnExpectFakeValue,
@@ -19,6 +20,7 @@ import {
   patternSalary,
   patternFile,
 } from "./mock/form";
+
 const Forms = (props) => {
   let flags = { complete: 0, no_action: 1, something_wrong: 2, edit: 3 };
   const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `เพิ่มข้อมูล` });
@@ -52,9 +54,9 @@ const Forms = (props) => {
 
       setValue("pictureProfile", props.items.pictureProfile);
     }
+    console.log(`propsFOrm`, props);
   }, [props.items, props.editing]);
   const handleChangeUpload = (event) => {
-    console.log(`handleChangeUpload`, event.target.files[0]);
     if (event.target.files[0] !== undefined) {
       Resizer.imageFileResizer(
         event.target.files[0],
@@ -90,14 +92,18 @@ const Forms = (props) => {
     form.append("Salary", data.Salary);
     form.append("Where", data.Where);
     form.append("pictureProfile", data.ProfilePicture[0]);
-
     if (props.editing) {
       props.dispatchUpdateUser(props.items.id, form);
       setOpenAlert(flags.edit);
-      // props.history.push(`/usercard`);
+      // setTimeout(() => {
+      //   props.history.push(`/usercard`);
+      // }, 1000);
     } else {
       props.dispatchAddUser(form);
       setOpenAlert(flags.complete);
+      setTimeout(() => {
+        setOpenAlert(flags.no_action);
+      }, 5000);
       setValue("firstName", "");
       setValue("nickName", "");
       setValue("lastName", "");
@@ -118,18 +124,22 @@ const Forms = (props) => {
       setValue("pictureProfile", "");
       setpreviewImage("");
     }
-
-
   };
   return (
     <React.Fragment>
       <Title name="Form" />
       {isOpenAlert === flags.complete ? (
-        <Alert color="teal" topic="เพิ่มข้อมูลเรียบร้อย" message="ข้อมูลถูกเพิ่มลงในฐานข้อมูลแล้ว" />
+        <React.Fragment>
+          <Alert color="teal" topic="เพิ่มข้อมูลเรียบร้อย" message="ข้อมูลถูกเพิ่มลงในฐานข้อมูลแล้ว" />
+          <Progressbar />
+        </React.Fragment>
       ) : isOpenAlert === flags.something_wrong ? (
         <Alert color="red" topic="เพิ่มข้อมูลไม่ได้" message="ข้อมูลยังไม่ถูกเพิ่มในฐานข้อมูล" />
       ) : isOpenAlert === flags.edit ? (
-        <Alert color="yellow" topic="แก้ไขข้อมูลเรียบร้อย" message="ข้อมูลถูกแก้ไข้ไปยังฐานข้อมูลแล้ว" />
+        <React.Fragment>
+          <Alert color="yellow" topic="แก้ไขข้อมูลเรียบร้อย" message="ข้อมูลถูกแก้ไข้ไปยังฐานข้อมูลแล้ว" />
+          <Progressbar />
+        </React.Fragment>
       ) : (
         ``
       )}
@@ -193,7 +203,9 @@ const Forms = (props) => {
               ""
             )}
           </div>
-          <div className="">{props.items.pictureProfile ? <img className="object-scale-down h-48 w-full" src={props.items.pictureProfile} /> : ""}</div>
+          <div className="">
+            {props.items.pictureProfile ? <img className="object-scale-down h-48 w-full" src={props.items.pictureProfile} /> : ""}
+          </div>
         </div>
         <div className="flex flex-wrap w-full">
           <div className="w-full md:w-1/2 px-4 md:mb-0 mt-3">
