@@ -60,22 +60,13 @@ const UserCard = ({ user, props }) => {
           </p>
           <div className="flex items-center mt-4 text-yellow-500">
             👩‍🏫 <h1 className="px-2 text-sm">พี่เลี้ยง ใครสักคน</h1>
-          </div>
-          <div className="flex items-center mt-4 text-pink-600">
-            {/* 👨‍👩‍👧‍👦 <h1 className="px-2 text-sm">กลุ่มแคร์ {user.usersRelation.groups.name}</h1>
-            💕 <h1 className="px-2 text-sm">สถานะ {user.usersRelation.statuses.name}</h1> */}
-          </div>
-          <div className="flex items-center mt-4 text-teal-600">
             📅 <h1 className="px-2 text-sm">{user.dateBelieve}</h1>
-            {/* ⏱️ <h1 className="px-2 text-sm">มีความเชื่อมาแล้ว {currectDate.diff(userDate, `day`)} วัน </h1> */}
           </div>
           <div className="flex items-center mt-4 text-blue-300">
             <i className="fab fa-facebook-square fa-lg"></i> <h1 className="px-2 text-sm"> {user.facebook}</h1>
           </div>
           <div className="flex items-center mt-4 text-gray-700">
             🏠 <h1 className="px-2 text-sm"> {user.Address}</h1>
-          </div>
-          <div className="flex items-center mt-4 text-purple-600">
             📱 <h1 className="px-2 text-sm"> {user.Tel}</h1>
           </div>
           <div className="flex items-center mt-4 text-yellow-600">

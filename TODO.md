@@ -9,10 +9,11 @@ Project Description
 ### In Progress
 
 - [ ] auth  
-- [ ] change color icon  
+- [ ] fix image size table  
 
 ### Done ✓
 
+- [x] change color icon  
 - [x] fix layout table  
 - [x] ค่า file ตอนโหลดไม่ถูกส่ง  
 - [x] upload preview image  
