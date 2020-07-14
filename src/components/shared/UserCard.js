@@ -24,6 +24,25 @@ const UserCard = ({ user, props }) => {
   return (
     <React.Fragment>
       <div className="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4 mx-8">
+        <div className="flex flex-wrap absolute mt-2 mr-3 mx-2">
+          <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#{user.id}</span>
+          <span class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            👨‍👩‍👧‍👦{user.usersRelation.groups.name}
+          </span>
+          <span class="inline-block bg-pink-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            💕{user.usersRelation.statuses.name}
+          </span>
+          <span class="inline-block bg-orange-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            ⏱️{currectDate.diff(userDate, `day`)} วัน
+          </span>
+        </div>
+
+        {/* <span className="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 mx-16 absolute">
+           💕{user.usersRelation.statuses.name}
+       </span>
+         <span class="inline-block bg-pink-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 mx-32 absolute">
+           👨‍👩‍👧‍👦{user.usersRelation.groups.name}
+         </span> */}
         <img
           className="w-full h-auto object-cover object-center"
           // src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
@@ -37,27 +56,17 @@ const UserCard = ({ user, props }) => {
         </div>
         <div className="py-4 px-6">
           <p className="py-2 text-sm  text-blue-600">
-            📜 Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก สัก 2-3 บรรทัด Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก
-            สัก 2-3 บรรทัด
+            📜 Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก สัก 2-3 บรรทัด Story เรื่องราวของบุคคลนี้ .. นิสัย บุคคลิก สัก 2-3 บรรทัด
           </p>
           <div className="flex items-center mt-4 text-yellow-500">
             👩‍🏫 <h1 className="px-2 text-sm">พี่เลี้ยง ใครสักคน</h1>
-          </div>
-          <div className="flex items-center mt-4 text-pink-600">
-            👨‍👩‍👧‍👦 <h1 className="px-2 text-sm">กลุ่มแคร์ {user.usersRelation.groups.name}</h1>
-            💕 <h1 className="px-2 text-sm">สถานะ {user.usersRelation.statuses.name}</h1>
-          </div>
-          <div className="flex items-center mt-4 text-teal-600">
             📅 <h1 className="px-2 text-sm">{user.dateBelieve}</h1>
-            ⏱️ <h1 className="px-2 text-sm">มีความเชื่อมาแล้ว {currectDate.diff(userDate, `day`)} วัน </h1>
           </div>
           <div className="flex items-center mt-4 text-blue-300">
             <i className="fab fa-facebook-square fa-lg"></i> <h1 className="px-2 text-sm"> {user.facebook}</h1>
           </div>
           <div className="flex items-center mt-4 text-gray-700">
             🏠 <h1 className="px-2 text-sm"> {user.Address}</h1>
-          </div>
-          <div className="flex items-center mt-4 text-purple-600">
             📱 <h1 className="px-2 text-sm"> {user.Tel}</h1>
           </div>
           <div className="flex items-center mt-4 text-yellow-600">
@@ -76,13 +85,7 @@ const UserCard = ({ user, props }) => {
           </div>
         </div>
       </div>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        handle={handleDeleteClick}
-        userId={user.id}
-      />
+      <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} handle={handleDeleteClick} userId={user.id} />
     </React.Fragment>
   );
 };

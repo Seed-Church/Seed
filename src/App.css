@@ -1,20 +1,5 @@
-@media (min-width: 640px) {
-  table {
-    display: inline-table !important;
-  }
 
-  thead tr:not(:first-child) {
-    display: none;
-  }
-}
 
-td:not(:last-child) {
-  border-bottom: 0;
-}
-
-th:not(:last-child) {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-}
 
 .fa-facebook-square {
   color: #3b5998;
@@ -32,6 +17,4 @@ input:focus{
 input:focus:hover{
   outline: none;
   box-shadow: 0px 0px 5px #09E8D1;
-
-  
 }

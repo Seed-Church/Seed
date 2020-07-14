@@ -5,14 +5,18 @@ Project Description
 ### Todo
 
 - [ ] create animetion UI  
-- [ ] upload preview image  
 
 ### In Progress
 
 - [ ] auth  
+- [ ] fix image size table  
 
 ### Done ✓
 
+- [x] change color icon  
+- [x] fix layout table  
+- [x] ค่า file ตอนโหลดไม่ถูกส่ง  
+- [x] upload preview image  
 - [x] image preview  
 - [x] change table  
 - [x] search and pagnition table  
