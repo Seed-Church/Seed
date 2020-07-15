@@ -1,9 +1,6 @@
 import { connect } from "react-redux";
-import Forms from "../components/Forms";
-import Board from "../components/Board";
-import UsersCard from "../components/UsersCard";
 import { authHuman } from "../actions/Auth";
-
+import Login from "../views/Login";
 
 const mapStateToProps = (state) => {
   return {
@@ -21,8 +18,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+const LoginWithLogic = connect(mapStateToProps, mapDispatchToProps)(Login);
 
-
-export default {
-
-};
+export default LoginWithLogic;

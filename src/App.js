@@ -7,10 +7,11 @@ import Cards from "./components/Cards";
 import Modal from "./components/Modal";
 import CardBlogs from "./components/CardBlogs";
 import UsersContainner from "./container/UsersContainner";
+import LoginWithLogic from './container/AuthContainer'
 import generateMain from "./hoc/generateMain";
 import Maintenance from "./components/Maintenance";
 import { AuthContext } from "./context/auth";
-import PrivateRoute from './context/PrivateRoute';
+import PrivateRoute from "./context/PrivateRoute";
 const history = createBrowserHistory();
 const CardWithLayout = generateMain(Cards);
 const ModalWithLayout = generateMain(Modal);
@@ -25,6 +26,7 @@ function App() {
     <React.Fragment>
       <AuthContext.Provider value={true}>
         <Router history={history}>
+          <Route exact path="/login" component={LoginWithLogic} />
           <Route exact path="/" component={Main} />
           <Route exact path="/form" component={FormsWithLayout} />
           <Route exact path="/form/:id/edit" component={FormsWithLayout} />

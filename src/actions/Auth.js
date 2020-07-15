@@ -1,6 +1,6 @@
 import generateAction from "../hoc/generateAction";
 import getActionGroup from "../utils/getActionGroup";
-import { AUTH_HUMAN_PENDING, AUTH_HUMAN_ERROR, AUTH_HUMAN_SUCCESS } from "../constants/Groups";
+import { AUTH_HUMAN_PENDING, AUTH_HUMAN_ERROR, AUTH_HUMAN_SUCCESS } from "../constants/Auth";
 
 const authHumanPending = () => {
   return {
