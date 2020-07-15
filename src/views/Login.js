@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+
 const Login = (props) => {
-  console.log(`propsAuth`,props);
-  
+  console.log(`propsAuth`, props);
+  const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `Login` });
+  const { register, handleSubmit, watch, errors } = useForm();
+  const onSubmit = (data) => console.log(data);
   return (
     <React.Fragment>
       <div>
@@ -10,7 +14,7 @@ const Login = (props) => {
           <span className="text-sm"></span>
         </div>
         <div className="flex justify-center my-2 mx-4 md:mx-0">
-          <form className="w-full max-w-xl bg-teal-100 rounded-lg shadow-xl p-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-xl bg-teal-100 rounded-lg shadow-xl p-6">
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-full px-3 mb-6">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">
@@ -19,8 +23,11 @@ const Login = (props) => {
                 <input
                   className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                   type="text"
+                  name="username"
                   required
+                  ref={register({ required: true })}
                 />
+                {errors.username && <span class="msg-error">เห็นไหมว่าค่าในช่องมันว่างช่วยเติมพิมพ์ username ลงไปด้วย</span>}
               </div>
               <div className="w-full md:w-full px-3 mb-6">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">
@@ -29,8 +36,11 @@ const Login = (props) => {
                 <input
                   className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                   type="password"
+                  name="password"
                   required
+                  ref={register({ required: true })}
                 />
+                {errors.password && <span class="msg-error">เห็นไหมว่าค่าในช่องมันว่างช่วยเติมพิมพ์ username ลงไปด้วย</span>}
               </div>
               <div className="w-full flex items-center justify-between px-3 mb-3 ">
                 <label htmlFor="remember" className="flex items-center w-1/2">
@@ -46,9 +56,11 @@ const Login = (props) => {
                 </div>
               </div>
               <div className="w-full md:w-full px-3 mb-6">
-                <button className="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">
-                  Login
-                </button>
+                <input
+                  type="submit"
+                  value={ButtonStyle.name}
+                  className={`w-full bg-${ButtonStyle.color}-500 hover:bg-${ButtonStyle.color}-400 text-white font-bold py-2 px-4 border-b-4 border-${ButtonStyle.color}-700 hover:border-${ButtonStyle.color}-500 rounded`}
+                />
               </div>
               {/* <div className="mx-auto -mb-6 pb-1">
                 <span className="text-center text-xs text-gray-700">or sign up with</span>

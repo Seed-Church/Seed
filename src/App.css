@@ -18,3 +18,8 @@ input:focus:hover{
   outline: none;
   box-shadow: 0px 0px 5px #09E8D1;
 }
+
+.msg-error {
+  color: red;
+  font-size: 0.700em;
+}

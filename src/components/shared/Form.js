@@ -11,7 +11,7 @@ const Form = ({ label, type, name, register, errors, onChange = null }) => {
         ref={register}
         onChange={onChange}
       />
-      <span style={{ color: "red", fontSize: "0.700em" }}>{errors && errors.message}</span>
+      <span class="msg-error">{errors && errors.message}</span>
     </div>
   );
 };
