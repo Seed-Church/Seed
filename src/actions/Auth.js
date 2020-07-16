@@ -8,9 +8,10 @@ const authHumanPending = () => {
   };
 };
 
-const authHumanError = () => {
+const authHumanError = (error) => {
   return {
     type: AUTH_HUMAN_ERROR,
+    auth_error: error,
   };
 };
 
@@ -22,5 +23,7 @@ const authHumanSuccess = (token) => {
 };
 
 const actionGruop = getActionGroup(authHumanPending, authHumanError);
-
-export const authHuman = (data) => generateAction(AUTH, "POST", authHumanSuccess, actionGruop, `/login`, data);
+const  headers ={
+  "Content-Type": "application/json",
+}
+export const authHuman = (data) => generateAction(AUTH, "POST", authHumanSuccess, actionGruop, ``, JSON.stringify(data),headers);

@@ -8,10 +8,14 @@ const Login = (props) => {
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    let form = new FormData();
-    form.append("username", data.username);
-    form.append("password", data.password);
-    props.dispatchAuthHuman(form);
+    // let form = new FormData();
+    // form.append("username", data.username);
+    // form.append("password", data.password);
+    const auth = {
+      "username": data.username,
+      "password":data.password
+    }
+    props.dispatchAuthHuman(auth);
   };
   return (
     <React.Fragment>
@@ -21,7 +25,7 @@ const Login = (props) => {
           <span className="text-sm"></span>
         </div>
         <div className="flex justify-center my-2 mx-4 md:mx-0">
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-xl bg-teal-100 rounded-lg shadow-xl p-6">
+          <form onSubmit={handleSubmit(onSubmit)}  className="w-full max-w-xl bg-teal-100 rounded-lg shadow-xl p-6">
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-full px-3 mb-6">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">
@@ -31,6 +35,7 @@ const Login = (props) => {
                   className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                   type="text"
                   name="username"
+                  value="john"
                   required
                   ref={register(patternLogin)}
                 />
@@ -44,6 +49,7 @@ const Login = (props) => {
                   className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                   type="password"
                   name="password"
+                  value="changeme"
                   required
                   ref={register(patternLogin)}
                 />

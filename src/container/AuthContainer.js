@@ -4,9 +4,9 @@ import Login from "../views/Login";
 
 const mapStateToProps = (state) => {
   return {
-    auth_error: state.Auth.error,
-    auth_items: state.Auth.items,
-    auth_pending: state.Auth.pending,
+    auth_error: state.Auth.auth_error,
+    token: state.Auth.token,
+    auth_pending: state.Auth.auth_pending,
   };
 };
 

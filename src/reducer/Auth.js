@@ -1,7 +1,7 @@
 import { AUTH_HUMAN_PENDING, AUTH_HUMAN_ERROR, AUTH_HUMAN_SUCCESS } from "../constants/Auth";
 const initialState = {
-  pending: false,
-  error: null,
+  auth_pending: false,
+  auth_error: null,
   token: null,
 };
 const Auth = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const Auth = (state = initialState, action) => {
     case AUTH_HUMAN_PENDING:
       return {
         ...state,
-        pending: true,
+        auth_pending: true,
       };
     case AUTH_HUMAN_SUCCESS:
       return {
@@ -21,7 +21,7 @@ const Auth = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
-        error: action.error,
+        auth_error: action.error,
       };
     default:
       return state;
