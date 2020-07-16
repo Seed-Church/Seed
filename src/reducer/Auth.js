@@ -21,7 +21,7 @@ const Auth = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
-        auth_error: action.error,
+        auth_error: action.auth_error,
       };
     default:
       return state;

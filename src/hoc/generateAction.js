@@ -11,10 +11,11 @@ const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = `
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(`res`, res);
         if (res.error) {
           throw res.error;
         }
-      
+        dispatch(Error(handleStatusCode(res.statusCode)));
         dispatch(mainAction(res));
       })
       .catch((error) => {
@@ -24,4 +25,7 @@ const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = `
   return WrappedAction;
 };
 
+const handleStatusCode = (number) => {
+  if (number === 401) return "คุณ ใส่ username หรือ password ผิด";
+};
 export default generateAction;

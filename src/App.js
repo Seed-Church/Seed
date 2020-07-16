@@ -24,10 +24,10 @@ const MaintenanceWithLayout = generateMain(Maintenance);
 function App() {
   return (
     <React.Fragment>
-      <AuthContext.Provider value={true}>
+      <AuthContext.Provider value={false}>
         <Router history={history}>
           <Route exact path="/login" component={LoginWithLogic} />
-          <Route exact path="/" component={Main} />
+          {/* <Route exact path="/" component={Main} /> */}
           <Route exact path="/form" component={FormsWithLayout} />
           <Route exact path="/form/:id/edit" component={FormsWithLayout} />
           <Route exact path="/card" component={CardWithLayout} />

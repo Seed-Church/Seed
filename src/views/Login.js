@@ -10,8 +10,8 @@ const Login = (props) => {
     console.log(data);
     const auth = {
       username: data.username,
-      password:data.password
-    }
+      password: data.password,
+    };
     props.dispatchAuthHuman(auth);
   };
   return (
@@ -22,7 +22,7 @@ const Login = (props) => {
           <span className="text-sm"></span>
         </div>
         <div className="flex justify-center my-2 mx-4 md:mx-0">
-          <form onSubmit={handleSubmit(onSubmit)}  className="w-full max-w-xl bg-teal-100 rounded-lg shadow-xl p-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-xl bg-teal-100 rounded-lg shadow-xl p-6">
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-full px-3 mb-6">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">
@@ -58,6 +58,7 @@ const Login = (props) => {
                   <span className="text-sm text-gray-700 pt-1">
                     <del>Remember Me</del>
                   </span> */}
+                  <span class="msg-error"> {props.auth_error}</span>
                 </label>
                 <div className="w-1/2 text-right">
                   <a href="#" className="text-blue-500 text-sm tracking-tight">
