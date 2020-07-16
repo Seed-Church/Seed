@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { patternLogin } from "../../src/components/mock/form";
+import FormData from "form-data";
 const Login = (props) => {
   console.log(`propsAuth`, props);
   const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `Login` });
   const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    let form = new FormData();
+    form.append("username", data.username);
+    form.append("password", data.password);
+    props.dispatchAuthHuman(form);
+  };
   return (
     <React.Fragment>
       <div>
@@ -25,9 +32,9 @@ const Login = (props) => {
                   type="text"
                   name="username"
                   required
-                  ref={register({ required: true })}
+                  ref={register(patternLogin)}
                 />
-                {errors.username && <span class="msg-error">เห็นไหมว่าค่าในช่องมันว่างช่วยเติมพิมพ์ username ลงไปด้วย</span>}
+                {errors.username && <span class="msg-error">{errors.username.message}</span>}
               </div>
               <div className="w-full md:w-full px-3 mb-6">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">
@@ -38,9 +45,9 @@ const Login = (props) => {
                   type="password"
                   name="password"
                   required
-                  ref={register({ required: true })}
+                  ref={register(patternLogin)}
                 />
-                {errors.password && <span class="msg-error">เห็นไหมว่าค่าในช่องมันว่างช่วยเติมพิมพ์ username ลงไปด้วย</span>}
+                {errors.password && <span class="msg-error">{errors.password.message}</span>}
               </div>
               <div className="w-full flex items-center justify-between px-3 mb-3 ">
                 <label htmlFor="remember" className="flex items-center w-1/2">
