@@ -8,12 +8,9 @@ const Login = (props) => {
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    // let form = new FormData();
-    // form.append("username", data.username);
-    // form.append("password", data.password);
     const auth = {
-      "username": data.username,
-      "password":data.password
+      username: data.username,
+      password:data.password
     }
     props.dispatchAuthHuman(auth);
   };

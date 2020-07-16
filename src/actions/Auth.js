@@ -16,9 +16,10 @@ const authHumanError = (error) => {
 };
 
 const authHumanSuccess = (token) => {
+
   return {
     type: AUTH_HUMAN_SUCCESS,
-    token: token,
+    token: token.access_token,
   };
 };
 
