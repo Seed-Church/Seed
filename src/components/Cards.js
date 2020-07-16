@@ -4,7 +4,7 @@ import Title from "./shared/Title";
 const Cards = () => {
   return (
     <React.Fragment>
-      <Title name="Card" />
+      <Title name="ภาพรวม" />
       <div className="flex flex-wrap">
         <Card
           title="จำนวนผู้ใช้ทั้งหมด"
