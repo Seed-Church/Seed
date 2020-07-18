@@ -44,7 +44,7 @@ const UserCard = ({ user, props }) => {
            👨‍👩‍👧‍👦{user.usersRelation.groups.name}
          </span> */}
         <img
-          className="w-full h-auto object-cover object-center"
+          className="w-full h-64 object-cover object-center"
           // src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
           src={user.pictureProfile}
           alt="avatar"
