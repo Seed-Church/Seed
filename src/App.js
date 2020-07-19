@@ -23,26 +23,26 @@ const CardBlogsWithLayout = generateMain(CardBlogs);
 const MaintenanceWithLayout = generateMain(Maintenance);
 
 function App() {
-  // const [isAuth, setAuth] = useState(false);
-
-  // useEffect(() => {
-  //   console.log(`token fuck u=`, localStorage.getItem("token"));
-  //   if (localStorage.getItem("token")) {
-  //     setAuth(true);
-  //     console.log(`isAuth1=${isAuth}`)
-  //   }
-  // }, []);
-  let isAuth = false;
-  console.log(`local=${localStorage.getItem("token")}`);
-  
-  if (localStorage.getItem("token") && localStorage.getItem("token") !== undefined ) {
-    isAuth = true;
-    console.log(`isAuth1=${isAuth}`);
-  }
+  const [isAuth, setAuth] = useState(false);
+  useEffect(() => {
+    console.log(`token fuck u=`, localStorage.getItem("token"));
+    if (localStorage.getItem("token")) {
+      setAuth(true);
+      console.log(`isAuth1=${isAuth}`)
+    }
+  }, [isAuth]);
   console.log(`isAuth2=${isAuth}`);
+  // let isAuth = false;
+  // console.log(`local=${localStorage.getItem("token")}`);
+  
+  // if (localStorage.getItem("token") && localStorage.getItem("token") !== undefined ) {
+  //   isAuth = true;
+  //   console.log(`isAuth1=${isAuth}`);
+  // }
+ 
   return (
     <React.Fragment>
-      <AuthContext.Provider value={isAuth}>
+      {/* <AuthContext.Provider value={true}> */}
         <Router history={history}>
           <Route exact path="/login" component={LoginWithLogic} />
           <PrivateRoute exact path="/" component={Main} />
@@ -59,7 +59,7 @@ function App() {
           {/* <PrivateRoute path="/admin" component={Main} /> */}
           {/* <Route exact path="/upload" component={} /> */}
         </Router>
-      </AuthContext.Provider>
+      {/* </AuthContext.Provider> */}
     </React.Fragment>
   );
 }

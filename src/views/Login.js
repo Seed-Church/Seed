@@ -44,7 +44,7 @@ const Login = (props) => {
                   className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                   type="text"
                   name="username"
-                  value="joh"
+                  value="john"
                   required
                   ref={register(patternLogin)}
                 />
