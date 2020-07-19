@@ -4,7 +4,6 @@ import FormSearch from "./shared/FormSearch";
 import Table from "./shared/Table";
 
 const Board = (props) => {
-  console.log(props);
   const columns = ["id", "User", "statuses", "groups", "Action"];
 
   const handleChange = (e) => {

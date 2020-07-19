@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Router, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import "./App.css";
@@ -23,27 +23,34 @@ const CardBlogsWithLayout = generateMain(CardBlogs);
 const MaintenanceWithLayout = generateMain(Maintenance);
 
 function App() {
-  console.log(`test=`, localStorage.getItem("token"));
-  let isAuth = true;
-  if (validateValue(localStorage.getItem("token"))) {
-    isAuth = false;
-  }
+  const [isAuth, setAuth] = useState(true);
+
+  useEffect(() => {
+    console.log(`token fuck u=`, localStorage.getItem("token"));
+    if (localStorage.getItem("token")) {
+      console.log(`fuck u`);
+      
+      setAuth(false);
+      console.log(`isAuth1=${isAuth}`)
+    }
+  }, [isAuth]);
+  console.log(`isAuth2=${isAuth}`)
   return (
     <React.Fragment>
       <AuthContext.Provider value={isAuth}>
         <Router history={history}>
           <Route exact path="/login" component={LoginWithLogic} />
           <PrivateRoute exact path="/" component={Main} />
-          <Route exact path="/form" component={FormsWithLayout} />
-          <Route exact path="/form/:id/edit" component={FormsWithLayout} />
-          <Route exact path="/card" component={CardWithLayout} />
-          <Route exact path="/board" component={BoardWithLayout} />
-          <Route exact path="/profile" component={MaintenanceWithLayout} />
-          <Route exact path="/settings" component={MaintenanceWithLayout} />
-          <Route exact path="/logout" component={MaintenanceWithLayout} />
-          <Route exact path="/blog" component={CardBlogsWithLayout} />
-          <Route exact path="/modal" component={ModalWithLayout} />
-          <Route exact path="/usercard" component={UsersCardWithLayout} />
+          <PrivateRoute exact path="/form" component={FormsWithLayout} />
+          <PrivateRoute exact path="/form/:id/edit" component={FormsWithLayout} />
+          <PrivateRoute exact path="/card" component={CardWithLayout} />
+          <PrivateRoute exact path="/board" component={BoardWithLayout} />
+          <PrivateRoute exact path="/profile" component={MaintenanceWithLayout} />
+          <PrivateRoute exact path="/settings" component={MaintenanceWithLayout} />
+          <PrivateRoute exact path="/logout" component={MaintenanceWithLayout} />
+          <PrivateRoute exact path="/blog" component={CardBlogsWithLayout} />
+          <PrivateRoute exact path="/modal" component={ModalWithLayout} />
+          <PrivateRoute exact path="/usercard" component={UsersCardWithLayout} />
           {/* <PrivateRoute path="/admin" component={Main} /> */}
           {/* <Route exact path="/upload" component={} /> */}
         </Router>

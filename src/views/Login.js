@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { patternLogin } from "../../src/components/mock/form";
-
+import validateValue from '../utils/validateValue'
 const Login = (props) => {
-  console.log(`propsAuth`, props);
+  // console.log(`propsAuth`, props);
   const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `Login` });
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data) => {
@@ -12,17 +12,18 @@ const Login = (props) => {
       username: data.username,
       password: data.password,
     };
+    localStorage.clear();
     props.dispatchAuthHuman(auth);
   };
   useEffect(() => {
-    console.log(`token`, props.token);
+    //console.log(`token`, props.token);
     localStorage.clear();
     localStorage.setItem("token", props.token);
     console.log(`token`, localStorage.getItem("token"));
 
-    if (props.token !== undefined && props.token !== null) {
+    if (validateValue(props.token)) {
       console.log(`token`, props.token);
-      props.history.push(`/`);
+      props.history.push(`/usercard`);
     }
   }, [props.token]);
   return (
