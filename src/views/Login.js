@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { patternLogin } from "../../src/components/mock/form";
-import FormData from "form-data";
+
 const Login = (props) => {
   console.log(`propsAuth`, props);
   const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `Login` });
@@ -14,6 +14,17 @@ const Login = (props) => {
     };
     props.dispatchAuthHuman(auth);
   };
+  useEffect(() => {
+    console.log(`token`, props.token);
+    localStorage.clear();
+    localStorage.setItem("token", props.token);
+    console.log(`token`, localStorage.getItem("token"));
+
+    if (props.token !== undefined && props.token !== null) {
+      console.log(`token`, props.token);
+      props.history.push(`/`);
+    }
+  }, [props.token]);
   return (
     <React.Fragment>
       <div>
@@ -32,7 +43,7 @@ const Login = (props) => {
                   className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                   type="text"
                   name="username"
-                  value="john"
+                  value="joh"
                   required
                   ref={register(patternLogin)}
                 />
