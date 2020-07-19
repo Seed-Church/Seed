@@ -10,9 +10,6 @@ import UsersContainner from "./container/UsersContainner";
 import LoginWithLogic from "./container/AuthContainer";
 import generateMain from "./hoc/generateMain";
 import Maintenance from "./components/Maintenance";
-import { AuthContext } from "./context/auth";
-import PrivateRoute from "./context/PrivateRoute";
-import validateValue from "./utils/validateValue";
 const history = createBrowserHistory();
 const CardWithLayout = generateMain(Cards);
 const ModalWithLayout = generateMain(Modal);
@@ -23,43 +20,24 @@ const CardBlogsWithLayout = generateMain(CardBlogs);
 const MaintenanceWithLayout = generateMain(Maintenance);
 
 function App() {
-  const [isAuth, setAuth] = useState(false);
-  useEffect(() => {
-    console.log(`token fuck u=`, localStorage.getItem("token"));
-    if (localStorage.getItem("token")) {
-      setAuth(true);
-      console.log(`isAuth1=${isAuth}`)
-    }
-  }, [isAuth]);
-  console.log(`isAuth2=${isAuth}`);
-  // let isAuth = false;
-  // console.log(`local=${localStorage.getItem("token")}`);
-  
-  // if (localStorage.getItem("token") && localStorage.getItem("token") !== undefined ) {
-  //   isAuth = true;
-  //   console.log(`isAuth1=${isAuth}`);
-  // }
- 
   return (
     <React.Fragment>
-      {/* <AuthContext.Provider value={true}> */}
         <Router history={history}>
           <Route exact path="/login" component={LoginWithLogic} />
-          <PrivateRoute exact path="/" component={Main} />
-          <PrivateRoute exact path="/form" component={FormsWithLayout} />
-          <PrivateRoute exact path="/form/:id/edit" component={FormsWithLayout} />
-          <PrivateRoute exact path="/card" component={CardWithLayout} />
-          <PrivateRoute exact path="/board" component={BoardWithLayout} />
-          <PrivateRoute exact path="/profile" component={MaintenanceWithLayout} />
-          <PrivateRoute exact path="/settings" component={MaintenanceWithLayout} />
-          <PrivateRoute exact path="/logout" component={MaintenanceWithLayout} />
-          <PrivateRoute exact path="/blog" component={CardBlogsWithLayout} />
-          <PrivateRoute exact path="/modal" component={ModalWithLayout} />
-          <PrivateRoute exact path="/usercard" component={UsersCardWithLayout} />
+          <Route exact path="/" component={Main} />
+          <Route exact path="/form" component={FormsWithLayout} />
+          <Route exact path="/form/:id/edit" component={FormsWithLayout} />
+          <Route exact path="/card" component={CardWithLayout} />
+          <Route exact path="/board" component={BoardWithLayout} />
+          <Route exact path="/profile" component={MaintenanceWithLayout} />
+          <Route exact path="/settings" component={MaintenanceWithLayout} />
+          <Route exact path="/logout" component={MaintenanceWithLayout} />
+          <Route exact path="/blog" component={CardBlogsWithLayout} />
+          <Route exact path="/modal" component={ModalWithLayout} />
+          <Route exact path="/usercard" component={UsersCardWithLayout} />
           {/* <PrivateRoute path="/admin" component={Main} /> */}
           {/* <Route exact path="/upload" component={} /> */}
         </Router>
-      {/* </AuthContext.Provider> */}
     </React.Fragment>
   );
 }

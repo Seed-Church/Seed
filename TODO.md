@@ -5,6 +5,10 @@ Project Description
 ### Todo
 
 - [ ] create animetion UI  
+- [ ] refacter code  
+- [ ] fix layout button  
+- [ ] fix layout upload image  
+- [ ] On nestjs delete image when delete user  
 
 ### In Progress
 
