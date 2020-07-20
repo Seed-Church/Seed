@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Router, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import "./App.css";
@@ -10,6 +10,7 @@ import UsersContainner from "./container/UsersContainner";
 import LoginWithLogic from "./container/AuthContainer";
 import generateMain from "./hoc/generateMain";
 import Maintenance from "./components/Maintenance";
+import {requireAuthentication} from './hoc/requireAuthentication'
 const history = createBrowserHistory();
 const CardWithLayout = generateMain(Cards);
 const ModalWithLayout = generateMain(Modal);
@@ -18,23 +19,13 @@ const FormsWithLayout = generateMain(UsersContainner.FormsWithLogic);
 const UsersCardWithLayout = generateMain(UsersContainner.UsersCardWithLogic);
 const CardBlogsWithLayout = generateMain(CardBlogs);
 const MaintenanceWithLayout = generateMain(Maintenance);
-/**
- *  const FormAuth = generateAuth(UsersContainner.FormsWithLogic)
- *  const FormsWithLayout = generateMain(FormAuth); // can get prop.isAuthenticated
- *  requireAuthentication(FormsWithLayout)
- * 
- *   return  {this.props.isAuthenticated === true
-                        ? <FormsWithLayout {...this.props}/>
-                        : null
-                    }
- *   ยัดใส้ contanner ให้ ติด props.isAuth แล้วเอาไปเช็คใน HOC  ถ้าไม่ true ก็ return component กลับไป
- */
 function App() {
   return (
     <React.Fragment>
+      {/* <AuthContext.Provider value={true}> */}
       <Router history={history}>
         <Route exact path="/login" component={LoginWithLogic} />
-        <Route exact path="/" component={Main} />
+        <Route exact path="/" component={requireAuthentication(Main)} />
         <Route exact path="/form" component={FormsWithLayout} />
         <Route exact path="/form/:id/edit" component={FormsWithLayout} />
         <Route exact path="/card" component={CardWithLayout} />
@@ -45,9 +36,10 @@ function App() {
         <Route exact path="/blog" component={CardBlogsWithLayout} />
         <Route exact path="/modal" component={ModalWithLayout} />
         <Route exact path="/usercard" component={UsersCardWithLayout} />
-        {/* <PrivateRoute path="/admin" component={Main} /> */}
+        {/* <Route exact path="/auth" component={requirAuthWithLogic} /> */}
         {/* <Route exact path="/upload" component={} /> */}
       </Router>
+      {/* </AuthContext.Provider> */}
     </React.Fragment>
   );
 }

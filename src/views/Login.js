@@ -13,7 +13,7 @@ const Login = (props) => {
       password: data.password,
     };
     localStorage.clear();
-    props.dispatchAuthHuman(auth);
+    props.dispatchGetToken(auth);
   };
   useEffect(() => {
     //console.log(`token`, props.token);
@@ -23,7 +23,7 @@ const Login = (props) => {
 
     if (validateValue(props.token)) {
       console.log(`token`, props.token);
-      props.history.push(`/usercard`);
+      // props.history.push(`/usercard`);
     }
   }, [props.token]);
   return (
