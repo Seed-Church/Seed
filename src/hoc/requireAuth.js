@@ -7,9 +7,9 @@ export const requireAuth = (Component) => {
     useEffect(() => {
       props.dispatchGetData();
     }, []);
-    console.log(`propsAuthenticatedComponent`,props);
-    
-    return <div>{props.isAuthenticated === true ? <Component {...props} /> : null}</div>;
+    console.log(`propsAuthenticatedComponent`, props);
+
+    return <div>{props.isAuthenticated ? <Component {...props} /> : null}</div>;
   };
 
   const mapStateToProps = (state) => ({
@@ -17,7 +17,7 @@ export const requireAuth = (Component) => {
     token: state.Auth.token,
     auth_pending: state.Auth.auth_pending,
     isAuthenticated: state.Auth.isAuthenticated,
-    user:state.Auth.user
+    user: state.Auth.user,
   });
 
   const mapDispatchToProps = (dispatch) => ({

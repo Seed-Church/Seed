@@ -7,6 +7,7 @@ const initialState = {
   isAuthenticated: false,
 };
 const Auth = (state = initialState, action) => {
+  
   switch (action.type) {
     case AUTH_HUMAN_PENDING:
       return {
@@ -20,8 +21,6 @@ const Auth = (state = initialState, action) => {
         token: action.token,
       };
     case AUTH_GETDATA_HUMAN:  
-    console.log(action.user);
-    
       return {
         ...state,
         pending: false,
