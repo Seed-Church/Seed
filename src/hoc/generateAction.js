@@ -10,9 +10,7 @@ const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = `
       body: data,
     })
       .then((res) => res.json())
-      .then((res) => {
-        console.log(`respone`,res);
-        
+      .then((res) => {  
         if (res.error) {
           throw res.error;
         }
