@@ -11,7 +11,8 @@ const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = `
     })
       .then((res) => res.json())
       .then((res) => {
-        // console.log(`res`, res);
+        console.log(`respone`,res);
+        
         if (res.error) {
           throw res.error;
         }

@@ -10,7 +10,7 @@ import UsersContainner from "./container/UsersContainner";
 import LoginWithLogic from "./container/AuthContainer";
 import generateMain from "./hoc/generateMain";
 import Maintenance from "./components/Maintenance";
-import {requireAuthentication} from './hoc/requireAuthentication'
+import {requireAuth} from './hoc/requireAuth'
 const history = createBrowserHistory();
 const CardWithLayout = generateMain(Cards);
 const ModalWithLayout = generateMain(Modal);
@@ -19,13 +19,15 @@ const FormsWithLayout = generateMain(UsersContainner.FormsWithLogic);
 const UsersCardWithLayout = generateMain(UsersContainner.UsersCardWithLogic);
 const CardBlogsWithLayout = generateMain(CardBlogs);
 const MaintenanceWithLayout = generateMain(Maintenance);
+
+
 function App() {
   return (
     <React.Fragment>
       {/* <AuthContext.Provider value={true}> */}
       <Router history={history}>
         <Route exact path="/login" component={LoginWithLogic} />
-        <Route exact path="/" component={requireAuthentication(Main)} />
+        <Route exact path="/" component={requireAuth(Main)} />
         <Route exact path="/form" component={FormsWithLayout} />
         <Route exact path="/form/:id/edit" component={FormsWithLayout} />
         <Route exact path="/card" component={CardWithLayout} />
@@ -33,9 +35,9 @@ function App() {
         <Route exact path="/profile" component={MaintenanceWithLayout} />
         <Route exact path="/settings" component={MaintenanceWithLayout} />
         <Route exact path="/logout" component={MaintenanceWithLayout} />
-        <Route exact path="/blog" component={CardBlogsWithLayout} />
-        <Route exact path="/modal" component={ModalWithLayout} />
-        <Route exact path="/usercard" component={UsersCardWithLayout} />
+        <Route exact path="/blog" component={requireAuth(CardBlogsWithLayout)} />
+        <Route exact path="/modal" component={requireAuth(ModalWithLayout)} />
+        <Route exact path="/usercard" component={requireAuth(UsersCardWithLayout)} />
         {/* <Route exact path="/auth" component={requirAuthWithLogic} /> */}
         {/* <Route exact path="/upload" component={} /> */}
       </Router>
