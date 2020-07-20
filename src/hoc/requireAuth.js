@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-// import {pushState} from 'redux-router';
 import { getData } from "../actions/Auth";
-export const requireAuth = (Component) => {
+
+const requireAuth = (Component) => {
   const AuthenticatedComponent = (props) => {
     useEffect(() => {
       props.dispatchGetData();
@@ -28,3 +28,5 @@ export const requireAuth = (Component) => {
 
   return connect(mapStateToProps, mapDispatchToProps)(AuthenticatedComponent);
 };
+
+export default requireAuth;
