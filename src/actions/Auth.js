@@ -18,7 +18,7 @@ const authHumanError = (error) => {
 const authGetTokenHuman = (token) => {
   return {
     type: AUTH_GETTOKEN_HUMAN,
-    token: token.access_token,
+    token: token,
   };
 };
 

@@ -1,5 +1,5 @@
 import { API_URL } from "../api/index";
-
+import checkHttpStatus from "../utils/checkHttpStatus";
 const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = ``, data, headers = {}) => {
   const { Pending, Error } = actionGruop;
   const WrappedAction = (dispatch) => {
@@ -9,14 +9,18 @@ const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = `
       method: method,
       body: data,
     })
+      .then(checkHttpStatus)
       .then((res) => res.json())
       .then((res) => {
-        if (res.error) {
-          throw res.error;
+        console.log(`res`, res);
+        try {
+          dispatch(mainAction(res.data));
+        } catch (e) {
+          dispatch(Error(res));
         }
-
-        if (res.statusCode === 200 || res.statusCode === 201) dispatch(mainAction(res));
-        else dispatch(Error(handleStatusCode(id, res)));
+      })
+      .catch((e) => {
+        dispatch(Error(e));
       });
   };
   return WrappedAction;
