@@ -25,14 +25,14 @@ const UserCard = ({ user, props }) => {
     <React.Fragment>
       <div className="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4 mx-8">
         <div className="flex flex-wrap absolute mt-2 mr-3 mx-2">
-          <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#{user.id}</span>
-          <span class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+          <span className="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#{user.id}</span>
+          <span className="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
             👨‍👩‍👧‍👦{user.usersRelation.groups.name}
           </span>
-          <span class="inline-block bg-pink-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+          <span className="inline-block bg-pink-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
             💕{user.usersRelation.statuses.name}
           </span>
-          <span class="inline-block bg-orange-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+          <span className="inline-block bg-orange-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
             ⏱️{currectDate.diff(userDate, `day`)} วัน
           </span>
         </div>
@@ -40,7 +40,7 @@ const UserCard = ({ user, props }) => {
         {/* <span className="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 mx-16 absolute">
            💕{user.usersRelation.statuses.name}
        </span>
-         <span class="inline-block bg-pink-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 mx-32 absolute">
+         <span className="inline-block bg-pink-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 mx-32 absolute">
            👨‍👩‍👧‍👦{user.usersRelation.groups.name}
          </span> */}
         <img
