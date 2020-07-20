@@ -14,14 +14,9 @@ const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = `
         if (res.error) {
           throw res.error;
         }
-        console.log(`res`,res);
-        
-        dispatch(Error(handleStatusCode(id, res)));
-        // if (res.statusCode === 200 || res.statusCode === 201 &) dispatch(mainAction(res));
-        dispatch(mainAction(res))
-      })
-      .catch((error) => {
-        dispatch(Error(error));
+
+        if (res.statusCode === 200 || res.statusCode === 201) dispatch(mainAction(res));
+        else dispatch(Error(handleStatusCode(id, res)));
       });
   };
   return WrappedAction;
