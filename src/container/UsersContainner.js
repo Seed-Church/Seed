@@ -14,7 +14,6 @@ const mapStateToProps = (state) => {
     editing: state.Users.editing,
     statuses: state.Statuses.statuses,
     groups: state.Groups.groups,
-    statusAPI: state.Users.statusAPI,
     word: state.Users.word,
   };
 };

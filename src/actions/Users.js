@@ -29,7 +29,6 @@ const fetchUsersError = (error) => {
 const addUsersSuccess = (status) => {
   return {
     type: ADD_USERS_SUCCESS,
-    statusAPI: status,
     editing: true,
   };
 };
@@ -52,14 +51,12 @@ const editUsersSuccess = (item) => {
 const updateUsersSuccess = (status) => {
   return {
     type: UPDATE_USERS_SUCCESS,
-    statusAPI: status,
   };
 };
 
 const deleteUsersSuccess = (status) => {
   return {
     type: DELETE_USERS_SUCCESS,
-    statusAPI: status,
   };
 };
 export const searchUsersSuccess = (item) => {
