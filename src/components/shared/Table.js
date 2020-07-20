@@ -3,6 +3,7 @@ import Colume from "./Colume";
 import RowsUser from "./RowsUser";
 
 const Table = ({ columns, props }) => {
+  // console.log(`props`,props);
   return (
     <table className="min-w-full leading-normal">
       <thead>

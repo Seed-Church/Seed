@@ -7,8 +7,7 @@ const requireAuth = (Component) => {
     useEffect(() => {
       props.dispatchGetData();
     }, [props.isAuthenticated ]);
-    console.log(`propsAuthenticatedComponent`, props);
-
+     // console.log(`propsAuthenticatedComponent`, props);
     return <div>{props.isAuthenticated ? <Component {...props} /> : null}</div>;
   };
 

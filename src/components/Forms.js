@@ -22,6 +22,8 @@ import {
 } from "./mock/form";
 
 const Forms = (props) => {
+  // console.log(`propsForm`,props);
+  
   let flags = { complete: 0, no_action: 1, something_wrong: 2, edit: 3 };
   const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `เพิ่มข้อมูล` });
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
