@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { authHuman } from "../actions/Auth";
+import { getToken } from "../actions/Auth";
 import Login from "../views/Login";
 
 const mapStateToProps = (state) => {
@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchAuthHuman: (data) => {
-      dispatch(authHuman(data));
+    dispatchGetToken: (data) => {
+      dispatch(getToken(data));
     },
   };
 };
