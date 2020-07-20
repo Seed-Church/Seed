@@ -21,6 +21,7 @@ const Login = (props) => {
     if (validateValue(props.token)) {
       props.history.push(`/usercard`);
     }
+    console.log(`props`,props);
     
   }, [props.token]);
   return (
@@ -45,7 +46,7 @@ const Login = (props) => {
                   required
                   ref={register(patternLogin)}
                 />
-                {errors.username && <span class="msg-error">{errors.username.message}</span>}
+                {errors.username && <span className="msg-error">{errors.username.message}</span>}
               </div>
               <div className="w-full md:w-full px-3 mb-6">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">
@@ -59,7 +60,7 @@ const Login = (props) => {
                   required
                   ref={register(patternLogin)}
                 />
-                {errors.password && <span class="msg-error">{errors.password.message}</span>}
+                {errors.password && <span className="msg-error">{errors.password.message}</span>}
               </div>
               <div className="w-full flex items-center justify-between px-3 mb-3 ">
                 <label htmlFor="remember" className="flex items-center w-1/2">
@@ -67,7 +68,7 @@ const Login = (props) => {
                   <span className="text-sm text-gray-700 pt-1">
                     <del>Remember Me</del>
                   </span> */}
-                  <span class="msg-error"> {props.auth_error}</span>
+                  <span className="msg-error"> {props.auth_error}</span>
                 </label>
                 <div className="w-1/2 text-right">
                   <a href="#" className="text-blue-500 text-sm tracking-tight">
