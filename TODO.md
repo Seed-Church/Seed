@@ -12,11 +12,12 @@ Project Description
 
 ### In Progress
 
-- [ ] auth  
 - [ ] fix image size table  
+- [ ] handle status api  
 
 ### Done ✓
 
+- [x] auth  
 - [x] change color icon  
 - [x] fix layout table  
 - [x] ค่า file ตอนโหลดไม่ถูกส่ง  
