@@ -8,15 +8,15 @@ Project Description
 - [ ] refacter code  
 - [ ] fix layout button  
 - [ ] fix layout upload image  
-- [ ] On nestjs delete image when delete user  
 
 ### In Progress
 
 - [ ] fix image size table  
-- [ ] handle status api  
 
 ### Done ✓
 
+- [x] On nestjs delete image when delete user  
+- [x] handle status api  
 - [x] auth  
 - [x] change color icon  
 - [x] fix layout table  

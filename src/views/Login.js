@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { patternLogin } from "../../src/components/mock/form";
-import validateValue from '../utils/validateValue'
+import validateValue from "../utils/validateValue";
 const Login = (props) => {
   // console.log(`propsAuth`, props);
   const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `Login` });
@@ -19,10 +19,11 @@ const Login = (props) => {
     localStorage.clear();
     localStorage.setItem("token", props.token);
     if (validateValue(props.token)) {
-      props.history.push(`/usercard`);
+      console.log(`props`, props);
+      setInterval(() => {
+        props.history.push(`/`);
+      }, 1000);
     }
-    console.log(`props`,props);
-    
   }, [props.token]);
   return (
     <React.Fragment>
