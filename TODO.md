@@ -5,14 +5,19 @@ Project Description
 ### Todo
 
 - [ ] create animetion UI  
+- [ ] refacter code  
+- [ ] fix layout button  
+- [ ] fix layout upload image  
 
 ### In Progress
 
-- [ ] auth  
 - [ ] fix image size table  
 
 ### Done ✓
 
+- [x] On nestjs delete image when delete user  
+- [x] handle status api  
+- [x] auth  
 - [x] change color icon  
 - [x] fix layout table  
 - [x] ค่า file ตอนโหลดไม่ถูกส่ง  

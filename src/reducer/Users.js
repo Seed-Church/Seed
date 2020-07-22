@@ -15,7 +15,6 @@ const initialState = {
   items: [],
   error: `no error`,
   editing: false,
-  statusAPI: `no update status`,
 };
 const Users = (state = initialState, action) => {
   switch (action.type) {
@@ -39,7 +38,6 @@ const Users = (state = initialState, action) => {
     case ADD_USERS_SUCCESS:
       return {
         ...state,
-        statusAPI: action.statusAPI,
       };
     case EDIT_USERS_SUCCESS:
       return {
@@ -50,12 +48,10 @@ const Users = (state = initialState, action) => {
     case DELETE_USERS_SUCCESS:
       return {
         ...state,
-        statusAPI: action.statusAPI,
       };
     case UPDATE_USERS_SUCCESS:
       return {
         ...state,
-        statusAPI: action.statusAPI,
       };
     case SEARCH_USERS_SUCCESS:
       return {

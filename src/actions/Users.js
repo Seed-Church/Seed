@@ -26,10 +26,9 @@ const fetchUsersError = (error) => {
   };
 };
 
-const addUsersSuccess = (status) => {
+const addUsersSuccess = () => {
   return {
     type: ADD_USERS_SUCCESS,
-    statusAPI: status,
     editing: true,
   };
 };
@@ -49,23 +48,21 @@ const editUsersSuccess = (item) => {
   };
 };
 
-const updateUsersSuccess = (status) => {
+const updateUsersSuccess = () => {
   return {
     type: UPDATE_USERS_SUCCESS,
-    statusAPI: status,
   };
 };
 
-const deleteUsersSuccess = (status) => {
+const deleteUsersSuccess = () => {
   return {
     type: DELETE_USERS_SUCCESS,
-    statusAPI: status,
   };
 };
-export const searchUsersSuccess = (item) => {
+export const searchUsersSuccess = (items) => {
   return {
     type: SEARCH_USERS_SUCCESS,
-    items: item,
+    items: items,
   };
 };
 

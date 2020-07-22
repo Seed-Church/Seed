@@ -22,6 +22,8 @@ import {
 } from "./mock/form";
 
 const Forms = (props) => {
+  // console.log(`propsForm`,props);
+  
   let flags = { complete: 0, no_action: 1, something_wrong: 2, edit: 3 };
   const [ButtonStyle, setButtonStyle] = useState({ color: `blue`, name: `เพิ่มข้อมูล` });
   const [isOpenAlert, setOpenAlert] = useState(flags.no_action);
@@ -135,14 +137,14 @@ const Forms = (props) => {
       {isOpenAlert === flags.complete ? (
         <React.Fragment>
           <Alert color="teal" topic="เพิ่มข้อมูลเรียบร้อย" message="ข้อมูลถูกเพิ่มลงในฐานข้อมูลแล้ว" />
-          <Progressbar />
+          {/* <Progressbar /> */}
         </React.Fragment>
       ) : isOpenAlert === flags.something_wrong ? (
         <Alert color="red" topic="เพิ่มข้อมูลไม่ได้" message="ข้อมูลยังไม่ถูกเพิ่มในฐานข้อมูล" />
       ) : isOpenAlert === flags.edit ? (
         <React.Fragment>
           <Alert color="yellow" topic="แก้ไขข้อมูลเรียบร้อย" message="ข้อมูลถูกแก้ไข้ไปยังฐานข้อมูลแล้ว" />
-          <Progressbar />
+          {/* <Progressbar /> */}
         </React.Fragment>
       ) : (
         ``

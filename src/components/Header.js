@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import MenuUserPanel from "./shared/MenuUserPanel";
 
-const Header = () => {
+const Header = (props) => {
+  console.log(`propsHeader`, props);
+
   const [visible, setVisible] = useState(false);
   const style = {
     backgroundColor: `rgba(17, 21, 22, 0.14)`,
   };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    props.dispatchLogOut();
+    props.history.push(`/login`);
+  };
+
   return (
     <nav className="pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0" style={style}>
       <div className="flex flex-wrap items-center">
@@ -43,26 +52,21 @@ const Header = () => {
 
             <li className="flex-1 md:flex-none md:mr-3">
               <div className="relative inline-block">
-                <button
-                  onClick={visible ? () => setVisible(false) : () => setVisible(true)}
-                  className="drop-button text-white focus:outline-none">
+                <button onClick={visible ? () => setVisible(false) : () => setVisible(true)} className="drop-button text-white focus:outline-none">
                   {" "}
                   <span className="pr-2">
                     <i className="em em-robot_face"></i>
                   </span>{" "}
-                  Hi, User{" "}
+                  Hi, {props.user.username}
+                  {/* <loadingUser username={props.user} /> */}
                   <svg className="h-3 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                   </svg>
                 </button>
-                <div
-                  className={
-                    "dropdownlist absolute bg-gray-900 text-white right-0 mt-3 p-3 overflow-auto z-30 " +
-                    (visible ? "" : "invisible")
-                  }>
-                  <MenuUserPanel href="/profile" name="Profile" icon="fas fa-user" />
-                  <MenuUserPanel href="/settings" name="Settings" icon="fas fa-cogs" />
-                  <MenuUserPanel href="/logout" name="Log Out" icon="fas fa-sign-out-alt" />
+                <div className={"dropdownlist absolute bg-gray-900 text-white right-0 mt-3 p-3 overflow-auto z-30 " + (visible ? "" : "invisible")}>
+                  {/* <MenuUserPanel href="/profile" name="Profile" icon="fas fa-user" />
+                  <MenuUserPanel href="/settings" name="Settings" icon="fas fa-cogs" /> */}
+                  <MenuUserPanel href="/login" onClick={handleLogout} name="Log Out" icon="fas fa-sign-out-alt" />
                 </div>
               </div>
             </li>

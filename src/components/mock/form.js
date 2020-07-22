@@ -117,6 +117,17 @@ export const patternSalary = {
   },
 };
 
+export const patternLogin = {
+  required: "ช่วยกรอก username password ในช่องให้ครบก่อน login ด้วยจ้า",
+  maxLength: { value: 25, message: "ไม่เกิน 25 ตัวอักษร" },
+  pattern: {
+    value: expectStringEnglishWithNumberWithSpecial(),
+    message: "ตัวอักษรและตัวเลขเท่านั้น",
+  },
+};
+
+
+
 
 export const patternFile = {};
 
