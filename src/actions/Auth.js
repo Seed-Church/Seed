@@ -39,7 +39,10 @@ const headers = {
   "Content-Type": "application/json",
 };
 export const getToken = (data) => generateAction(AUTH, "POST", authGetTokenHuman, actionGruop, `/getToken`, JSON.stringify(data), headers);
-const token = {
-  Authorization: `Bearer ${localStorage.getItem("token")}`,
-};
-export const getData = () => generateAction(AUTH, "GET", authGetDataHuman, actionGruop, `/getData`, null, token);
+// const token = {
+//   Authorization: `Bearer ${localStorage.getItem("token")}`,
+// };
+export const getData = () =>
+  generateAction(AUTH, "GET", authGetDataHuman, actionGruop, `/getData`, null, {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  });
