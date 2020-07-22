@@ -13,10 +13,11 @@ import requireAuth from "./hoc/requireAuth";
 import "./App.css";
 
 const history = createBrowserHistory();
-const CardWithLayout = generateMain(Cards);
+const CardWithLayout = generateMain(UsersContainner.CardWithLogic);
 const BoardWithLayout = generateMain(UsersContainner.BoardWithLogic);
 const FormsWithLayout = generateMain(UsersContainner.FormsWithLogic);
 const UsersCardWithLayout = generateMain(UsersContainner.UsersCardWithLogic);
+
 const CardBlogsWithLayout = generateMain(CardBlogs);
 const MaintenanceWithLayout = generateMain(Maintenance);
 

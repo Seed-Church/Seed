@@ -8,6 +8,7 @@ import {
   UPDATE_USERS_SUCCESS,
   SEARCH_USERS_SUCCESS,
   FETCH_ONE_USERS_SUCCESS,
+  COUNT_USERS_SUCCESS,
 } from "../constants/Users";
 
 const initialState = {
@@ -62,6 +63,11 @@ const Users = (state = initialState, action) => {
       return {
         ...state,
         items: action.items,
+      };
+    case COUNT_USERS_SUCCESS:
+      return {
+        ...state,
+        amountUsers: action.amountUsers,
       };
     default:
       return state;
