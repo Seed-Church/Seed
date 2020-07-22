@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getData } from "../actions/Auth";
+import { getData, LogOutHuman } from "../actions/Auth";
 
 const requireAuth = (Component) => {
   const AuthenticatedComponent = (props) => {
     useEffect(() => {
       props.dispatchGetData();
-    }, [props.isAuthenticated ]);
-     // console.log(`propsAuthenticatedComponent`, props);
+    }, [props.isAuthenticated]);
+    // console.log(`propsAuthenticatedComponent`, props);
     return <div>{props.isAuthenticated ? <Component {...props} /> : null}</div>;
   };
 
@@ -22,6 +22,9 @@ const requireAuth = (Component) => {
   const mapDispatchToProps = (dispatch) => ({
     dispatchGetData: () => {
       dispatch(getData());
+    },
+    dispatchLogOut: () => {
+      dispatch(LogOutHuman());
     },
   });
 

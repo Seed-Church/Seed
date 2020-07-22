@@ -1,6 +1,6 @@
 import generateAction from "../hoc/generateAction";
 import getActionGroup from "../utils/getActionGroup";
-import { AUTH, AUTH_HUMAN_PENDING, AUTH_HUMAN_ERROR, AUTH_GETTOKEN_HUMAN, AUTH_GETDATA_HUMAN } from "../constants/Auth";
+import { AUTH, AUTH_HUMAN_PENDING, AUTH_HUMAN_ERROR, AUTH_GETTOKEN_HUMAN, AUTH_GETDATA_HUMAN, LOG_OUT_HUMAN } from "../constants/Auth";
 
 const authHumanPending = () => {
   return {
@@ -28,6 +28,11 @@ const authGetDataHuman = (user) => {
     user: user,
   };
 };
+export const LogOutHuman = () => {
+  return {
+    type: LOG_OUT_HUMAN,
+  };
+};
 
 const actionGruop = getActionGroup(authHumanPending, authHumanError);
 const headers = {
@@ -35,6 +40,6 @@ const headers = {
 };
 export const getToken = (data) => generateAction(AUTH, "POST", authGetTokenHuman, actionGruop, `/getToken`, JSON.stringify(data), headers);
 const token = {
-  "Authorization": `Bearer ${localStorage.getItem("token")}`,
+  Authorization: `Bearer ${localStorage.getItem("token")}`,
 };
 export const getData = () => generateAction(AUTH, "GET", authGetDataHuman, actionGruop, `/getData`, null, token);

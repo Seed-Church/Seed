@@ -9,18 +9,17 @@ const generateAction = (moudule, method = "GET", mainAction, actionGruop, id = `
       method: method,
       body: data,
     })
-      .then(checkHttpStatus)
       .then((res) => res.json())
       .then((res) => {
         console.log(`res`, res);
-        try {
+        if(res.status >= 200 && res.status < 300){
           dispatch(mainAction(res.data));
-        } catch (e) {
-          dispatch(Error(res));
         }
-      })
-      .catch((e) => {
-        dispatch(Error(e));
+        else {
+          dispatch(Error(res.message));
+        }
+      }).catch((error) => {
+        dispatch(Error(error));
       });
   };
   return WrappedAction;

@@ -14,17 +14,18 @@ const Login = (props) => {
     };
     localStorage.clear();
     props.dispatchGetToken(auth);
+ 
   };
   useEffect(() => {
     localStorage.clear();
     localStorage.setItem("token", props.token);
+    console.log(`props1`,props);
     if (validateValue(props.token)) {
-      console.log(`props`, props);
-      setInterval(() => {
-        props.history.push(`/`);
-      }, 1000);
+        props.history.push(`/card`);
     }
+    console.log(`props2`, props);
   }, [props.token]);
+  // console.log(`props2`,props);
   return (
     <React.Fragment>
       <div>

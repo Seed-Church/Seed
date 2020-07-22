@@ -1,4 +1,4 @@
-import { AUTH_HUMAN_PENDING, AUTH_HUMAN_ERROR, AUTH_GETTOKEN_HUMAN, AUTH_GETDATA_HUMAN } from "../constants/Auth";
+import { AUTH_HUMAN_PENDING, AUTH_HUMAN_ERROR, AUTH_GETTOKEN_HUMAN, AUTH_GETDATA_HUMAN, LOG_OUT_HUMAN } from "../constants/Auth";
 const initialState = {
   auth_pending: false,
   auth_error: null,
@@ -7,7 +7,7 @@ const initialState = {
   isAuthenticated: false,
 };
 const Auth = (state = initialState, action) => {
-  
+  console.log(`action`,action);
   switch (action.type) {
     case AUTH_HUMAN_PENDING:
       return {
@@ -34,6 +34,13 @@ const Auth = (state = initialState, action) => {
         pending: false,
         auth_error: action.auth_error,
       };
+      case LOG_OUT_HUMAN:
+        return {
+          ...state,
+          isAuthenticated: false,
+          user: null,
+          token: null,
+        };
     default:
       return state;
   }
