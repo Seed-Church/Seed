@@ -19,11 +19,10 @@ const Login = (props) => {
   useEffect(() => {
     localStorage.clear();
     localStorage.setItem("token", props.token);
-    console.log(`props1`,props);
     if (validateValue(props.token)) {
         props.history.push(`/card`);
     }
-    console.log(`props2`, props);
+    console.log(`propsLogin`, props);
   }, [props.token]);
   // console.log(`props2`,props);
   return (

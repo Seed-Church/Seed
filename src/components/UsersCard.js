@@ -6,7 +6,6 @@ const UsersCard = (props) => {
   useEffect(() => {
     props.dispatchFetchUsers();
   }, []);
-  console.log(`card`,props);
   const handleChange = (e) => {
     console.log(e.target.value);
     props.dispatchSearcheUser(e.target.value);
