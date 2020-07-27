@@ -25,7 +25,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npm run build
       env:
         CI: true
 
@@ -43,4 +42,5 @@ jobs:
                 script: | 
                   cd /
                   cd ${{ secrets.SSH_PATH }} 
+                  npm run build
                   pm2 restart ecosymstem
