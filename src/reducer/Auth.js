@@ -7,7 +7,6 @@ const initialState = {
   isAuthenticated: false,
 };
 const Auth = (state = initialState, action) => {
-  console.log(`action`,action);
   switch (action.type) {
     case AUTH_HUMAN_PENDING:
       return {

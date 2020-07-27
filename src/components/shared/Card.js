@@ -14,9 +14,9 @@ const Card = ({ title, value, color, icon, iconColor }) => {
             <h5 className="font-bold uppercase text-gray-600">{title}</h5>
             <h3 className="font-bold text-3xl">
               {value}
-              <span className="text-green-500">
+              {/* <span className="text-green-500">
                 <i className="fas fa-caret-up"></i>
-              </span>
+              </span> */}
             </h3>
           </div>
         </div>

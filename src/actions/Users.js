@@ -11,6 +11,7 @@ import {
   UPDATE_USERS_SUCCESS,
   SEARCH_USERS_SUCCESS,
   FETCH_ONE_USERS_SUCCESS,
+  COUNT_USERS_SUCCESS,
 } from "../constants/Users";
 
 const fetchUsersPending = () => {
@@ -72,6 +73,13 @@ export const fetchOneUserSuccess = (item) => {
     items: item,
   };
 };
+
+export const countUserSucess = (amountUsers) => {
+  return {
+    type: COUNT_USERS_SUCCESS,
+    amountUsers: amountUsers,
+  };
+};
 const actionGruop = getActionGroup(fetchUsersPending, fetchUsersError);
 
 export const fetchUsers = () => generateAction(USERS, "GET", fetchUsersSuccess, actionGruop);
@@ -81,3 +89,4 @@ export const deleteUser = (id) => generateAction(USERS, "DELETE", deleteUsersSuc
 export const updateUser = (id, data) => generateAction(USERS, "PUT", updateUsersSuccess, actionGruop, `/${id}`, data);
 export const searchUser = (word) => generateAction(USERS, "GET", searchUsersSuccess, actionGruop, `/search/${word}`);
 export const fetchOneUser = (id) => generateAction(USERS, "GET", fetchOneUserSuccess, actionGruop, `/${id}`);
+export const countUser = () => generateAction(USERS, "GET", countUserSucess, actionGruop, `/amount/all`);
