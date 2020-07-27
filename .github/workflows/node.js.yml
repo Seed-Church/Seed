@@ -40,7 +40,7 @@ jobs:
                 port: 22
                 script: | 
                   cd /
-                  cd ${{ secrets.SSH_PATH }} 
+                  cd /home/army/actions-runner/_work/SeedBackEnd/SeedBackEnd 
                   npm install
                   npm run build
                   pm2 restart ecosymstem
