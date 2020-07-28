@@ -24,7 +24,8 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: npm ci
+            - run: npm install
+            - run: npm run build
               env:
                   CI: true
 
@@ -42,7 +43,6 @@ jobs:
                   script: | 
                       cd /
                       cd /home/army/actions-runner/_work/Seed/Seed
-                      npm run build
                   
                  
                
