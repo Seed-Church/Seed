@@ -43,7 +43,6 @@ jobs:
                       cd /
                       cd /home/army/actions-runner/_work/SeedBackEnd/SeedBackEnd 
                       npm run build
-                      pm2 restart ecosystem.config.js
                   
                  
                
