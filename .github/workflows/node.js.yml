@@ -41,7 +41,7 @@ jobs:
                   port: 22
                   script: | 
                       cd /
-                      cd /home/army/actions-runner/_work/SeedBackEnd/SeedBackEnd 
+                      cd /home/army/actions-runner/_work/Seed/Seed
                       npm run build
                   
                  
