@@ -25,7 +25,6 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: npm ci
-            - run: npm run build
               env:
                   CI: true
 
@@ -43,6 +42,7 @@ jobs:
                   script: | 
                       cd /
                       cd /home/army/actions-runner/_work/SeedBackEnd/SeedBackEnd 
+                      npm run build
                       pm2 restart ecosystem.config.js
                   
                  
