@@ -43,6 +43,8 @@ jobs:
                   script: | 
                       cd /
                       cd /home/army/actions-runner/_work/Seed/Seed
+                      cp -r ./build/* /home/army/actions-runner/_work/SeedBackEnd/SeedBackEnd/public
+                      cp -r ./build/* /home/army/actions-runner/_work/SeedBackEnd/SeedBackEnd/dist/public
                   
                  
                
