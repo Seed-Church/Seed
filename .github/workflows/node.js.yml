@@ -42,7 +42,7 @@ jobs:
                   port: 22
                   script: | 
                       cd /
-                      cd /home/army/actions-runner/_work/Seed/Seed
+                      cd /home/army/actions-runner/_work/SeedWEB/SeedWEB
                       cp -r ./build/* /home/army/actions-runner/_work/SeedBackEnd/SeedBackEnd/public
                       cp -r ./build/* /home/army/actions-runner/_work/SeedBackEnd/SeedBackEnd/dist/public
                   
